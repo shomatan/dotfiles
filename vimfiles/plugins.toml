@@ -1,0 +1,54 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# ---
+
+# Toml
+[[plugins]]
+repo  = 'cespare/vim-toml'
+on_ft = 'toml'
+
+# ---
+
+# hybrid
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+# solarized
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+
+# ---
+
+# 構文チェック
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+# Tree表示
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+# ファイル検索
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+
+# Git
+[[plugins]]
+repo = 'kmnk/vim-unite-giti'
+
+# Git
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# 構文終わりのキーワードを自動入力
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
+# ---
+
+# ステータスライン
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:lightline = { 'colorscheme': 'wombat' }
+'''

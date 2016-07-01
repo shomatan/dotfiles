@@ -3,10 +3,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export EDITOR=vim
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/opt/vagrant/bin
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 alias vi="nvim"
 ZSH_THEME="wedisagree"

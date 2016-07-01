@@ -6,6 +6,7 @@ rm -f ~/.zshrc
 rm -rf ~/.vim
 
 git clone https://github.com/shomatan/dotfiles.git ~/dotfiles
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 mkdir -p ${XDG_CONFIG_HOME:=~/.config}/nvim
 ln -s ~/dotfiles/.vimrc   $XDG_CONFIG_HOME/nvim/init.vim
@@ -13,6 +14,7 @@ ln -s ~/dotfiles/vimfiles $XDG_CONFIG_HOME/nvim/
 ln -Fis ~/dotfiles/.zshrc ~/.zshrc
 
 #git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+chsh -s /bin/zsh
 
 source ~/.zshrc
 

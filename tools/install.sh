@@ -5,7 +5,7 @@ rm -f ~/.vimrc
 rm -f ~/.zshrc
 rm -rf ~/.vim
 
-git clone https://github.com/shomatan/dotfiles.git ~/
+git clone https://github.com/shomatan/dotfiles.git ~/dotfiles
 
 mkdir -p ${XDG_CONFIG_HOME:=~/.config}/nvim
 ln -s ~/dotfiles/.vimrc   $XDG_CONFIG_HOME/nvim/init.vim

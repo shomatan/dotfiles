@@ -14,4 +14,5 @@ ln -s ~/dotfiles/vimfiles $XDG_CONFIG_HOME/nvim/
 ln -Fis ~/dotfiles/.zshrc ~/.zshrc
 
 # Install plugins
-vi +:q >/dev/null 2>&1
+nvim +":UpdateRemotePlugins" +:q >/dev/null 2>&1
+nvim +":UpdateRemotePlugins" +:q >/dev/null

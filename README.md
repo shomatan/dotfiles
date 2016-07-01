@@ -3,5 +3,5 @@ dotfiles
 
 ## Usage
 ```
-curl https://github.com/shomatan/dotfiles/blob/master/tools/install.sh | bash
+curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/tools/install.sh | bash
 ```

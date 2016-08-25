@@ -15,7 +15,7 @@ ln -Fis ~/dotfiles/.zshrc ~/.zshrc
 
 # screen
 rm -f ~/.screenrc
-ln -s ~/dotfiles/screenrc ~/.screenrc
+ln -s ~/dotfiles/.screenrc ~/.screenrc
 
 # Install plugins
 nvim +":UpdateRemotePlugins" +:q >/dev/null 2>&1

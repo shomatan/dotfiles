@@ -1,0 +1,10 @@
+# エンコーディングの設定
+defkanji utf-8
+defencoding utf-8
+encoding utf-8 utf-8
+# エスケープキーバインドを変更
+escape ^j^j
+# 画面下部に仮想端末のタブみたいのを表示
+caption always "%{= wb} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wk} [%l] %{=b wb}%y/%m/%d(%D) %{=b wm}%c"
+# 仮想端末のリスト表示するキーバインド
+bind l windowlist

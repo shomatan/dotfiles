@@ -8,3 +8,6 @@ escape ^j^j
 caption always "%{= wb} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wk} [%l] %{=b wb}%y/%m/%d(%D) %{=b wm}%c"
 # 仮想端末のリスト表示するキーバインド
 bind l windowlist
+
+# 256color
+term screen-256color

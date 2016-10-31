@@ -187,3 +187,4 @@ case ${OSTYPE} in
 esac
 
 # vim:set ft=zsh:
+export PATH="/usr/local/bin:$PATH"

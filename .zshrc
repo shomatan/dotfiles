@@ -178,6 +178,7 @@ case ${OSTYPE} in
     if [ -e /Volumes/Work/Vagrant ]; then
         export VAGRANT_HOME=/Volumes/Work/Vagrant
     fi
+    ;;
     linux*)
         #Linux用の設定
         alias ls='ls -F --color=auto'

@@ -13,7 +13,7 @@ if [ "$OS" = "mac" ]; then
     mkdir -p ~/Library/Application\ Support/Code/User
 
     xcode-select --install
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     brew install ansible
     ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.mac.yml --ask-become-pass
 elif [ "$OS" = "linux" ]; then

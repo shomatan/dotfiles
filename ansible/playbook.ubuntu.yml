@@ -1,0 +1,18 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - apt
+    - dotfiles
+  vars:
+    dotfiles:
+      - path: ~/dotfiles/zsh/.zshenv
+        dest: ~/.zshenv
+      - path: ~/dotfiles/zsh/.zshrc
+        dest: ~/.config/zsh/.zshrc
+      # - path: ~/dotfiles/zsh/zplug.zsh
+      #   dest: ~/.config/zsh/zplug.zsh
+      # - path: ~/dotfiles/vscode/settings.json
+      #   dest: ~/Library/Application Support/Code/User/settings.json
+      # - path: ~/dotfiles/vscode/locale.json
+      #   dest: ~/Library/Application Support/Code/User/locale.json

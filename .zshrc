@@ -188,3 +188,12 @@ esac
 
 # vim:set ft=zsh:
 export PATH="/usr/local/bin:$PATH"
+
+. /usr/local/opt/asdf/asdf.sh
+
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+export PATH="/usr/local/sbin:$PATH"
+export PATH=~/.local/bin:$PATH
+
+# sbt publish
+export GPG_TTY=$(tty)

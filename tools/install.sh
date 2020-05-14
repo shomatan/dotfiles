@@ -1,22 +1,25 @@
 #!/bin/bash
 
-rm -rf ~/dotfiles
-rm -f ~/.vimrc
-rm -f ~/.zshrc
-rm -rf ~/.vim
+if [ "$(uname)" == 'Darwin' ]; then
+    OS='mac'
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    OS='linux'
+fi
 
 git clone https://github.com/shomatan/dotfiles.git ~/dotfiles
-git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-mkdir -p ${XDG_CONFIG_HOME:=~/.config}/nvim
-ln -s ~/dotfiles/.vimrc   $XDG_CONFIG_HOME/nvim/init.vim
-ln -s ~/dotfiles/vimfiles $XDG_CONFIG_HOME/nvim/
-ln -Fis ~/dotfiles/.zshrc ~/.zshrc
+if [ "$OS" = "mac" ]; then
+    # create vscode dir
+    mkdir -p ~/Library/Application\ Support/Code/User
 
-# screen
-rm -f ~/.screenrc
-ln -s ~/dotfiles/.screenrc ~/.screenrc
-
-# Install plugins
-nvim +":UpdateRemotePlugins" +:q >/dev/null 2>&1
-nvim +":UpdateRemotePlugins" +:q >/dev/null
+    xcode-select --install
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install ansible
+    ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.mac.yml --ask-become-pass
+elif [ "$OS" = "linux" ]; then
+    if [ `which apt` ]; then
+        sudo apt update
+        sudo apt install ansible
+        ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.ubuntu.yml --ask-become-pass
+    fi
+fi

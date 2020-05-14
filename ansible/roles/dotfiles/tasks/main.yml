@@ -1,0 +1,43 @@
+---
+- name: Check user directories
+  stat:
+    path: "{{ item }}"
+  register: directory_stats
+  with_items:
+    - ~/bin
+    - ~/.config
+    - ~/.cache
+    - ~/.local
+    - ~/.local/share
+    - ~/.config/zsh
+
+- name: Create multiple directories without disturbing previous permissions
+  file:
+    path: "{{ item.item }}"
+    state: directory
+  when: item.stat.exists == false
+  with_items:
+    - "{{ directory_stats.results }}"
+
+- name: Symlink dotfiles
+  file:
+    src: "{{ item.path }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: yes
+  with_items: "{{ dotfiles|default([]) }}"
+  when: item.path is defined and item.dest is defined and item != ''
+
+- name: Install vscode extensions
+  shell: |
+    cat ~/dotfiles/vscode/extensions | while read line
+    do
+      code --install-extension $line
+    done
+
+- shell: which im-select; echo $?
+  register: exist_imselect
+
+- name: Install VSCodeVim extensions
+  shell: curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
+  when: exist_imselect.stdout == 1

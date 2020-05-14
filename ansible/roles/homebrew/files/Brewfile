@@ -1,0 +1,6 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+brew "jq"
+brew "neovim"
+brew "sbt"
+cask "visual-studio-code"

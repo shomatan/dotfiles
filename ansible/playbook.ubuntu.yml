@@ -4,14 +4,6 @@
   roles:
     - apt
     - dotfiles
-  vars:
-    dotfiles:
-      - path: ~/dotfiles/zsh/.zshenv
-        dest: ~/.zshenv
-      - path: ~/dotfiles/zsh/.zshrc
-        dest: ~/.config/zsh/.zshrc
-      # - path: ~/dotfiles/zsh/zplug.zsh
-      #   dest: ~/.config/zsh/zplug.zsh
   tasks:
     - name: Add external apt repositories
       apt_repository: repo={{ item }} state=present

@@ -11,9 +11,8 @@
     group: wheel
     mode: 0644
   become: true
-  when: etc_shells.stdout.find('{{ item }}') == -1
+  when: etc_shells.stdout.find(item) == -1
   with_items:
-    - /usr/local/bin/fish
     - /usr/local/bin/zsh
 
 - name: Change default shell

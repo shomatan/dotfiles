@@ -7,4 +7,5 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 
 # theme
 zplug "mafredri/zsh-async", from:github
+# zplug "themes/wedisagree", from:oh-my-zsh, as:theme
 # zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme

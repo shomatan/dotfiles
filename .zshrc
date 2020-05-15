@@ -129,12 +129,6 @@ setopt hist_reduce_blanks
 setopt extended_glob
 
 ########################################
-# キーバインド
-
-# ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
-bindkey '^R' history-incremental-pattern-search-backward
-
-########################################
 # エイリアス
 
 # C で標準出力をクリップボードにコピーする

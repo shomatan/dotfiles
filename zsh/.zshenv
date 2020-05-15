@@ -33,3 +33,6 @@ setopt hist_ignore_dups
 
 # sbt publish
 export GPG_TTY=$(tty)
+
+# zplug
+export ZPLUG_HOME=/usr/local/opt/zplug

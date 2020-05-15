@@ -62,6 +62,12 @@ function _update_vcs_info_msg() {
 add-zsh-hook precmd _update_vcs_info_msg
 
 
+# asdf
+# -----------------------------------------------------------------------------
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+
+
 # complement
 # -----------------------------------------------------------------------------
 autoload -Uz compinit

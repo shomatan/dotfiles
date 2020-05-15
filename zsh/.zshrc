@@ -1,4 +1,28 @@
 
+# options
+# -----------------------------------------------------------------------------
+setopt print_eight_bit
+setopt no_beep
+setopt no_flow_control
+setopt ignore_eof
+setopt interactive_comments
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt share_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt extended_glob
+
+# promt
+# -----------------------------------------------------------------------------
+autoload -Uz colors
+colors
+
+PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
+%# "
+
 # aliases
 # -----------------------------------------------------------------------------
 alias la='ls -la'
@@ -21,6 +45,35 @@ alias docker-login='(){ docker exec -it $1 sh -lc "su - $2" }'
 # key bind
 # -----------------------------------------------------------------------------
 bindkey '^R' history-incremental-pattern-search-backward
+
+
+# vcs_info
+# -----------------------------------------------------------------------------
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+
+zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
+zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
+
+function _update_vcs_info_msg() {
+    LANG=en_US.UTF-8 vcs_info
+    RPROMPT="${vcs_info_msg_0_}"
+}
+add-zsh-hook precmd _update_vcs_info_msg
+
+
+# complement
+# -----------------------------------------------------------------------------
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+zstyle ':completion:*' ignore-parents parent pwd ..
+
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
 
 # zplug

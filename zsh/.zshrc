@@ -46,6 +46,10 @@ alias docker-login='(){ docker exec -it $1 sh -lc "su - $2" }'
 # -----------------------------------------------------------------------------
 bindkey '^R' history-incremental-pattern-search-backward
 
+# zsh-users/zsh-history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 
 # vcs_info
 # -----------------------------------------------------------------------------

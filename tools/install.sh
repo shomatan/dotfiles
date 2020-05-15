@@ -8,8 +8,6 @@ fi
 
 git clone https://github.com/shomatan/dotfiles.git ~/dotfiles
 
-# asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
 
 if [ "$OS" = "mac" ]; then
     # create vscode dir

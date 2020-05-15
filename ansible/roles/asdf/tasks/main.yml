@@ -1,1 +1,12 @@
 ---
+
+- name: Install asdf-vm
+  git: 
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: ~/.asdf
+    version: "{{ asdf_version }}" 
+    
+- name: Install some runtimes with asdf-vm
+  shell: |
+    asdf plugin add {{ item }}
+  with_items: "{{ asdf_plugins }}"

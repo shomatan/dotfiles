@@ -14,6 +14,7 @@
 
     - name: Update apt-cache
       apt: update_cache=yes
+      become: true
 
     - name: Install/Upgrade apt packages
       apt: >
@@ -21,3 +22,4 @@
         state={{ item.state|default('latest') }}
       with_items: "{{ apt_packages|default([]) }}"
       when: item is defined and item != ''
+      become: true

@@ -5,14 +5,14 @@
     repo: https://github.com/asdf-vm/asdf.git
     dest: ~/.asdf
     version: "{{ asdf_version }}"
-  register: asdf_installed
 
-- name: Configure asdf-vm
+- name: List plugins
   shell: |
-    . $HOME/.asdf/asdf.sh
-  changed_when: asdf_installed.changed == true
-    
+    asdf plugin list
+  register: asdf_plugin_list
+
 - name: Install some runtimes with asdf-vm
   shell: |
     asdf plugin add {{ item }}
+  when: asdf_plugin_list.stdout.find(item) == -1
   with_items: "{{ asdf_plugins }}"

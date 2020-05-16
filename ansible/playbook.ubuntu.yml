@@ -4,6 +4,8 @@
   roles:
     - dotfiles
     - asdf
+  vars:
+    apt_packages: []
   tasks:
     - name: Add external apt repositories
       apt_repository: repo={{ item }} state=present

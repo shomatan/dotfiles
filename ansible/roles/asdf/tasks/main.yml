@@ -4,7 +4,13 @@
   git: 
     repo: https://github.com/asdf-vm/asdf.git
     dest: ~/.asdf
-    version: "{{ asdf_version }}" 
+    version: "{{ asdf_version }}"
+  register: asdf_installed
+
+- name: Configure asdf-vm
+  shell: |
+    . $HOME/.asdf/asdf.sh
+  changed_when: asdf_installed.changed == true
     
 - name: Install some runtimes with asdf-vm
   shell: |

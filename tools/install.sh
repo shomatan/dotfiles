@@ -19,8 +19,8 @@ if [ "$OS" = "mac" ]; then
     ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.mac.yml --ask-become-pass
 elif [ "$OS" = "linux" ]; then
     if [ `which apt` ]; then
-        sudo apt update
-        sudo apt install ansible
+        sudo apt -y update
+        sudo apt -y install ansible
         ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.ubuntu.yml --ask-become-pass
     fi
 fi

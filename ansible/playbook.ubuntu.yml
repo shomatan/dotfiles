@@ -22,5 +22,6 @@
     - dotfiles
     - asdf
   vars:
-    apt_packages: []
+    apt_packages:
+      - zsh
   

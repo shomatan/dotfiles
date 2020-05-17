@@ -8,11 +8,19 @@
 
 - name: List plugins
   shell: |
+    source ~/.config/zsh/.zshrc
     asdf plugin list
+  args:
+    executable: /bin/zsh
   register: asdf_plugin_list
+  changed_when: falsudo 
+  ignore_errors: true
 
 - name: Install some runtimes with asdf-vm
   shell: |
+    source ~/.config/zsh/.zshrc
     asdf plugin add {{ item }}
+  args:
+    executable: /bin/zsh
   when: asdf_plugin_list.stdout.find(item) == -1
   with_items: "{{ asdf_plugins }}"

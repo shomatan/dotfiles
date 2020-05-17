@@ -29,15 +29,14 @@
       become: true
 
     - name: Check zplug is installed
-      shell: |
-        which zplug
-      ignore_errors: true
-      register: zplug_installed
+      stat:
+        path: /usr/local/opt/zplug
+      register: zplug_exists
 
     - name: Install zplug
       shell: |
         curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-      when: zplug_installed.rc != 0
+      when: not zplug_exists.stat.exists
       become: true
 
   vars:

@@ -21,6 +21,17 @@
   roles:
     - dotfiles
     - asdf
+  tasks:
+    - name: Check zplug is installed
+      shell: |
+        which zplug
+      register: zplug_installed
+
+    - name: Install zplug
+      shell: |
+        curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+      when: zplug_installed.rc != 0
+
   vars:
     apt_packages: []
   

@@ -13,7 +13,7 @@
   args:
     executable: /bin/zsh
   register: asdf_plugin_list
-  changed_when: falsudo 
+  changed_when: false
   ignore_errors: true
 
 - name: Install some runtimes with asdf-vm

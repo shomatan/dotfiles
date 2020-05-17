@@ -34,9 +34,9 @@
       register: zplug_exists
 
     - name: Install zplug
-      shell: |
-        curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-      when: not zplug_exists.stat.exists
+      git: 
+        repo: https://github.com/zplug/zplug
+        dest: /usr/local/opt/zplug
       become: true
 
   vars:

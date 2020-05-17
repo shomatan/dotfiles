@@ -27,3 +27,9 @@
     force: yes
   with_items: "{{ dotfiles|default([]) }}"
   when: item.path is defined and item.dest is defined and item != ''
+
+# zplug
+- name: Install zplug
+  git: 
+    repo: https://github.com/zplug/zplug
+    dest: ~/.local/share/zplug

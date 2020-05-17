@@ -21,24 +21,6 @@
   roles:
     - dotfiles
     - asdf
-  tasks:
-    - name: Ensure /usr/local/opt directory exists
-      file: 
-        path: /usr/local/opt
-        state: directory
-      become: true
-
-    - name: Check zplug is installed
-      stat:
-        path: /usr/local/opt/zplug
-      register: zplug_exists
-
-    - name: Install zplug
-      git: 
-        repo: https://github.com/zplug/zplug
-        dest: /usr/local/opt/zplug
-      become: true
-
   vars:
     apt_packages: []
   

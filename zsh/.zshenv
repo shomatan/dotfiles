@@ -35,4 +35,4 @@ setopt hist_ignore_dups
 export GPG_TTY=$(tty)
 
 # zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=~/.local/share/zplug

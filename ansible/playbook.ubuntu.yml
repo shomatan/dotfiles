@@ -11,10 +11,10 @@
       apt: update_cache=yes
       become: true
 
-    - name: Install/Upgrade apt packages
-      apt: >
-        name={{ item.name|default(item) }}
-        state={{ item.state|default('latest') }}
+    - name: Install and upgrade apt packages
+      apt:
+        name: "{{ item.name|default(item) }}"
+        state: "{{ item.state|default('latest') }}"
       with_items: "{{ apt_packages|default([]) }}"
       when: item is defined and item != ''
       become: true
@@ -22,15 +22,23 @@
     - dotfiles
     - asdf
   tasks:
+    - name: Ensure /usr/local/opt directory exists
+      file: 
+        path: /usr/local/opt
+        state: directory
+      become: true
+
     - name: Check zplug is installed
       shell: |
         which zplug
+      ignore_errors: true
       register: zplug_installed
 
     - name: Install zplug
       shell: |
         curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
       when: zplug_installed.rc != 0
+      become: true
 
   vars:
     apt_packages: []

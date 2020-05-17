@@ -27,17 +27,3 @@
     force: yes
   with_items: "{{ dotfiles|default([]) }}"
   when: item.path is defined and item.dest is defined and item != ''
-
-- name: Install vscode extensions
-  shell: |
-    cat ~/dotfiles/vscode/extensions | while read line
-    do
-      code --install-extension $line
-    done
-
-- shell: which im-select; echo $?
-  register: exist_imselect
-
-- name: Install VSCodeVim extensions
-  shell: curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
-  when: exist_imselect.stdout == 1

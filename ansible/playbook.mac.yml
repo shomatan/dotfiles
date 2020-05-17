@@ -6,3 +6,7 @@
     - macos
     - dotfiles
     - asdf
+    - vscode
+  vars:
+    vscode_extensions:
+      - ms-vscode-remote.vscode-remote-extensionpack

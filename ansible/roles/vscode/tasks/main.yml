@@ -1,0 +1,19 @@
+---
+- name: List vscode extensions
+  shell: |
+    code --list-extensions
+  register: extension_list
+  changed_when: false
+
+- name: Install vscode extensions
+  shell: |
+    code --install-extension $line
+  when: extension_list.stdout.find(item) == -1
+  with_items: "{{ vscode_extensions }}"
+
+- shell: which im-select; echo $?
+  register: exist_imselect
+
+- name: Install VSCodeVim extensions
+  shell: curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
+  when: exist_imselect.stdout == 1

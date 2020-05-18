@@ -1,7 +1,6 @@
 ---
-
 - name: Install asdf-vm
-  git: 
+  git:
     repo: https://github.com/asdf-vm/asdf.git
     dest: ~/.asdf
     version: "{{ asdf_version }}"
@@ -19,8 +18,8 @@
 - name: Install some runtimes with asdf-vm
   shell: |
     source ~/.config/zsh/.zshrc
-    asdf plugin add {{ item }}
+    asdf plugin add {{ item.name }} && {{ item.post_add|default('echo "post-add command is nothing"') }}
   args:
     executable: /bin/zsh
-  when: asdf_plugin_list.stdout.find(item) == -1
+  when: asdf_plugin_list.stdout.find(item.name) == -1
   with_items: "{{ asdf_plugins }}"

@@ -7,12 +7,13 @@
 
 - name: Install vscode extensions
   shell: |
-    code --install-extension $line
+    code --install-extension {{ item }}
   when: extension_list.stdout.find(item) == -1
   with_items: "{{ vscode_extensions }}"
 
 - shell: which im-select; echo $?
   register: exist_imselect
+  changed_when: false
 
 - name: Install VSCodeVim extensions
   shell: curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh

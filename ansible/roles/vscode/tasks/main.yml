@@ -18,3 +18,12 @@
 - name: Install VSCodeVim extensions
   shell: curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
   when: exist_imselect.stdout == 1
+
+- name: Symlink vscode files
+  file:
+    src: "{{ item.path }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: yes
+  with_items: "{{ vscode_files }}"
+  when: item.path is defined and item.dest is defined and item != ''

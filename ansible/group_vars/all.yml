@@ -16,3 +16,9 @@ asdf_plugins:
   - name: java
   - name: nodejs
     post_add: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+vscode_files:
+  - path: ~/dotfiles/vscode/settings.json
+    dest: ~/Library/Application Support/Code/User/settings.json
+  - path: ~/dotfiles/vscode/keybindings.json
+    dest: ~/Library/Application Support/Code/User/keybindings.json

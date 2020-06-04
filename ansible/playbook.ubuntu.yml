@@ -3,7 +3,9 @@
   gather_facts: no
   pre_tasks:
     - name: Add external apt repositories
-      apt_repository: repo={{ item }} state=present
+      apt_repository:
+        repo: "{{ item }}"
+        state: present
         update_cache: true
       with_items: "{{ apt_repositories|default([]) }}"
       when: item is defined and item != ''

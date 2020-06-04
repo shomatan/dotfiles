@@ -10,10 +10,6 @@
       with_items: "{{ apt_repositories|default([]) }}"
       when: item is defined and item != ''
 
-    - name: Update apt-cache
-      apt: update_cache=yes
-      become: true
-
     - name: Install and upgrade apt packages
       apt:
         name: "{{ item.name|default(item) }}"

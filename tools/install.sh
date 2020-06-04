@@ -8,6 +8,11 @@ fi
 
 git clone https://github.com/shomatan/dotfiles.git ~/dotfiles
 
+if [ "${CI}" ]; then
+    PARAM=""
+else
+    PARAM="--ask-become-pass"
+fi
 
 if [ "$OS" = "mac" ]; then
     # create vscode dir
@@ -16,11 +21,11 @@ if [ "$OS" = "mac" ]; then
     xcode-select --install
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     brew install ansible
-    ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.mac.yml --ask-become-pass
+    ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.mac.yml "$PARAM"
 elif [ "$OS" = "linux" ]; then
     if [ `which apt` ]; then
         sudo apt -y update
         sudo apt -y install ansible
-        ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.ubuntu.yml --ask-become-pass
+        ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.ubuntu.yml "$PARAM"
     fi
 fi

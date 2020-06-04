@@ -5,7 +5,8 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    - name: Run
-      run: curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/tools/install.sh | bash
-
+    steps:
+      - name: Run
+        env:
+          CI: true
+        run: curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/tools/install.sh | bash

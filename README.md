@@ -1,5 +1,8 @@
 # dotfiles
 
+![macos](https://github.com/shomatan/dotfiles/workflows/macos/badge.svg?branch=master)
+![ubuntu](https://github.com/shomatan/dotfiles/workflows/ubuntu/badge.svg?branch=master)
+
 ## Usage
 
 ### Install

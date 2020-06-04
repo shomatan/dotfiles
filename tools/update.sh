@@ -9,11 +9,17 @@ fi
 cd ~/dotfiles
 git pull
 
+if [ "${CI}" ]; then
+    PARAM=""
+else
+    PARAM="--ask-become-pass"
+fi
+
 if [ "$OS" = "mac" ]; then
-    ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.mac.yml --ask-become-pass
+    ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.mac.yml "${PARAM}"
 elif [ "$OS" = "linux" ]; then
     if [ `which apt` ]; then
         sudo apt update
-        ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.ubuntu.yml --ask-become-pass
+        ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.ubuntu.yml "${PARAM}"
     fi
 fi

@@ -1,0 +1,11 @@
+name: ubuntu
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    - name: Run
+      run: curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/tools/install.sh | bash
+

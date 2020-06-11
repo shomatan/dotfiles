@@ -41,6 +41,8 @@ alias -g L='| less'
 alias -g G='| grep'
 alias docker-login='(){ docker exec -it $1 sh -lc "su - $2" }'
 
+alias vi='nvim'
+
 
 # key bind
 # -----------------------------------------------------------------------------
@@ -71,6 +73,9 @@ add-zsh-hook precmd _update_vcs_info_msg
 . $HOME/.asdf/asdf.sh
 fpath=(${ASDF_DIR}/completions $fpath)
 
+if [[ -f ~/.asdf/plugins/java/set-java-home.zsh ]]; then
+    . ~/.asdf/plugins/java/set-java-home.zsh
+fi
 
 # complement
 # -----------------------------------------------------------------------------

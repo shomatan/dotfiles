@@ -6,8 +6,5 @@
 
 - name: Install nvim dependencies
   pip:
-    name: "{{ item }}"
+    name: pynvim
     extra_args: --user
-  with_items:
-    - pynvim
-    - setuptools

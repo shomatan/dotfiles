@@ -20,6 +20,7 @@ asdf_plugins:
     post_add: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
   - name: python
     version: 3.8.1
+    post_install: python -m pip install setuptools
 
 vscode_files:
   - path: ~/dotfiles/vscode/settings.json

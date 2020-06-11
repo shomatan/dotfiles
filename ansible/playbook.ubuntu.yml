@@ -20,6 +20,7 @@
   roles:
     - dotfiles
     - asdf
+    - nvim
   vars:
     apt_packages:
       - zsh

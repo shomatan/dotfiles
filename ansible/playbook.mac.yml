@@ -6,6 +6,7 @@
     - dotfiles
     - asdf
     - vscode
+    - nvim
   vars:
     vscode_extensions:
       - dbaeumer.vscode-eslint

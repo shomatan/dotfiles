@@ -15,11 +15,11 @@ if [ "$OS" = "mac" ]; then
     xcode-select --install
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     brew install ansible
-    ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.mac.yml
 elif [ "$OS" = "linux" ]; then
     if [ `which apt` ]; then
         sudo apt -y update
         sudo apt -y install ansible
-        ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/playbook.ubuntu.yml
     fi
 fi
+
+ansible-playbook -i ~/dotfiles/ansible/hosts ~/dotfiles/ansible/site.yml

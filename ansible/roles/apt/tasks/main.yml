@@ -1,0 +1,16 @@
+---
+- name: Add external apt repositories
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items: "{{ apt_repositories|default([]) }}"
+  when: item is defined and item != ''
+
+- name: Install and upgrade apt packages
+  apt:
+    name: "{{ item.name|default(item) }}"
+    state: "{{ item.state|default('latest') }}"
+  with_items: "{{ apt_packages|default([]) }}"
+  when: item is defined and item != ''
+  become: true

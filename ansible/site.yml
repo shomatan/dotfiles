@@ -1,0 +1,29 @@
+- hosts: localhost
+  connection: local
+  roles:
+    - role: homebrew
+      when: ansible_facts['os_family'] == "Darwin"
+    - role: apt
+      vars:
+        apt_packages:
+          - zsh
+      when: ansible_facts['os_family'] == "Debian"
+    - role: dotfiles
+    - role: asdf
+    - role: vscode
+      vars:
+        vscode_extensions:
+          - dbaeumer.vscode-eslint
+          - eamodio.gitlens
+          - esbenp.prettier-vscode
+          - humao.rest-client
+          - ms-azuretools.vscode-docker
+          - ms-python.python
+          - ms-vsliveshare.vsliveshare-pack
+          - mtxr.sqltools
+          - scalameta.metals
+          - trinm1709.dracula-theme-from-intellij
+          - vscodevim.vim
+          - ms-vscode-remote.vscode-remote-extensionpack
+      when: ansible_facts['os_family'] == "Darwin"
+    - role: nvim

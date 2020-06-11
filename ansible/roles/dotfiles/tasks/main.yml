@@ -10,6 +10,7 @@
     - ~/.local
     - ~/.local/share
     - ~/.config/zsh
+    - ~/.config/nvim
 
 - name: Create multiple directories without disturbing previous permissions
   file:
@@ -30,7 +31,7 @@
 
 # zplug
 - name: Install zplug
-  git: 
+  git:
     repo: https://github.com/zplug/zplug
     dest: ~/.local/share/zplug
 
@@ -55,3 +56,9 @@
 - name: Change default shell
   shell: chsh -s /bin/zsh
   when: etc_shells.stdout.find('/bin/zsh') == -1
+
+# install nvim extension
+- name: Install nvim extension
+  shell: |
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

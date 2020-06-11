@@ -6,6 +6,8 @@ dotfiles:
     dest: ~/.config/zsh/.zshrc
   - path: ~/dotfiles/zsh/zplug.zsh
     dest: ~/.config/zsh/zplug.zsh
+  - path: ~/dotfiles/nvim/init.vim
+    dest: ~/.config/nvim/init.vim
   # - path: ~/dotfiles/vscode/settings.json
   #   dest: ~/Library/Application Support/Code/User/settings.json
   # - path: ~/dotfiles/vscode/locale.json

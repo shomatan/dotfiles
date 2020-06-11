@@ -1,6 +1,5 @@
 - hosts: localhost
   connection: local
-  gather_facts: no
   pre_tasks:
     - name: Add external apt repositories
       apt_repository:

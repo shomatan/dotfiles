@@ -8,6 +8,7 @@
   apt:
     name: python3-setuptools
   when: ansible_facts['os_family'] == "Debian"
+  become: true
 
 - name: Install nvim dependencies
   pip:

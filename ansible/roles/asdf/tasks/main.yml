@@ -23,3 +23,13 @@
     executable: /bin/zsh
   when: asdf_plugin_list.stdout.find(item.name) == -1
   with_items: "{{ asdf_plugins }}"
+
+- name: Install package with asdf-vm
+  shell: |
+    source ~/.config/zsh/.zshrc
+    asdf install {{ item.name }} {{ item.version }}
+    asdf global {{ item.name }} {{ item.version }} && {{ item.post_install|default('echo "post-install command is nothing"') }}
+  args:
+    executable: /bin/zsh
+  when: item.version is defined
+  with_items: "{{ asdf_plugins }}"

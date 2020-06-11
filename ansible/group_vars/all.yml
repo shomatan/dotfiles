@@ -18,6 +18,8 @@ asdf_plugins:
   - name: java
   - name: nodejs
     post_add: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+  - name: python
+    version: 3.8.1
 
 vscode_files:
   - path: ~/dotfiles/vscode/settings.json

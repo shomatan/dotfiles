@@ -9,8 +9,7 @@ fi
 cd ~/dotfiles
 git pull
 
-if [ "$OS" = "mac" ]; then
-elif [ "$OS" = "linux" ]; then
+if [ "$OS" = "linux" ]; then
     if [ `which apt` ]; then
         sudo apt update
     fi

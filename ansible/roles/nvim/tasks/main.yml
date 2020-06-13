@@ -1,8 +1,51 @@
 ---
+- name: Install nvim dependencies (only RedHat)
+  yum:
+    name: ["python-pip", "fuse-libs"]
+  when: ansible_facts['os_family'] == "RedHat"
+  become: true
+
+- name: Pre check neovim (only RedHat)
+  stat:
+    path: /usr/local/bin/nvim
+  when: ansible_facts['os_family'] == "RedHat"
+  register: neovim_stats
+
+- name: Install neovim (only RedHat)
+  block:
+    - name: Get neovim
+      get_url:
+        url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+        dest: /tmp/nvim
+        mode: 0755
+
+    - name: Extract and move app image
+      shell: |
+        nvim --appimage-extract
+        mv squashfs-root /opt/nvim
+      args:
+        chdir: /tmp
+
+    - name: Symlink neovim
+      file:
+        src: /opt/nvim/AppRun
+        dest: /usr/local/bin/nvim
+        state: link
+        force: yes
+  when: ansible_facts['os_family'] == "RedHat" and not neovim_stats.stat.exists
+  become: true
+
+- name: Ensure ~/.local/share/nvim/site/autoload exists
+  file:
+    path: ~/.local/share/nvim/site/autoload
+    state: directory
+    mode: 0755
+    recurse: yes
+
 - name: Install nvim extension
-  shell: |
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.local/share/nvim/site/autoload/plug.vim
 
 - name: Install nvim dependencies (only Debian)
   apt:

@@ -1,0 +1,16 @@
+---
+- name: Install and upgrade dnf packages if RHEL 7
+  yum:
+    name: "{{ item.name|default(item) }}"
+    state: "{{ item.state|default('latest') }}"
+  with_items: "{{ dnf_packages|default([]) }}"
+  when: item is defined and item != '' and ansible_distribution_major_version == '7'
+  become: true
+
+- name: Install and upgrade dnf packages if RHEL 8
+  dnf:
+    name: "{{ item.name|default(item) }}"
+    state: "{{ item.state|default('latest') }}"
+  with_items: "{{ dnf_packages|default([]) }}"
+  when: item is defined and item != '' and ansible_distribution_major_version == '8'
+  become: true

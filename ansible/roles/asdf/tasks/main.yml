@@ -5,15 +5,23 @@
     dest: ~/.asdf
     version: "{{ asdf_version }}"
 
+- name: Install asdf-vm dependencies (only RedHat)
+  yum:
+    name: jq
+  when: ansible_facts['os_family'] == "RedHat" and ansible_distribution_major_version == '7'
+  become: true
+
 - name: List plugins
   shell: |
     source ~/.config/zsh/.zshrc
-    asdf plugin list
+    if [ -f ~/.local/share/zplug/cache/fpath.zsh ]; then
+      asdf plugin list 2> /dev/null
+      echo ''
+    fi
   args:
     executable: /bin/zsh
   register: asdf_plugin_list
   changed_when: false
-  ignore_errors: true
 
 - name: Install some runtimes with asdf-vm
   shell: |

@@ -4,26 +4,73 @@
     - role: homebrew
       when: ansible_facts['os_family'] == "Darwin"
     - role: apt
-      vars:
-        apt_packages:
-          - zsh
       when: ansible_facts['os_family'] == "Debian"
+    - role: dnf
+      when: ansible_facts['os_family'] == "RedHat"
     - role: dotfiles
     - role: asdf
     - role: vscode
-      vars:
-        vscode_extensions:
-          - dbaeumer.vscode-eslint
-          - eamodio.gitlens
-          - esbenp.prettier-vscode
-          - humao.rest-client
-          - ms-azuretools.vscode-docker
-          - ms-python.python
-          - ms-vsliveshare.vsliveshare-pack
-          - mtxr.sqltools
-          - scalameta.metals
-          - trinm1709.dracula-theme-from-intellij
-          - vscodevim.vim
-          - ms-vscode-remote.vscode-remote-extensionpack
       when: ansible_facts['os_family'] == "Darwin"
     - role: nvim
+  vars:
+    apt_packages:
+      - zsh
+      - zlib1g-dev
+      - libbz2-dev
+      - libssl-dev
+      - libsqlite3-dev
+      - libreadline-dev
+      - libffi-dev
+    dnf_packages:
+      - zsh
+      - gcc
+      - zlib-devel
+      - bzip2
+      - bzip2-devel
+      - readline-devel
+      - sqlite
+      - sqlite-devel
+      - openssl-devel
+      - tk-devel
+      - libffi-devel
+    dotfiles:
+      - path: ~/dotfiles/zsh/.zshenv
+        dest: ~/.zshenv
+      - path: ~/dotfiles/zsh/.zshrc
+        dest: ~/.config/zsh/.zshrc
+      - path: ~/dotfiles/zsh/zplug.zsh
+        dest: ~/.config/zsh/zplug.zsh
+      - path: ~/dotfiles/nvim/init.vim
+        dest: ~/.config/nvim/init.vim
+      # - path: ~/dotfiles/vscode/settings.json
+      #   dest: ~/Library/Application Support/Code/User/settings.json
+      # - path: ~/dotfiles/vscode/locale.json
+      #   dest: ~/Library/Application Support/Code/User/locale.json
+    asdf_version: v0.7.8
+    asdf_plugins:
+      - name: java
+        version: amazon-corretto-8.252.09.1
+      - name: nodejs
+        version: 12.18.0
+        post_add: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+        post_install: npm install -g yarn
+      - name: python
+        version: 3.8.1
+    vscode_files:
+      - path: ~/dotfiles/vscode/settings.json
+        dest: ~/Library/Application Support/Code/User/settings.json
+      - path: ~/dotfiles/vscode/keybindings.json
+        dest: ~/Library/Application Support/Code/User/keybindings.json
+    vscode_extensions:
+      - dbaeumer.vscode-eslint
+      - eamodio.gitlens
+      - esbenp.prettier-vscode
+      - humao.rest-client
+      - ms-azuretools.vscode-docker
+      - ms-python.python
+      - ms-vsliveshare.vsliveshare-pack
+      - mtxr.sqltools
+      - scalameta.metals
+      - trinm1709.dracula-theme-from-intellij
+      - vscodevim.vim
+      - ms-vscode-remote.vscode-remote-extensionpack

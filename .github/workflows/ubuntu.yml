@@ -3,8 +3,14 @@ name: ubuntu
 on: push
 
 jobs:
-  test:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - name: Run
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Install goss
+        run: curl -fsSL https://goss.rocks/install | sh
+
+      - name: Provision
         run: curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/install.sh | bash

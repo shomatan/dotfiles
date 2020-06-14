@@ -1,0 +1,17 @@
+command:
+  neovim-path:
+    exit-status: 0
+    exec: zsh -c "source ~/.config/zsh/.zshrc && which vi"
+    stdout:
+      - /usr/local/bin/nvim
+    stderr: []
+    timeout: 10000
+    skip: false
+  yarn-exists:
+    exit-status: 0
+    exec: zsh -c "source ~/.config/zsh/.zshrc && yarn -v"
+    stdout:
+      - 1.
+    stderr: []
+    timeout: 10000
+    skip: false

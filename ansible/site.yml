@@ -55,7 +55,6 @@
       - name: nodejs
         version: 12.18.0
         post_add: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-        post_install: asdf reshim nodejs && npm install -g yarn
       - name: python
         version: 3.8.1
     vscode_files:

@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install goss
-        run: curl -fsSL https://goss.rocks/install | sh
+        run: curl -fsSL https://goss.rocks/install | sudo sh
 
       - name: Provision
         run: curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/install.sh | bash

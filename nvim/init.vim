@@ -73,6 +73,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'kristijanhusak/defx-git'
 
+  Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
+
 call plug#end()
 
 "" nord-vim
@@ -138,6 +140,7 @@ augroup defx
   au!
   au VimEnter * sil! au! FileExplorer *
   au BufEnter * if s:isdir(expand('%')) | bd | exe 'Defx' | endif
+  au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
 augroup END
 
 function! s:isdir(dir) abort
@@ -242,6 +245,9 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" scala
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -252,7 +258,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType typescript,json,scala setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end

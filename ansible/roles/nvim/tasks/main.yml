@@ -35,6 +35,19 @@
   when: ansible_facts['os_family'] == "RedHat" and not neovim_stats.stat.exists
   become: true
 
+- name: Install neovim (only Debian)
+  apt:
+    name: neovim
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Symlink neovim (only Debian)
+  file:
+    src: /usr/bin/nvim
+    dest: /usr/local/bin/nvim
+    state: link
+    force: yes
+  when: ansible_facts['os_family'] == "Debian"
+
 - name: Ensure ~/.local/share/nvim/site/autoload exists
   file:
     path: ~/.local/share/nvim/site/autoload

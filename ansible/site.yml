@@ -21,6 +21,7 @@
       - libsqlite3-dev
       - libreadline-dev
       - libffi-dev
+      - jq
     dnf_packages:
       - zsh
       - gcc
@@ -33,6 +34,7 @@
       - openssl-devel
       - tk-devel
       - libffi-devel
+      - jq
     dotfiles:
       - path: ~/dotfiles/zsh/.zshenv
         dest: ~/.zshenv

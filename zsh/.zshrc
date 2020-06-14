@@ -107,11 +107,7 @@ if [[ -f $ZPLUG_HOME/init.zsh ]]; then
     source $ZPLUG_HOME/init.zsh
 
     if ! zplug check --verbose; then
-        printf "Install? [y/N]: "
-        if read -q; then
-            echo; zplug install
-        fi
-        echo
+        zplug install
     fi
     zplug load
 fi

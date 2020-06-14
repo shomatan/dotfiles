@@ -39,6 +39,7 @@
   apt:
     name: neovim
   when: ansible_facts['os_family'] == "Debian"
+  become: true
 
 - name: Symlink neovim (only Debian)
   file:
@@ -47,6 +48,7 @@
     state: link
     force: yes
   when: ansible_facts['os_family'] == "Debian"
+  become: true
 
 - name: Ensure ~/.local/share/nvim/site/autoload exists
   file:

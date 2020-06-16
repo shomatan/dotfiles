@@ -1,3 +1,5 @@
 {
- "coc.preferences.jumpCommand": "tabe" 
+  "coc.preferences.formatOnSaveFiletypes": ["scala"],
+  "coc.preferences.jumpCommand": "tabe",
+  "metals.statusBarEnabled": true
 }

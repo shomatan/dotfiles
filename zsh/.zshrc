@@ -15,6 +15,7 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt extended_glob
 
+
 # promt
 # -----------------------------------------------------------------------------
 autoload -Uz colors
@@ -22,6 +23,7 @@ colors
 
 PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
 %# "
+
 
 # aliases
 # -----------------------------------------------------------------------------
@@ -43,6 +45,13 @@ alias docker-login='(){ docker exec -it $1 sh -lc "su - $2" }'
 
 alias vi='/usr/local/bin/nvim'
 alias vim='/usr/bin/vi'
+
+# git
+alias gis='git status'
+alias gic='git commit'
+alias gif='git fetch'
+alias gil='git pull'
+alias gip='git push'
 
 
 # key bind

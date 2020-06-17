@@ -52,7 +52,9 @@ alias gic='git commit'
 alias gif='git fetch'
 alias gil='git pull'
 alias gip='git push'
-
+alias girh='git reset --hard'
+alias gib='git branch'
+alias gic='git checkout'
 
 # key bind
 # -----------------------------------------------------------------------------

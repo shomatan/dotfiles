@@ -4,7 +4,6 @@
     path: "{{ item }}"
   register: directory_stats
   with_items:
-    - ~/bin
     - ~/.config
     - ~/.cache
     - ~/.local

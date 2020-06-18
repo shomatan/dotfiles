@@ -4,6 +4,7 @@
     name: "{{ item.name }}"
     baseurl: "{{ item.url }}"
   with_items: "{{ dnf_repositories }}"
+  become: true
 
 - name: Install and upgrade dnf packages if RHEL 7
   yum:

@@ -22,6 +22,7 @@
       - libreadline-dev
       - libffi-dev
       - jq
+    snap_packages:
       - ripgrep
     dnf_repositories:
       - name: ripgrep

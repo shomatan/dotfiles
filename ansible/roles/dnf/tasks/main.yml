@@ -1,4 +1,10 @@
 ---
+- name: Add repositories
+  yum_repository:
+    name: "{{ item.name }}"
+    baseurl: "{{ item.url }}"
+  with_items: "{{ dnf_repositories }}"
+
 - name: Install and upgrade dnf packages if RHEL 7
   yum:
     name: "{{ item.name|default(item) }}"

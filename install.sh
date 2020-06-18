@@ -16,6 +16,8 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     
     if [ "$OS" = "ubuntu" ]; then
         sudo apt -y update
+        sudo apt install software-properties-common
+        sudo apt-add-repository --yes --update ppa:ansible/ansible
         sudo apt -y install ansible
     elif [ "$OS" = "centos" ]; then
         VERSION=`cat /etc/os-release | grep -E '^VERSION_ID=' | awk -F'=' '{print $2}' | sed 's/"//g'`

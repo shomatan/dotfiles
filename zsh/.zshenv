@@ -36,3 +36,8 @@ export GPG_TTY=$(tty)
 
 # zplug
 export ZPLUG_HOME=~/.local/share/zplug
+
+# snap
+if [[ -f "/etc/profile.d/apps-bin-path.sh" ]]; then
+    source /etc/profile.d/apps-bin-path.sh
+fi

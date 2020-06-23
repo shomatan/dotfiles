@@ -1,0 +1,47 @@
+---
+- name: Add ripgrep repository (only RHEL)
+  yum_repository:
+    name: ripgrep
+    baseurl: https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-{{ ansible_distribution_major_version }}/carlwgeorge-ripgrep-epel-{{ ansible_distribution_major_version }}.repo
+  when: ansible_facts['os_family'] == "RedHat"
+  become: true
+
+- name: Install ripgrep (only RHEL7)
+  yum:
+    name: ripgrep
+  when: ansible_facts['os_family'] == "RedHat" and ansible_distribution_major_version == '7'
+  become: true
+
+- name: Install ripgrep (only RHEL8)
+  dnf:
+    name: ripgrep 
+  when: ansible_facts['os_family'] == "RedHat" and ansible_distribution_major_version == '8'
+  become: true
+
+- name: Check WSL
+  shell: uname -r
+  register: uname_result
+  changed_when: false
+
+- name: Install ripgrep (only Debian) 
+  snap:
+    name: ripgrep 
+    classic: yes
+  when: ansible_facts['os_family'] == "Debian" and 'microsoft' not in uname_result.stdout
+  become: true
+
+- name: Check ripgrep is installed
+  shell: which rg; echo $?
+  register: rg_result
+  changed_when: false
+
+- name: Download ripgrep (only WSL)
+  get_url:
+    url: https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
+    dest: /tmp/rg.deb
+  when: "'microsoft' in uname_result.stdout and rg_result.stdout == '1'"
+
+- name: Install ripgrep (only WSL)
+  shell: dpkg -i /tmp/rg.deb
+  when: "'microsoft' in uname_result.stdout and rg_result.stdout == '1'"
+  become: true

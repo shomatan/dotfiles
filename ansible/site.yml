@@ -12,9 +12,12 @@
     - role: vscode
       when: ansible_facts['os_family'] == "Darwin"
     - role: nvim
+    - role: ripgrep
   vars:
     apt_packages:
       - zsh
+      - gcc
+      - make
       - zlib1g-dev
       - libbz2-dev
       - libssl-dev
@@ -22,11 +25,6 @@
       - libreadline-dev
       - libffi-dev
       - jq
-    snap_packages:
-      - ripgrep
-    dnf_repositories:
-      - name: ripgrep
-        url: https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-{{ ansible_distribution_major_version }}/carlwgeorge-ripgrep-epel-{{ ansible_distribution_major_version }}.repo
     dnf_packages:
       - zsh
       - gcc
@@ -40,7 +38,6 @@
       - tk-devel
       - libffi-devel
       - jq
-      - ripgrep
     dotfiles:
       - path: ~/dotfiles/zsh/.zshenv
         dest: ~/.zshenv

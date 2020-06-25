@@ -56,7 +56,7 @@
     asdf_version: v0.7.8
     asdf_plugins:
       - name: java
-        version: amazon-corretto-8.252.09.1
+        version: adoptopenjdk-8.0.252+9.1
       - name: nodejs
         version: 12.18.0
         post_add: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring

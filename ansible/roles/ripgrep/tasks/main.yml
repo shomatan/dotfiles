@@ -3,6 +3,7 @@
   yum_repository:
     name: ripgrep
     baseurl: https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-{{ ansible_distribution_major_version }}/carlwgeorge-ripgrep-epel-{{ ansible_distribution_major_version }}.repo
+    description: ripgrep
   when: ansible_facts['os_family'] == "RedHat"
   become: true
 

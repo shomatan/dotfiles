@@ -40,8 +40,13 @@ let g:edge_transparent_background = 1
 syntax on 
 
 let mapleader = "\<space>"
+
+runtime! plugins/*.vim
+
+
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>q :wq<CR>
+nnoremap <silent> <leader><ESC> :q<CR>
 
 nmap s- :split<Return><C-w>w
 nmap s<Bar> :vsplit<Return><C-w>w
@@ -336,7 +341,7 @@ nnoremap <silent><C-d>, :<C-u>DeniteCursorWord grep -buffer-name=search line<CR>
 " 【Ctrl + d + gs】 grepした結果を再表示
 nnoremap <silent><C-d>gs :<C-u>Denite -resume -buffer-name=search<CR>
 " 【Ctrl + d + c】 Neovim内で実行したコマンドを表示
-"nnoremap <silent><C-d>c :<C-u>Denite command_history -split=floating<CR>
+nnoremap <silent><C-d>c :<C-u>Denite command_history -split=floating<CR>
 
 nnoremap <silent><C-d>c :<C-u>Denite coc-command -split=floating<CR>
 
@@ -391,20 +396,3 @@ call denite#custom#var('grep', {
 \ 'final_opts': [],
 \ })
 
-" -----------------------------------------------------------------------------
-" deol.vim
-" -----------------------------------------------------------------------------
-
-" 【Ctrl + t】ターミナルを表示
-nnoremap <silent><C-t> :<C-u>Deol<CR>
-" 【Ctrl + [ 】 ターミナルモードから抜ける
-tnoremap <C-[> <C-\><C-n>
-
-" -----------------------------------------------------------------------------
-" vim-fugitive
-" -----------------------------------------------------------------------------
-
-"【Ctrl + g + Ctrl + g】 git status
-nnoremap <silent><C-g><C-g> :tab sp<CR>:Gstatus<CR>:only<CR>
-"【Ctrl + g + a】 git add
-nnoremap <silent><C-g>a :Gwrite<CR>

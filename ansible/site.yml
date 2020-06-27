@@ -49,6 +49,8 @@
         dest: ~/.config/nvim/init.vim
       - path: ~/dotfiles/nvim/coc-settings.json
         dest: ~/.config/nvim/coc-settings.json
+      - path: ~/dotfiles/nvim/plugins
+        dest: ~/.config/nvim/plugins
       # - path: ~/dotfiles/vscode/settings.json
       #   dest: ~/Library/Application Support/Code/User/settings.json
       # - path: ~/dotfiles/vscode/locale.json

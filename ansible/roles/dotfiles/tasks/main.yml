@@ -10,6 +10,7 @@
     - ~/.local/share
     - ~/.config/zsh
     - ~/.config/nvim
+    - ~/.config/nvim/plugins
 
 - name: Create multiple directories without disturbing previous permissions
   file:

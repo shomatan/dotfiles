@@ -35,6 +35,14 @@
   when: ansible_facts['os_family'] == "RedHat" and not neovim_stats.stat.exists
   become: true
 
+- name: Add neovim repository (only Debian)
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+    state: present
+    update_cache: true
+  when: ansible_facts['os_family'] == "Debian"
+  become: true
+
 - name: Install neovim (only Debian)
   apt:
     name: neovim

@@ -6,6 +6,7 @@
     update_cache: true
   with_items: "{{ apt_repositories|default([]) }}"
   when: item is defined and item != ''
+  become: true
 
 - name: Install and upgrade apt packages
   apt:

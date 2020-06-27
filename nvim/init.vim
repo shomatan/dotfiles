@@ -26,6 +26,19 @@ set backspace=indent,eol,start
 
 set clipboard+=unnamedplus
 
+" important!!
+set termguicolors
+
+" for dark version
+set background=dark
+
+" the configuration options should be placed before `colorscheme edge`
+" let g:edge_style = 'neon'
+" let g:edge_disable_italic_comment = 1
+let g:edge_transparent_background = 1
+
+syntax on 
+
 let mapleader = "\<space>"
 nnoremap <silent> <leader>w :w<CR>
 
@@ -45,7 +58,7 @@ nmap <C-w>J <C-w>-
 "" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-  Plug 'arcticicestudio/nord-vim'
+  Plug 'sainnhe/edge'
   Plug 'itchyny/lightline.vim'
 
   Plug 'sheerun/vim-polyglot'
@@ -78,8 +91,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 call plug#end()
 
-"" nord-vim
-colorscheme nord
+"" Color schema
+colorscheme edge
 
 "" Defx.nvim
 nnoremap <silent> sf :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
@@ -162,7 +175,7 @@ function! CocGitStatus()
 endfunction
 
 let g:lightline = {
-  \ 'colorscheme': 'nord',
+  \ 'colorscheme': 'edge',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitstatus', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
@@ -224,7 +237,7 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+map <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -305,8 +318,8 @@ nnoremap <silent><C-d>a :<C-u>Denite file buffer -split=floating file:new<CR>
 nnoremap <silent><C-d>b :<C-u>Denite buffer -split=floating file:new<CR>
 " 【Ctrl + d + f】 カレントディレクトリを表示
 "nnoremap <silent><C-d>f :<C-u>Denite file -split=floating file:new<CR>
-" 【Ctrl + d + r】 カレントディレクトリ以下を再帰的に表示
-nnoremap <silent><leader>p :<C-u>Denite file/rec -split=floating file:new<CR>
+" 【Ctrl + d + p】 カレントディレクトリ以下を再帰的に表示
+nnoremap <silent><C-d>p :<C-u>Denite file/rec -split=floating file:new<CR>
 " 【Ctrl + d + f】 カレントディレクトリ以下のファイルから指定した文字列を検索
 nnoremap <silent><C-d>f :<C-u>Denite grep -buffer-name=search<CR>
 " 【Ctrl + d + ,】 カレントディレクトリ以下のファイルからカーソル下の文字列を検索

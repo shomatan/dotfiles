@@ -76,16 +76,21 @@ call plug#begin('~/.local/share/nvim/plugged')
   if has('nvim')
     Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'}
     Plug 'Shougo/defx.nvim', {'do': ':UpdateRemotePlugins'}
+    Plug 'Shougo/deol.nvim', {'do': ':UpdateRemotePlugins'}
   else
     Plug 'Shougo/denite.nvim'
     Plug 'Shougo/defx.nvim'
+    Plug 'Shougo/deol.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
 
   Plug 'kristijanhusak/defx-icons'
   Plug 'ryanoasis/vim-devicons'
+
+  " git
   Plug 'kristijanhusak/defx-git'
+  Plug 'tpope/vim-fugitive'
 
   Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 
@@ -381,3 +386,21 @@ call denite#custom#var('grep', {
 \ 'separator': ['--'],
 \ 'final_opts': [],
 \ })
+
+" -----------------------------------------------------------------------------
+" deol.vim
+" -----------------------------------------------------------------------------
+
+" 【Ctrl + t】ターミナルを表示
+nnoremap <silent><C-t> :<C-u>Deol<CR>
+" 【Ctrl + [ 】 ターミナルモードから抜ける
+tnoremap <C-[> <C-\><C-n>
+
+" -----------------------------------------------------------------------------
+" vim-fugitive
+" -----------------------------------------------------------------------------
+
+"【Ctrl + g + Ctrl + g】 git status
+nnoremap <silent><C-g><C-g> :tab sp<CR>:Gstatus<CR>:only<CR>
+"【Ctrl + g + d】 git diff
+nnoremap <silent><C-g>d :tab sp<CR>:Gdiff<CR>

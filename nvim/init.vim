@@ -19,7 +19,7 @@ set smarttab
 set softtabstop=2
 
 set ruler
-set relativenumber
+" set relativenumber
 
 set undolevels=1000
 set backspace=indent,eol,start

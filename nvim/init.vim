@@ -41,6 +41,7 @@ syntax on
 
 let mapleader = "\<space>"
 nnoremap <silent> <leader>w :w<CR>
+nnoremap <silent> <leader>q :wq<CR>
 
 nmap s- :split<Return><C-w>w
 nmap s<Bar> :vsplit<Return><C-w>w
@@ -50,8 +51,11 @@ map sh <C-w>h
 map sk <C-w>k
 map sj <C-w>j
 map sl <C-w>l
-nmap <C-w>H <C-w><
-nmap <C-w>L <C-w>>
+
+" change width
+" nmap <C-w>H <C-w><
+" nmap <C-w>L <C-w>>
+
 nmap <C-w>K <C-w>+
 nmap <C-w>J <C-w>-
 
@@ -402,5 +406,5 @@ tnoremap <C-[> <C-\><C-n>
 
 "【Ctrl + g + Ctrl + g】 git status
 nnoremap <silent><C-g><C-g> :tab sp<CR>:Gstatus<CR>:only<CR>
-"【Ctrl + g + d】 git diff
-nnoremap <silent><C-g>d :tab sp<CR>:Gdiff<CR>
+"【Ctrl + g + a】 git add
+nnoremap <silent><C-g>a :Gwrite<CR>

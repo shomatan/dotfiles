@@ -32,6 +32,16 @@
   when: asdf_plugin_list.stdout.find(item.name) == -1
   with_items: "{{ asdf_plugins }}"
 
+- name: Update runtimes with asdf-vm
+  shell: |
+    source ~/.config/zsh/.zshrc
+    asdf plugin update {{ item.name }}
+  args:
+    executable: /bin/zsh
+  when: asdf_plugin_list.stdout.find(item.name) != -1
+  with_items: "{{ asdf_plugins }}"
+
+
 - name: Install package with asdf-vm
   shell: |
     source ~/.config/zsh/.zshrc

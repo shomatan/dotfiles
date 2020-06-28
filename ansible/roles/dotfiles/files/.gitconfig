@@ -1,0 +1,7 @@
+[user]
+  email = shoma416@gmail.com
+  name = Shoma Nishitateno
+
+[alias]
+  logall = log --graph --pretty=format:'%Cred%h %Cgreen(%>(15,trunc)%cr, %ci) %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %s' --abbrev-commit --date=relative --all
+

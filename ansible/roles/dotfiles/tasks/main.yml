@@ -3,14 +3,8 @@
   stat:
     path: "{{ item }}"
   register: directory_stats
-  with_items:
-    - ~/.config
-    - ~/.cache
-    - ~/.local
-    - ~/.local/share
-    - ~/.config/zsh
-    - ~/.config/nvim
-    - ~/.config/nvim/plugins
+  with_items: "{{ dotfiles_directories|default([]) }}"
+    
 
 - name: Create multiple directories without disturbing previous permissions
   file:

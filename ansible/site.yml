@@ -38,6 +38,15 @@
       - tk-devel
       - libffi-devel
       - jq
+    dotfiles_directories:
+      - ~/.config
+      - ~/.cache
+      - ~/.local
+      - ~/.local/share
+      - ~/.config/zsh
+      - ~/.config/nvim
+      - ~/.config/nvim/plugins
+      - ~/.config/karabiner
     dotfiles:
       - path: ~/dotfiles/zsh/.zshenv
         dest: ~/.zshenv

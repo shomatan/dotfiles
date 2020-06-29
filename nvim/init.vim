@@ -26,21 +26,11 @@ set backspace=indent,eol,start
 
 set clipboard+=unnamedplus
 
-" important!!
-set termguicolors
-
-" for dark version
-set background=dark
-
-" the configuration options should be placed before `colorscheme edge`
-" let g:edge_style = 'neon'
-" let g:edge_disable_italic_comment = 1
-let g:edge_transparent_background = 1
-
 syntax on 
 
 let mapleader = "\<space>"
 
+" load config from plugins directory
 runtime! plugins/*.vim
 
 
@@ -104,9 +94,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
-
-"" Color schema
-colorscheme edge
 
 "" Defx.nvim
 nnoremap <silent> sf :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>

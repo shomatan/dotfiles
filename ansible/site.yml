@@ -60,8 +60,8 @@
         dest: ~/.config/nvim/coc-settings.json
       - path: ~/dotfiles/nvim/plugins
         dest: ~/.config/nvim/plugins
-      - path: ~/dotfiles/karabiner/karabiner.json
-        dest: ~/.config/karabiner/karabiner.json
+      - path: ~/dotfiles/karabiner
+        dest: ~/.config/karabiner
       # - path: ~/dotfiles/vscode/settings.json
       #   dest: ~/Library/Application Support/Code/User/settings.json
       # - path: ~/dotfiles/vscode/locale.json

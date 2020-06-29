@@ -341,7 +341,7 @@ nnoremap <silent><C-d>, :<C-u>DeniteCursorWord grep -buffer-name=search line<CR>
 " 【Ctrl + d + gs】 grepした結果を再表示
 nnoremap <silent><C-d>gs :<C-u>Denite -resume -buffer-name=search<CR>
 " 【Ctrl + d + c】 Neovim内で実行したコマンドを表示
-nnoremap <silent><C-d>c :<C-u>Denite command_history -split=floating<CR>
+"nnoremap <silent><C-d>c :<C-u>Denite command_history -split=floating<CR>
 
 nnoremap <silent><C-d>c :<C-u>Denite coc-command -split=floating<CR>
 

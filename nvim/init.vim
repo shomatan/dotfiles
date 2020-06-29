@@ -30,10 +30,6 @@ syntax on
 
 let mapleader = "\<space>"
 
-" load config from plugins directory
-runtime! plugins/*.vim
-
-
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>q :wq<CR>
 nnoremap <silent> <leader><ESC> :q<CR>
@@ -94,6 +90,11 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
+
+
+" load config from plugins directory
+runtime! plugins/*.vim
+
 
 "" Defx.nvim
 nnoremap <silent> sf :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>

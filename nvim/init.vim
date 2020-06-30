@@ -71,11 +71,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   if has('nvim')
     Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'}
     Plug 'Shougo/defx.nvim', {'do': ':UpdateRemotePlugins'}
-    Plug 'Shougo/deol.nvim', {'do': ':UpdateRemotePlugins'}
   else
     Plug 'Shougo/denite.nvim'
     Plug 'Shougo/defx.nvim'
-    Plug 'Shougo/deol.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif

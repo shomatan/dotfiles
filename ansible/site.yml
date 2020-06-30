@@ -13,6 +13,7 @@
       when: ansible_facts['os_family'] == "Darwin"
     - role: nvim
     - role: ripgrep
+    - role: tmux
   vars:
     apt_packages:
       - zsh
@@ -64,7 +65,7 @@
       - path: ~/dotfiles/karabiner/karabiner.json
         dest: ~/.config/karabiner/karabiner.json
       - path: ~/dotfiles/tmux/tmux.conf
-      - dest: ~/.config/tmux/tmux.conf
+        dest: ~/.config/tmux/tmux.conf
       # - path: ~/dotfiles/vscode/settings.json
       #   dest: ~/Library/Application Support/Code/User/settings.json
       # - path: ~/dotfiles/vscode/locale.json

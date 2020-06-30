@@ -1,0 +1,5 @@
+---
+- name: Install tmux plugin
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.config/tmux/plugins/tpm

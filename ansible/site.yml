@@ -26,6 +26,8 @@
       - libreadline-dev
       - libffi-dev
       - jq
+      - tig
+      - tmux
     dnf_packages:
       - zsh
       - gcc
@@ -39,6 +41,8 @@
       - tk-devel
       - libffi-devel
       - jq
+      - tig
+      - tmux
     dotfiles_directories:
       - ~/.config
       - ~/.cache

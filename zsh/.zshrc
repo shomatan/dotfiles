@@ -56,6 +56,8 @@ alias girh='git reset --hard'
 alias gib='git branch'
 alias gico='git checkout'
 
+# tmux
+alias t='tmux -f ~/.config/tmux/tmux.conf'
 
 # key bind
 # -----------------------------------------------------------------------------
@@ -137,3 +139,4 @@ path=(
 
 # sbt publish
 export GPG_TTY=$(tty)
+

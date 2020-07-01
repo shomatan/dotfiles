@@ -85,8 +85,7 @@ add-zsh-hook precmd _update_vcs_info_msg
 
 # complement
 # -----------------------------------------------------------------------------
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' ignore-parents parent pwd ..
@@ -126,13 +125,12 @@ typeset -gU cdpath fpath mailpath path
 
 # asdf
 # -----------------------------------------------------------------------------
-if [[ -f /usr/local/opt/asdf/asdf.sh ]]; then
-  . /usr/local/opt/asdf/asdf.sh
-  fpath=(
-    /usr/local/etc/bash_completion.d/asdf.bash
+. $HOME/.asdf/asdf.sh	
+
+fpath=(
+    ${ASDF_DIR}/completions
     $fpath
-  )
-fi
+)
 
 # java
 asdf where java > /dev/null 2>&1

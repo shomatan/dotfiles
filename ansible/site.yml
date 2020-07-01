@@ -66,8 +66,8 @@
         dest: ~/.config/nvim/coc-settings.json
       - path: ~/dotfiles/nvim/plugins
         dest: ~/.config/nvim/plugins
-      - path: ~/dotfiles/karabiner/karabiner.json
-        dest: ~/.config/karabiner/karabiner.json
+      - path: ~/dotfiles/karabiner
+        dest: ~/.config/karabiner
       - path: ~/dotfiles/tmux/tmux.conf
         dest: ~/.config/tmux/tmux.conf
       # - path: ~/dotfiles/vscode/settings.json

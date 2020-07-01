@@ -93,6 +93,14 @@
                             "to": {
                                 "pointing_button": "button32"
                             }
+                        },
+                        {
+                            "from": {
+                                "key_code": "f12"
+                            },
+                            "to": {
+                                "key_code": "mission_control"
+                            }
                         }
                     ]
                 },

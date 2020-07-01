@@ -83,18 +83,6 @@ function _update_vcs_info_msg() {
 add-zsh-hook precmd _update_vcs_info_msg
 
 
-# asdf
-# -----------------------------------------------------------------------------
-. $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-
-# java
-asdf where java > /dev/null 2>&1
-if [ $? = 0 ]; then
-    . ~/.asdf/plugins/java/set-java-home.zsh
-fi
-
-
 # complement
 # -----------------------------------------------------------------------------
 autoload -Uz compinit
@@ -114,28 +102,44 @@ zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
 
-# zplug
+# zinit
 # -----------------------------------------------------------------------------
-if [[ -f $ZPLUG_HOME/init.zsh ]]; then
-    export ZPLUG_LOADFILE="$ZDOTDIR/zplug.zsh"
-    source $ZPLUG_HOME/init.zsh
-
-    if ! zplug check --verbose; then
-        zplug install
-    fi
-    zplug load
+if [[ ! -f $HOME/.config/zsh/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.config/zsh/.zinit" && command chmod g-rwX "$HOME/.config/zsh/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.config/zsh/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
+
+source "$HOME/.config/zsh/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+source "$ZDOTDIR/zinit.zsh"
 
 
 # zsh
 # -----------------------------------------------------------------------------
 typeset -gU cdpath fpath mailpath path
 
-path=(
-  /usr/local/{bin,sbin}
-  $ZPLUG_HOME/bin
-  $path
-)
+# asdf
+# -----------------------------------------------------------------------------
+if [[ -f /usr/local/opt/asdf/asdf.sh ]]; then
+  . /usr/local/opt/asdf/asdf.sh
+  fpath=(
+    /usr/local/etc/bash_completion.d/asdf.bash
+    $fpath
+  )
+fi
+
+# java
+asdf where java > /dev/null 2>&1
+if [ $? = 0 ]; then
+    . ~/.asdf/plugins/java/set-java-home.zsh
+fi
+
 
 # sbt publish
 export GPG_TTY=$(tty)

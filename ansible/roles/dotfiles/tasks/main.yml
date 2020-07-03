@@ -50,7 +50,13 @@
   shell: chsh -s /bin/zsh
   when: etc_shells.stdout.find('/bin/zsh') == -1
 
-- name: Copy .gitconfig
-  copy:
-    src: .gitconfig
-    dest: ~/.gitconfig
+- name: Get git config
+  shell: git config --list
+  register: git_config
+  changed_when: false
+
+- name: Set global git config
+  shell: git config --global {{ item }}
+  when: git_config.stdout.find(item) == -1
+  with_items:
+    - push.default=current

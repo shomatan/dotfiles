@@ -56,7 +56,10 @@
   changed_when: false
 
 - name: Set global git config
-  shell: git config --global {{ item }}
-  when: git_config.stdout.find(item) == -1
+  shell: git config --global {{ item.name }} {{ item.value }}
+  when: git_config.stdout.find(item.name) == -1
   with_items:
-    - push.default=current
+    - name: user.name
+      value: Shoma Nishitateno
+    - name: push.default
+      value: current

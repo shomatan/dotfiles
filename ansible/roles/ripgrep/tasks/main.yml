@@ -1,8 +1,8 @@
 ---
 - name: Add ripgrep repository (only RHEL)
   yum_repository:
-    name: ripgrep
-    baseurl: https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-{{ ansible_distribution_major_version }}/carlwgeorge-ripgrep-epel-{{ ansible_distribution_major_version }}.repo
+    name: carlwgeorge-ripgrep-epel-{{ ansible_distribution_major_version }}.repo
+    baseurl: https://download.copr.fedorainfracloud.org/results/carlwgeorge/ripgrep/epel-{{ ansible_distribution_major_version }}-$basearch/
     description: ripgrep
   when: ansible_facts['os_family'] == "RedHat"
   become: true

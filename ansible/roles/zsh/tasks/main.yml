@@ -31,7 +31,7 @@
     - name: Add `/etc/shells`
       lineinfile:
         dest: /etc/shells
-        line: /bin/zsh 
+        line: /usr/local/bin/zsh
         state: present
         owner: root
         mode: 0644
@@ -39,7 +39,7 @@
       when: etc_shells.stdout.find('/usr/local/bin/zsh') == -1
 
     - name: Change default shell
-      shell: chsh -s /bin/zsh
+      shell: chsh -s /usr/local/bin/zsh
       when: etc_shells.stdout.find('/usr/local/bin/zsh') == -1
   when: ansible_facts['os_family'] == "RedHat" and ansible_distribution_major_version == '7'
 

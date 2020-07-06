@@ -1,0 +1,26 @@
+---
+- name: Check zsh is installed
+  stat:
+    path: /usr/local/bin/zsh
+  register: zsh_stats
+
+- name: Download zsh source
+  get_url:
+    url: https://sourceforge.net/projects/zsh/files/zsh/5.8/zsh-5.8.tar.xz/download
+    dest: /tmp/zsh.tar.xz
+  when: not zsh_stats.stat.exists
+
+- name: Extract zsh.tar.xz into /tmp
+  unarchive:
+    src: /tmp/zsh.tar.xz
+    dest: /tmp
+  when: not zsh_stats.stat.exists
+
+- name: Install zsh
+  shell: |
+    ./configure --enable-multibyte
+    make && make install
+  args:
+    chdir: /tmp/zsh-5.8
+  when: not zsh_stats.stat.exists
+  become: true

@@ -7,6 +7,7 @@
       when: ansible_facts['os_family'] == "Debian"
     - role: dnf
       when: ansible_facts['os_family'] == "RedHat"
+    - role: zsh
     - role: dotfiles
     - role: asdf
     - role: vscode
@@ -43,6 +44,7 @@
       - jq
       - tig
       - tmux
+      - wget
     dotfiles_directories:
       - ~/.config
       - ~/.cache

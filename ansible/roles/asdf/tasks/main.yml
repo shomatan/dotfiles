@@ -14,10 +14,8 @@
 - name: List plugins
   shell: |
     source ~/.config/zsh/.zshrc
-    if [ -f ~/.local/share/zplug/cache/fpath.zsh ]; then
-      asdf plugin list 2> /dev/null
-      echo ''
-    fi
+    asdf plugin list 2> /dev/null
+    echo ''
   args:
     executable: /bin/zsh
   register: asdf_plugin_list

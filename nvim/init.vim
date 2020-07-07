@@ -50,6 +50,10 @@ map sl <C-w>l
 nmap <C-w>K <C-w>+
 nmap <C-w>J <C-w>-
 
+"" tab
+nmap gk gt
+nmap gj gT
+
 "" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 

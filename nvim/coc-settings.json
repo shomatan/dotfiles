@@ -1,5 +1,7 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["scala"],
-  "coc.preferences.jumpCommand": "tabe",
-  "metals.statusBarEnabled": true
+  "coc.preferences.jumpCommand": "tab drop",
+  "metals.statusBarEnabled": true,
+  "metals.treeviews.toggleNode": "o",
+  "metals.treeviews.executeCommandAndOpenTab": "<CR>"
 }

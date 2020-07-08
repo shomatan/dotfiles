@@ -1,45 +1,37 @@
 ---
-
 - name: Include install task for RHEL7
-  include_tasks: rhel-7.yml
+  include_tasks: install.yml
   when: ansible_facts['os_family'] == "RedHat" and ansible_distribution_major_version == '7'
+
+- name: Include install task for Ubuntu 16
+  include_tasks: install.yml
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == '16'
 
 - name: Get shell list
   shell: cat /etc/shells
   register: etc_shells
   changed_when: false
 
-- name: Set default shell as zsh (not RHEL7)
-  block:
-    - name: Add `/etc/shells`
-      lineinfile:
-        dest: /etc/shells
-        line: /bin/zsh 
-        state: present
-        owner: root
-        mode: 0644
-      become: true
-      when: etc_shells.stdout.find('/bin/zsh') == -1
-
-    - name: Change default shell
-      shell: chsh -s /bin/zsh
-      when: etc_shells.stdout.find('/bin/zsh') == -1
-  when: ansible_facts['os_family'] != "RedHat" and ansible_distribution_major_version != '7'
-
-- name: Set default shell as zsh (only RHEL7)
-  block:
-    - name: Add `/etc/shells`
-      lineinfile:
-        dest: /etc/shells
-        line: /usr/local/bin/zsh
-        state: present
-        owner: root
-        mode: 0644
-      become: true
-      when: etc_shells.stdout.find('/usr/local/bin/zsh') == -1
-
-    - name: Change default shell
-      shell: chsh -s /usr/local/bin/zsh
-      when: etc_shells.stdout.find('/usr/local/bin/zsh') == -1
+- name: Define default shell for RHEL7
+  set_fact:
+    default_shell: /usr/local/bin/zsh
   when: ansible_facts['os_family'] == "RedHat" and ansible_distribution_major_version == '7'
 
+- name: Define default shell for Ubuntu 16
+  set_fact:
+    default_shell: /usr/local/bin/zsh
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_major_version == '16'
+
+- name: Add `/etc/shells`
+  lineinfile:
+    dest: /etc/shells
+    line: "{{ default_shell|default('/bin/zsh') }}"
+    state: present
+    owner: root
+    mode: 0644
+  become: true
+  when: etc_shells.stdout.find(default_shell|default('/bin/zsh')) == -1
+
+- name: Change default shell
+  shell: chsh -s /bin/zsh
+  when: etc_shells.stdout.find(default_shell|default('/bin/zsh')) == -1

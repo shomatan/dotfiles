@@ -1,6 +1,9 @@
 ---
 - name: Update Homebrew
-  homebrew: update_homebrew=yes
+  homebrew:
+    update_homebrew: yes
 
 - name: Install/Upgrade Homebrew packages
   shell: brew bundle --file=~/dotfiles/ansible/roles/homebrew/files/Brewfile
+  register: install_packages_result
+  changed_when: '"Installing" in install_packages_result.stdout'

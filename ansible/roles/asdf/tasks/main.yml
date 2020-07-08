@@ -36,9 +36,10 @@
     asdf plugin update {{ item.name }}
   args:
     executable: /bin/zsh
+  register: update_plugin_result
+  changed_when: '"From https" in update_plugin_result.stdout'
   when: asdf_plugin_list.stdout.find(item.name) != -1
   with_items: "{{ asdf_plugins }}"
-
 
 - name: Install package with asdf-vm
   shell: |
@@ -47,5 +48,7 @@
     asdf global {{ item.name }} {{ item.version }} && {{ item.post_install|default('echo "post-install command is nothing"') }}
   args:
     executable: /bin/zsh
+  register: install_package_result
+  changed_when: '"is already installed" not in install_package_result.stdout'
   when: item.version is defined
   with_items: "{{ asdf_plugins }}"

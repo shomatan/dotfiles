@@ -25,10 +25,12 @@ PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
 %# "
 
 
+# -----------------------------------------------------------------------------
 # aliases
 # -----------------------------------------------------------------------------
 alias la='ls -la'
 alias ll='ls -l'
+alias l='ll'
 
 alias rm='rm -i'
 alias cp='cp -i'
@@ -36,15 +38,17 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
-alias sudo='sudo '
+alias sudoi='sudo -i'
 
 # global
 alias -g L='| less'
 alias -g G='| grep'
 alias docker-login='(){ docker exec -it $1 sh -lc "su - $2" }'
 
+# vim
 alias vi='/usr/local/bin/nvim'
 alias vim='/usr/bin/vi'
+alias vic='vi .'
 
 # git
 alias gis='git status'
@@ -59,6 +63,15 @@ alias gico='git checkout'
 # tmux
 alias t='tmux -f ~/.config/tmux/tmux.conf'
 
+# docker-compose
+alias dc='docker-compose '
+alias dcud='dc up -d'
+alias dcd='dc down'
+alias dcdv='dcd -v'
+alias dcl='dc logs -f'
+
+
+# -----------------------------------------------------------------------------
 # key bind
 # -----------------------------------------------------------------------------
 bindkey '^R' history-incremental-pattern-search-backward

@@ -64,11 +64,11 @@ alias gico='git checkout'
 alias t='tmux -f ~/.config/tmux/tmux.conf'
 
 # docker-compose
-alias dc='docker-compose '
-alias dcud='dc up -d'
-alias dcd='dc down'
-alias dcdv='dcd -v'
-alias dcl='dc logs -f'
+alias dc='docker-compose'
+alias dcud='docker-compose up -d'
+alias dcd='docker-compose down'
+alias dcdv='docker-compose down -v'
+alias dcl='docker-compose logs -f'
 
 
 # -----------------------------------------------------------------------------

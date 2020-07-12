@@ -72,6 +72,14 @@
                     "simple_modifications": [
                         {
                             "from": {
+                                "key_code": "f12"
+                            },
+                            "to": {
+                                "key_code": "mission_control"
+                            }
+                        },
+                        {
+                            "from": {
                                 "key_code": "left_command"
                             },
                             "to": {
@@ -92,14 +100,6 @@
                             },
                             "to": {
                                 "pointing_button": "button32"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "f12"
-                            },
-                            "to": {
-                                "key_code": "mission_control"
                             }
                         }
                     ]
@@ -237,6 +237,14 @@
                     },
                     "to": {
                         "key_code": "left_control"
+                    }
+                },
+                {
+                    "from": {
+                        "pointing_button": "button3"
+                    },
+                    "to": {
+                        "pointing_button": "button32"
                     }
                 }
             ],

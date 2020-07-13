@@ -54,6 +54,17 @@ nmap <C-w>J <C-w>-
 nmap gk gt
 nmap gj gT
 
+
+"" Highlight
+nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
+
+
+"" Backup
+set nowritebackup
+set nobackup
+set noswapfile
+
+
 "" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 

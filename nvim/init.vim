@@ -65,6 +65,11 @@ set nobackup
 set noswapfile
 
 
+"" GUI options
+set guioptions+=a
+set clipboard=unnamed,autoselect
+
+
 "" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 

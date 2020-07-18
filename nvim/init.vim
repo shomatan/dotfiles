@@ -67,7 +67,6 @@ set noswapfile
 
 "" GUI options
 set guioptions+=a
-set clipboard=unnamed,autoselect
 
 
 "" Plugins

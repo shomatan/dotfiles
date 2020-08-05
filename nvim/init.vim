@@ -51,8 +51,8 @@ nmap <C-w>K <C-w>+
 nmap <C-w>J <C-w>-
 
 "" tab
-nmap gk gt
-nmap gj gT
+nmap gp gt
+nmap gn gT
 
 
 "" Highlight

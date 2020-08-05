@@ -65,7 +65,11 @@ set nobackup
 set noswapfile
 
 
-"" GUI options
+"" move
+noremap 1 0
+noremap 2 $
+
+" GUI options
 set guioptions+=a
 
 

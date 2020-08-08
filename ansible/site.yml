@@ -15,6 +15,7 @@
     - role: nvim
     - role: ripgrep
     - role: tmux
+    - role: tig
   vars:
     apt_packages:
       - zsh
@@ -55,6 +56,7 @@
       - ~/.config/nvim/plugins
       - ~/.config/karabiner
       - ~/.config/tmux
+      - ~/.config/tig
     dotfiles:
       - path: ~/dotfiles/zsh/.zshenv
         dest: ~/.zshenv
@@ -72,6 +74,8 @@
         dest: ~/.config/karabiner
       - path: ~/dotfiles/tmux/tmux.conf
         dest: ~/.config/tmux/tmux.conf
+      - path: ~/dotfiles/tig/.tigrc
+        dest: ~/.tigrc
       # - path: ~/dotfiles/vscode/settings.json
       #   dest: ~/Library/Application Support/Code/User/settings.json
       # - path: ~/dotfiles/vscode/locale.json

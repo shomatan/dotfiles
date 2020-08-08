@@ -1,0 +1,24 @@
+---
+
+- name: Check diff-highlight is installed
+  shell: which diff-highlight; echo $?
+  register: installed_result
+  changed_when: false
+
+
+- name: Build diff-highlight (only Debian) 
+  shell: |
+    make
+    chmod 755 /usr/share/doc/git/contrib/diff-highlight/diff-highlight
+  args:
+    chdir: /usr/share/doc/git/contrib/diff-highlight
+  when: ansible_facts['os_family'] == "Debian" and installed_result.stdout == '1'
+  become: true
+
+- name: Symlink diff-highlight
+  file:
+    src: /usr/share/doc/git/contrib/diff-highlight/diff-highlight
+    dest: /usr/local/bin/diff-highlight
+    state: link
+    force: yes
+  become: yes

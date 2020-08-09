@@ -1,12 +1,11 @@
 ---
-
 - name: Check diff-highlight is installed
   shell: which diff-highlight; echo $?
   register: installed_result
   changed_when: false
+  become: true
 
-
-- name: Build diff-highlight (only Debian) 
+- name: Build diff-highlight (only Debian)
   shell: |
     make
     chmod 755 /usr/share/doc/git/contrib/diff-highlight/diff-highlight

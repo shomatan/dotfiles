@@ -4,8 +4,11 @@ cd ~/dotfiles
 git pull
 
 INVENTORY_NAME="default"
+ARGS=""
 
-if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+if [ "$(uname)" == 'Darwin' ]; then
+    ARGS="--ask-become-pass"
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     OS=`cat /etc/os-release | grep -E '^ID=' | awk -F'=' '{print $2}' | sed 's/"//g'`
     
     if [ "$OS" = "ubuntu" ]; then
@@ -19,4 +22,4 @@ if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     fi
 fi
 
-ansible-playbook -i ~/dotfiles/ansible/inventory/"$INVENTORY_NAME" ~/dotfiles/ansible/site.yml
+ansible-playbook -i ~/dotfiles/ansible/inventory/"$INVENTORY_NAME" ~/dotfiles/ansible/site.yml $ARGS

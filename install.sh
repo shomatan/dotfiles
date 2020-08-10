@@ -3,6 +3,7 @@
 git clone https://github.com/shomatan/dotfiles.git ~/dotfiles
 
 INVENTORY_NAME="default"
+ARGS=""
 
 if [ "$(uname)" == 'Darwin' ]; then
     # create vscode dir
@@ -11,6 +12,7 @@ if [ "$(uname)" == 'Darwin' ]; then
     xcode-select --install
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     brew install ansible
+    ARGS="--ask-become-pass"
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     OS=`cat /etc/os-release | grep -E '^ID=' | awk -F'=' '{print $2}' | sed 's/"//g'`
     
@@ -31,4 +33,4 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     fi
 fi
 
-ansible-playbook -i ~/dotfiles/ansible/inventory/"$INVENTORY_NAME" ~/dotfiles/ansible/site.yml
+ansible-playbook -i ~/dotfiles/ansible/inventory/"$INVENTORY_NAME" ~/dotfiles/ansible/site.yml $ARGS

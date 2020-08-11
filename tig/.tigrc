@@ -58,4 +58,35 @@ set refresh-mode = auto
 # 差分表示に diff-highlight を使う (要 tig 2.2.1 以降. diff-highlight が $PATH にあること)
 set diff-highlight = true
 
-
+# Visualization
+set id-width = 14
+set blame-options = -C -C -C
+set horizontal-scroll = 33%
+set show-notes = yes
+set show-changes = yes
+set diff-context = 1
+set commit-order = topo
+set wrap-lines = no
+set focus-child = yes
+ 
+# Color Settings
+color default white black
+color cursor default magenta
+color date cyan default
+color delimiter cyan default
+color line-number yellow default
+color diff-header yellow default
+color diff-index blue default
+color diff-chunk magenta default
+color "Reported-by:" green default
+color graph-commit cyan default
+ 
+# Bind Settings
+bind generic F none
+bind generic F !git fetch
+bind branch n !git checkout -b %(prompt) %(branch)
+bind branch P !git push origin %(branch)
+bind branch L !git pull origin %(branch)
+bind generic M none
+bind branch M none
+bind branch M !git merge %(branch)

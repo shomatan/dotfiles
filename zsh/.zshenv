@@ -15,6 +15,8 @@ if [[ -d "$XDG_CONFIG_HOME/zsh" ]]; then
     export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 fi
 
+export TIGRC_USER="$XDG_CONFIG_HOME"/tig/.tigrc
+
 # Language
 export LANGUAGE="en_US.UTF-8"
 export LANG="${LANGUAGE}"

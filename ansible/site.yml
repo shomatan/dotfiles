@@ -75,7 +75,7 @@
       - path: ~/dotfiles/tmux/tmux.conf
         dest: ~/.config/tmux/tmux.conf
       - path: ~/dotfiles/tig/.tigrc
-        dest: ~/.tigrc
+        dest: ~/.config/tig/.tigrc
       # - path: ~/dotfiles/vscode/settings.json
       #   dest: ~/Library/Application Support/Code/User/settings.json
       # - path: ~/dotfiles/vscode/locale.json

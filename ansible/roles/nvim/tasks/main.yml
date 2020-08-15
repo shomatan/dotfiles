@@ -76,7 +76,19 @@
   when: ansible_facts['os_family'] == "Debian"
   become: true
 
-- name: Install nvim dependencies
+- name: Check pynvim is installed
+  shell: pip3 list --user | grep 'pynvim'; echo $?
+  register: pynvim_install_result
+  changed_when: false
+
+- name: Check pynvim needs upgrade
+  shell: pip3 list --outdated --user | grep 'pynvim'; echo $?
+  register: pynvim_upgrade_result
+  changed_when: false
+
+- name: Install pynvim
   pip:
     name: pynvim
-    extra_args: --user
+    extra_args: '--user --upgrade'
+  changed_when: pynvim_install_result.stdout == "1" or pynvim_upgrade_result.stdout.find("\n0") != -1
+

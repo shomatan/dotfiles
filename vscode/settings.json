@@ -12,5 +12,10 @@
   "[dockerfile]": {},
   "window.zoomLevel": 0,
   "extensions.ignoreRecommendations": false,
-  "terminal.integrated.scrollback": 50000
+  "terminal.integrated.scrollback": 50000,
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  }
 }

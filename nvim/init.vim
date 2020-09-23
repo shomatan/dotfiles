@@ -54,6 +54,10 @@ nmap <C-w>J <C-w>-
 nmap gp gT
 nmap gn gt
 
+"" comment
+nmap <C-_> gcc
+vmap <C-_> gc
+
 
 "" Highlight
 nnoremap <ESC><ESC> :nohlsearch<CR><ESC>

@@ -13,7 +13,7 @@ call defx#custom#option('_', {
 
 function! s:defx_my_mappings()
   " Define mappings
-  nnoremap <silent><buffer><expr> <CR> defx#async_action('drop')
+  nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
   nnoremap <silent><buffer><expr> c defx#do_action('copy')
   nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
   nnoremap <silent><buffer><expr> m defx#do_action('move')

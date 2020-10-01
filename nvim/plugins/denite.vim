@@ -16,8 +16,9 @@ nnoremap <silent><C-d>gs :<C-u>Denite -resume -buffer-name=search<CR>
 "nnoremap <silent><C-d>c :<C-u>Denite command_history -split=floating<CR>
 
 "" coc
-nnoremap <silent><C-d>c :<C-u>Denite coc-command -split=floating<CR>
-nnoremap <silent><C-d>d :<C-u>Denite coc-diagnostic -split=floating<CR>
+nnoremap <silent><C-d>d :<C-u>Denite coc-diagnostic -split=floating -buffer-name=diagnostic<CR>
+" 【Ctrl + d + gd】 diagnosticした結果を再表示
+nnoremap <silent><C-d>gd :<C-u>Denite -resume -buffer-name=diagnostic<CR>
 
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')

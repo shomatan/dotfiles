@@ -11,3 +11,5 @@ command! FZFMru call fzf#run({
 \  'down':    '40%'})
 
 nnoremap <Leader>r :FZFMru<CR>
+
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)

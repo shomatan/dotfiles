@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+brew "the_silver_searcher"
 brew "bat"
 brew "fzf"
 brew "jq"

@@ -29,6 +29,7 @@
       - libreadline-dev
       - libffi-dev
       - jq
+      - silversearcher-ag
       - tig
       - tmux
       - fzf
@@ -46,6 +47,7 @@
       - tk-devel
       - libffi-devel
       - jq
+      - the_silver_searcher
       - tig
       - tmux
       - wget

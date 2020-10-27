@@ -97,20 +97,20 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   if has('nvim')
     Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'}
-    Plug 'Shougo/defx.nvim', {'do': ':UpdateRemotePlugins'}
   else
     Plug 'Shougo/denite.nvim'
-    Plug 'Shougo/defx.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
 
-  Plug 'kristijanhusak/defx-icons'
   Plug 'ryanoasis/vim-devicons'
 
   " git
-  Plug 'kristijanhusak/defx-git'
   Plug 'tpope/vim-fugitive'
+
+  " fzf
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
 call plug#end()
 

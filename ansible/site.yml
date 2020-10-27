@@ -31,7 +31,6 @@
       - silversearcher-ag
       - tig
       - tmux
-      - fzf
     dnf_packages:
       - bat
       - zsh

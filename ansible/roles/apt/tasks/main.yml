@@ -25,7 +25,7 @@
   when: item is defined and item != ''
   become: true
 
-# bat
+# bat (ubuntu 18)
 - name: Check bat is installed
   shell: which bat; echo $?
   register: bat_result
@@ -41,3 +41,22 @@
   shell: dpkg -i /tmp/bat.deb
   when: "bat_result.stdout == '1'"
   become: true  
+
+# fzf (ubuntu 18)
+- name: Check fzf is installed
+  shell: which fzf; echo $?
+  register: fzf_result
+  changed_when: false
+
+- name: Download fzf 
+  git:
+    repo: https://github.com/junegunn/fzf.git
+    dest: /tmp/fzf
+    depth: 1
+  when: "fzf_result.stdout == '1'"
+
+- name: Install fzf
+  shell: /tmp/fzf/install
+  when: "fzf_result.stdout == '1'"
+  become: true  
+

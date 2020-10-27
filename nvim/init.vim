@@ -112,10 +112,24 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'kristijanhusak/defx-git'
   Plug 'tpope/vim-fugitive'
 
-  Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
-
 call plug#end()
 
+"" coc.nvim
+let g:coc_global_extensions = [
+  \ 'coc-angular',
+  \ 'coc-eslint',
+  \ 'coc-go',
+  \ 'coc-java',
+  \ 'coc-json',
+  \ 'coc-metals',
+  \ 'coc-python',
+  \ 'coc-rls',
+  \ 'coc-rome',
+  \ 'coc-tsserver',
+  \ 'coc-vetur',
+  \ 'coc-vimlsp',
+  \ 'coc-yaml',
+  \ ]
 
 " load config from plugins directory
 runtime! plugins/*.vim

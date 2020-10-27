@@ -6,6 +6,18 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
+      # https://github.com/actions/virtual-environments/issues/1811
+      - name: Homebrew workaround
+        run: |
+          brew uninstall openssl@1.0.2t
+          brew uninstall python@2.7.17
+          brew untap local/openssl
+          brew untap local/python2
+          brew cask install xquartz
+          brew update
+          brew upgrade
+          brew install ace boost cmake eigen gsl ipopt jpeg libedit opencv pkg-config qt5 sqlite swig tinyxml
+
       - name: Run
         run: curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/install.sh | bash
         env:

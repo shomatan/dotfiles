@@ -9,6 +9,11 @@ function! CocGitStatus()
   return get(g:, 'coc_git_status', '')
 endfunction
 
+" Show full path of filename
+function! FilenameWithPath()
+    return expand('%')
+endfunction
+
 let g:lightline = {
   \ 'colorscheme': 'edge',
   \ 'active': {
@@ -18,6 +23,7 @@ let g:lightline = {
   \ 'component_function': {
   \   'cocstatus': 'coc#status',
   \   'currentfunction': 'CocCurrentFunction',
-  \   'gitstatus': 'CocGitStatus'
+  \   'gitstatus': 'CocGitStatus',
+  \   'filename': 'FilenameWithPath'
   \ },
   \ }

@@ -112,6 +112,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'kristijanhusak/defx-git'
   Plug 'tpope/vim-fugitive'
 
+  " fzf
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 "" coc.nvim

@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+brew "bat"
+brew "fzf"
 brew "jq"
 brew "neovim"
 brew "sbt"

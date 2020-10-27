@@ -18,6 +18,7 @@
     - role: tig
   vars:
     apt_packages:
+      - bat
       - zsh
       - gcc
       - make
@@ -30,7 +31,9 @@
       - jq
       - tig
       - tmux
+      - fzf
     dnf_packages:
+      - bat
       - zsh
       - gcc
       - zlib-devel
@@ -46,6 +49,7 @@
       - tig
       - tmux
       - wget
+      - fzf
     dotfiles_directories:
       - ~/.config
       - ~/.cache

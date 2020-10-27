@@ -52,9 +52,9 @@ function! s:defx_my_mappings()
   nnoremap <silent><buffer><expr> <Tab> winnr('$') != 1 ? ':<C-u>wincmd w<CR>' : ':<C-u>Defx -buffer-name=temp -split=vertical<CR>'
 endfunction
 
-autocmd FileType defx call s:defx_my_mappings()
-autocmd BufWritePost * call defx#redraw()
-autocmd BufEnter * call defx#redraw()
+autocmd FileType     defx call s:defx_my_mappings()
+autocmd BufWritePost *    call defx#redraw()
+autocmd BufEnter     *    call defx#redraw()
 
 augroup defx
   au!

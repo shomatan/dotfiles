@@ -117,18 +117,23 @@ call plug#end()
 "" coc.nvim
 let g:coc_global_extensions = [
   \ 'coc-angular',
+  \ 'coc-css',
   \ 'coc-eslint',
   \ 'coc-go',
   \ 'coc-java',
   \ 'coc-json',
+  \ 'coc-html',
+  \ 'coc-lists',
+  \ 'coc-marketplace',
   \ 'coc-metals',
   \ 'coc-python',
   \ 'coc-rls',
   \ 'coc-rome',
+  \ 'coc-snippets',
   \ 'coc-tsserver',
   \ 'coc-vetur',
   \ 'coc-vimlsp',
-  \ 'coc-yaml',
+  \ 'coc-yaml'
   \ ]
 
 " load config from plugins directory

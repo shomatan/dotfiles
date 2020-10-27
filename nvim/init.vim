@@ -89,16 +89,13 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-commentary'
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'neoclide/coc-denite', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
 
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
 
   if has('nvim')
-    Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'}
   else
-    Plug 'Shougo/denite.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif

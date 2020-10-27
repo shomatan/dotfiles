@@ -13,7 +13,6 @@
     - role: vscode
       when: ansible_facts['os_family'] == "Darwin"
     - role: nvim
-    - role: ripgrep
     - role: tmux
     - role: tig
   vars:

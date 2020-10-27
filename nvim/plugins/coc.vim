@@ -99,7 +99,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Make sure `"codeLens.enable": true` is set in your coc config
 nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
 
-" Show all diagnostics (move to denite.vim)
+" Show all diagnostics
 nnoremap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
 
 " Manage extensions

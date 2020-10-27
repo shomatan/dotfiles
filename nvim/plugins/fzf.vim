@@ -9,12 +9,16 @@ nnoremap <Leader>k :bd<CR>
 " Most Recently Used
 nnoremap <Leader>r :FZFMru<CR>
 
+" New window
+let g:fzf_layout = { 'window': 'enew' }
+
+" New tab
+let g:fzf_layout = { 'window': '-tabnew' }
 command! FZFMru call fzf#run({
 \  'source':  v:oldfiles,
 \  'sink':    'e',
 \  'options': '-m -x +s',
 \  'down':    '40%'})
-
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
@@ -24,8 +28,3 @@ command! -bang -nargs=* Ag
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
 
-" New window
-let g:fzf_layout = { 'window': 'enew' }
-
-" New tab
-let g:fzf_layout = { 'window': '-tabnew' }

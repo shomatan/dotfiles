@@ -24,3 +24,20 @@
   with_items: "{{ snap_packages|default([]) }}"
   when: item is defined and item != ''
   become: true
+
+# bat
+- name: Check bat is installed
+  shell: which bat; echo $?
+  register: bat_result
+  changed_when: false
+
+- name: Download bat 
+  get_url:
+    url: https://github.com/sharkdp/bat/releases/download/v0.16.0/bat-musl_0.16.0_amd64.deb 
+    dest: /tmp/bat.deb
+  when: "bat_result.stdout == '1'"
+
+- name: Install bat 
+  shell: dpkg -i /tmp/bat.deb
+  when: "bat_result.stdout == '1'"
+  become: true  

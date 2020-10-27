@@ -18,7 +18,6 @@
     - role: tig
   vars:
     apt_packages:
-      - bat
       - zsh
       - gcc
       - make

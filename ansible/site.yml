@@ -49,7 +49,6 @@
       - tig
       - tmux
       - wget
-      - fzf
     dotfiles_directories:
       - ~/.config
       - ~/.cache

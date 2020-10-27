@@ -38,9 +38,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Use `dn` and `dp` to navigate diagnostics
+nmap <silent> dp <Plug>(coc-diagnostic-prev)
+nmap <silent> dn <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -69,8 +69,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>ff  <Plug>(coc-format-selected)
+nmap <leader>ff  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -100,7 +100,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
 
 " Show all diagnostics (move to denite.vim)
-" nnoremap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
 
 " Manage extensions
 nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
@@ -115,7 +115,7 @@ nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>pp  :<C-u>CocListResume<CR>
 
 " Notify coc.nvim that <enter> has been pressed.
 " Currently used for the formatOnType feature.

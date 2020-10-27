@@ -12,7 +12,9 @@ if [ "$(uname)" == 'Darwin' ]; then
     xcode-select --install
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     brew install ansible
-    ARGS="--ask-become-pass"
+    if [ -z ${CI} ] ; then
+        ARGS="--ask-become-pass"
+    fi
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     OS=`cat /etc/os-release | grep -E '^ID=' | awk -F'=' '{print $2}' | sed 's/"//g'`
     

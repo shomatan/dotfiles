@@ -52,6 +52,8 @@ function! s:defx_my_mappings()
 endfunction
 
 autocmd FileType defx call s:defx_my_mappings()
+autocmd BufWritePost * call defx#redraw()
+autocmd BufEnter * call defx#redraw()
 
 augroup defx
   au!

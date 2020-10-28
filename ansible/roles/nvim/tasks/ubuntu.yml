@@ -3,6 +3,7 @@
   apt_repository:
     repo: ppa:neovim-ppa/stable
     state: present
+    update_cache: no
   become: true
 
 - name: Update apt before install neovim

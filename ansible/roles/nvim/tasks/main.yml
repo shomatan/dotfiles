@@ -1,62 +1,11 @@
 ---
-- name: Install nvim dependencies (only RedHat)
-  yum:
-    name: ["python-pip", "fuse-libs"]
+- name: Include install task for RHEL
+  include_tasks: rhel.yml
   when: ansible_facts['os_family'] == "RedHat"
-  become: true
 
-- name: Pre check neovim (only RedHat)
-  stat:
-    path: /usr/local/bin/nvim
-  when: ansible_facts['os_family'] == "RedHat"
-  register: neovim_stats
-
-- name: Install neovim (only RedHat)
-  block:
-    - name: Get neovim (only RedHat)
-      get_url:
-        url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-        dest: /tmp/nvim.appimage
-        mode: 0755
-
-    - name: Extract and move app image (only RedHat)
-      shell: |
-        ./nvim.appimage --appimage-extract
-        mv squashfs-root /opt/nvim
-      args:
-        chdir: /tmp
-
-    - name: Symlink neovim (only RedHat)
-      file:
-        src: /opt/nvim/AppRun
-        dest: /usr/local/bin/nvim
-        state: link
-        force: yes
-  when: ansible_facts['os_family'] == "RedHat" and not neovim_stats.stat.exists
-  become: true
-
-- name: Add neovim repository (only Debian)
-  apt_repository:
-    repo: ppa:neovim-ppa/stable
-    state: present
-    update_cache: true
+- name: Include install task for Debian
+  include_tasks: ubuntu.yml
   when: ansible_facts['os_family'] == "Debian"
-  become: true
-
-- name: Install neovim (only Debian)
-  apt:
-    name: neovim
-  when: ansible_facts['os_family'] == "Debian"
-  become: true
-
-- name: Symlink neovim (only Debian)
-  file:
-    src: /usr/bin/nvim
-    dest: /usr/local/bin/nvim
-    state: link
-    force: yes
-  when: ansible_facts['os_family'] == "Debian"
-  become: true
 
 - name: Ensure ~/.local/share/nvim/site/autoload exists
   file:

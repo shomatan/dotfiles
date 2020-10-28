@@ -17,14 +17,16 @@ if [ "$(uname)" == 'Darwin' ]; then
     fi
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     OS=`cat /etc/os-release | grep -E '^ID=' | awk -F'=' '{print $2}' | sed 's/"//g'`
+    VERSION=`cat /etc/os-release | grep -E '^VERSION_ID=' | awk -F'=' '{print $2}' | sed 's/"//g'`
     
     if [ "$OS" = "ubuntu" ]; then
         sudo apt -y update
         sudo apt install software-properties-common
-        sudo apt-add-repository --yes --update ppa:ansible/ansible
+	      if [ "$VERSION" != "20.04" ]; then
+            sudo apt-add-repository --yes --update ppa:ansible/ansible
+        fi
         sudo apt -y install ansible
     elif [ "$OS" = "centos" ]; then
-        VERSION=`cat /etc/os-release | grep -E '^VERSION_ID=' | awk -F'=' '{print $2}' | sed 's/"//g'`
         if [ "$VERSION" = "7" ]; then
             INVENTORY_NAME="centos7"
         fi

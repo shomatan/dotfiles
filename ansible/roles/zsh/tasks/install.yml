@@ -16,9 +16,16 @@
     dest: /tmp
   when: not zsh_stats.stat.exists
 
+- name: Configure build zsh
+  shell: |
+    ./configure --enable-multibyte --with-tcsetpgrp
+  args:
+    chdir: /tmp/zsh-5.8
+  when: not zsh_stats.stat.exists
+  become: true
+
 - name: Install zsh
   shell: |
-    ./configure --enable-multibyte
     make && make install
   args:
     chdir: /tmp/zsh-5.8

@@ -3,7 +3,7 @@ DIR := `pwd | sed -e 's/test//g'`
 CENTOS_IMAGE_NAME := dotfiles-centos7
 UBUNTU_IMAGE_NAME := dotfiles-ubuntu20
 
-centos7:
+run-centos7:
 	-docker rm -f $(CENTOS_IMAGE_NAME)
 	
 	docker build -t $(CENTOS_IMAGE_NAME) ./docker/centos7
@@ -14,7 +14,7 @@ centos7:
 
 	docker rm -f dotfiles-centos7
 
-ubuntu20:
+run-ubuntu20:
 	-docker rm -f $(UBUNTU_IMAGE_NAME)
 	
 	docker build -t $(UBUNTU_IMAGE_NAME) ./docker/ubuntu20

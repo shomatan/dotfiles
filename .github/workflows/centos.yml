@@ -15,4 +15,4 @@ jobs:
       - name: Provision
         run: |
           cd test
-          make centos7
+          make run-centos7

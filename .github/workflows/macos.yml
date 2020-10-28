@@ -1,4 +1,4 @@
-name: macos
+name: macOS
 
 on: push
 
@@ -16,9 +16,14 @@ jobs:
           brew cask install xquartz
           brew update
           brew upgrade
-          brew install ace boost cmake eigen gsl ipopt jpeg libedit opencv pkg-config qt5 sqlite swig tinyxml
+
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Install goss
+        run: curl -fsSL https://goss.rocks/install | sudo sh
 
       - name: Run
-        run: curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/install.sh | bash
+        run: ./install.sh
         env:
           CI: true

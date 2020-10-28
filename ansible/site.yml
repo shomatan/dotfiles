@@ -17,6 +17,7 @@
     - role: tig
   vars:
     apt_packages:
+      - curl
       - zsh
       - gcc
       - make

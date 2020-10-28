@@ -3,12 +3,8 @@
   apt_repository:
     repo: ppa:neovim-ppa/stable
     state: present
-    update_cache: no
-  become: true
-
-- name: Update apt before install neovim
-  apt:
-    update_cache: yes  
+    update_cache: yes
+  when: ansible_distribution_major_version != '20'
   become: true
 
 - name: Install neovim (only Debian)

@@ -1,31 +1,13 @@
 ---
-- name: Remove apt cache workaround
-  block:
-    - name: Install gnupg2
-      apt:
-        name: gnupg2
-        state: latest
-
-    - name: Add Proxmox key
-      apt_key:
-        url: http://download.proxmox.com/debian/proxmox-ve-release-6.x.gpg
-        keyring: /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
-        state: present
-
-    - name: Add Proxmox repository
-      apt_repository:
-        repo: deb http://download.proxmox.com/debian/pve buster pve-no-subscription
-        filename: pve-install-repo
-        state: present
-  when: ansible_distribution_major_version == '20'
-  become: true
-
 - name: Add neovim repository (only Debian)
   apt_repository:
     repo: ppa:neovim-ppa/stable
     state: present
-    update_cache: true
-  when: ansible_facts['os_family'] == "Debian"
+  become: true
+
+- name: Update apt before install neovim
+  apt:
+    update_cache: yes  
   become: true
 
 - name: Install neovim (only Debian)

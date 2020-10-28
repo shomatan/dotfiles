@@ -21,3 +21,38 @@
   with_items: "{{ dnf_packages|default([]) }}"
   when: item is defined and item != '' and ansible_distribution_major_version == '8'
   become: true
+
+# bat
+- name: Check bat is installed
+  shell: which bat; echo $?
+  register: bat_result
+  changed_when: false
+
+- name: Install bat
+  block:
+    - shell: curl --silent "https://api.github.com/repos/sharkdp/bat/releases/latest" | grep -Eo '"tag_name"{{':'}} "v(.*)"' | sed -E 's/.*"([^"]+)".*/\1/' warn=false
+      register: latest_release
+    - get_url:
+        url: https://github.com/sharkdp/bat/releases/download/{{latest_release.stdout}}/bat-{{latest_release.stdout}}-x86_64-unknown-linux-musl.tar.gz
+        dest: /tmp
+    - shell: tar zxvf /tmp/bat-{{latest_release.stdout}}-x86_64-unknown-linux-musl.tar.gz chdir=/tmp warn=false
+    - copy:
+        src: /tmp/bat-{{latest_release.stdout}}-x86_64-unknown-linux-musl/
+        dest: /usr/bin/bat/
+        mode: preserve
+    - file:
+        src: /usr/bin/bat/bat
+        dest: /usr/local/bin/bat
+        state: link
+        force: yes
+    - find:
+        paths: /tmp
+        file_type: any
+        patterns: bat*
+      register: bat_files_delete      
+    - file:
+        path: "{{ item.path }}"
+        state: absent
+      with_items: "{{ bat_files_delete.files }}" 
+  when: "bat_result.stdout == '1'"
+  become: true

@@ -31,7 +31,6 @@
       - tig
       - tmux
     dnf_packages:
-      - bat
       - zsh
       - gcc
       - zlib-devel

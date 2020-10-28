@@ -11,3 +11,11 @@ centos7:
 	docker exec -i dotfiles-centos7 zsh -c "cd /test && goss validate --format documentation"
 
 	docker rm -f dotfiles-centos7
+
+rerun:
+	docker exec -i dotfiles-centos7 /root/dotfiles/install.sh
+	docker exec -i dotfiles-centos7 zsh -c "exit"
+	docker exec -i dotfiles-centos7 zsh -c "cd /test && goss validate --format documentation"
+
+exec:
+	docker exec -it dotfiles-centos7 zsh

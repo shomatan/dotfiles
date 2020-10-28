@@ -1,8 +1,8 @@
 # dotfiles
 
-![macOS](https://github.com/shomatan/dotfiles/workflows/macos/badge.svg?branch=master)
-![Ubuntu](https://github.com/shomatan/dotfiles/workflows/ubuntu/badge.svg?branch=master)
-![CentOS](https://github.com/shomatan/dotfiles/workflows/centos/badge.svg?branch=master)
+![macOS](https://github.com/shomatan/dotfiles/workflows/macOS/badge.svg?branch=master)
+![Ubuntu](https://github.com/shomatan/dotfiles/workflows/Ubuntu/badge.svg?branch=master)
+![CentOS](https://github.com/shomatan/dotfiles/workflows/CentOS/badge.svg?branch=master)
 
 ## Usage
 

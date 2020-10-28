@@ -1,4 +1,9 @@
 ---
+- name: Remove apt cache workaround
+  shell: rm /var/lib/apt/lists/* -vf
+  when: ansible_distribution_major_version == '20'
+  become: true
+
 - name: Add neovim repository (only Debian)
   apt_repository:
     repo: ppa:neovim-ppa/stable

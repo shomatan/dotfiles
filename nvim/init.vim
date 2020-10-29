@@ -62,6 +62,8 @@ vmap <C-_> gc
 "" Highlight
 nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
 
+"" replace
+nnoremap <Leader>r :%s///gc<Left><Left><Left><Left>
 
 "" Backup
 set nowritebackup

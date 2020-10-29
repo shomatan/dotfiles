@@ -7,7 +7,7 @@ nnoremap <Leader>p :GFiles<CR>
 nnoremap <Leader>x :Commands<CR>
 
 " Most Recently Used
-nnoremap <Leader>r :FZFMru<CR>
+" nnoremap <Leader>r :FZFMru<CR>
 
 " New window
 let g:fzf_layout = { 'window': 'enew' }

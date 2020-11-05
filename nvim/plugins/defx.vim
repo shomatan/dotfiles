@@ -1,4 +1,4 @@
-nnoremap <Leader> l :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
+nnoremap <silent> sf :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
 
 call defx#custom#option('_', {
   \ 'winwidth': 40,
@@ -12,7 +12,7 @@ call defx#custom#option('_', {
 
 function! s:defx_my_mappings()
   " Define mappings
-  nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+  nnoremap <silent><buffer><expr> <CR> defx#do_action('open')
   nnoremap <silent><buffer><expr> t defx#do_action('open','tabnew')
   nnoremap <silent><buffer><expr> c defx#do_action('copy')
   nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')

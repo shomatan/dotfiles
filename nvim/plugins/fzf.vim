@@ -2,7 +2,6 @@ nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>f :Ag<CR>
 nnoremap <Leader>g :GFiles?<CR>
 nnoremap <Leader>h :History<CR>
-nnoremap <Leader>l :Explore<CR>
 nnoremap <Leader>p :GFiles<CR>
 nnoremap <Leader>x :Commands<CR>
 

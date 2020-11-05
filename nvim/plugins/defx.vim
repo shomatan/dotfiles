@@ -1,8 +1,7 @@
-nnoremap <silent> sf :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
+nnoremap <Leader> l :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
 
 call defx#custom#option('_', {
   \ 'winwidth': 40,
-  \ 'split': 'vertical',
   \ 'direction': 'topleft',
   \ 'show_ignored_files': 1,
   \ 'buffer_name': 'exproler',

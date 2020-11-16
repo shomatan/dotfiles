@@ -17,5 +17,8 @@
     "**/.bloop": true,
     "**/.metals": true,
     "**/.ammonite": true
-  }
+  },
+  "metals.showImplicitArguments": true,
+  "metals.showInferredType": true,
+  "metals.superMethodLensesEnabled": true
 }

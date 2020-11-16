@@ -3,6 +3,9 @@
   "coc.preferences.jumpCommand": "tab drop",
   "codeLens.enable": true,
   "eslint.autoFixOnSave": true,
+  "metals.showImplicitArguments": true,
+  "metals.showInferredType": true,
+  "metals.superMethodLensesEnabled": true,
   "metals.statusBarEnabled": true,
   "metals.treeviews.toggleNode": "o",
   "metals.treeviews.executeCommandAndOpenTab": "<CR>"

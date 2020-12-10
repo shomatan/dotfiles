@@ -1,4 +1,5 @@
 nnoremap <silent> sf :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
+nnoremap <C-m> :<C-u>Defx -resume -search=`expand('%:p')` `getcwd()`<CR>
 
 call defx#custom#option('_', {
   \ 'winwidth': 40,

@@ -53,6 +53,7 @@ nmap <C-w>J <C-w>-
 "" tab
 nmap gp gT
 nmap gn gt
+nmap <C-n> :tabe<CR>
 
 "" comment
 nmap <C-_> gcc

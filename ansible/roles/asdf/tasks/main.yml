@@ -45,7 +45,10 @@
   shell: |
     source ~/.config/zsh/.zshrc
     asdf install {{ item.name }} {{ item.version }}
-    asdf global {{ item.name }} {{ item.version }} && {{ item.post_install|default('echo "post-install command is nothing"') }}
+    # prevent to override by default version 
+    if ! asdf current {{ item.name }}; then
+      asdf global {{ item.name }} {{ item.version }} && {{ item.post_install|default('echo "post-install command is nothing"') }}
+    fi
   args:
     executable: /bin/zsh
   register: install_package_result

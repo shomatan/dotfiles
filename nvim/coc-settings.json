@@ -1,5 +1,13 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["scala"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "scala", 
+    "css", 
+    "markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.jumpCommand": "tab drop",
   "codeLens.enable": true,

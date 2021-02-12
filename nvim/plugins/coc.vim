@@ -89,6 +89,9 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 

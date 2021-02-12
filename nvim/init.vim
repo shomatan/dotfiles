@@ -130,6 +130,7 @@ let g:coc_global_extensions = [
   \ 'coc-lists',
   \ 'coc-marketplace',
   \ 'coc-metals',
+  \ 'coc-prettier',
   \ 'coc-python',
   \ 'coc-rls',
   \ 'coc-rome',

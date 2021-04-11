@@ -4,6 +4,7 @@ nnoremap <C-m> :<C-u>Defx -resume -search=`expand('%:p')` `getcwd()`<CR>
 call defx#custom#option('_', {
   \ 'winwidth': 40,
   \ 'direction': 'topleft',
+  \ 'split': 'vertical',
   \ 'show_ignored_files': 1,
   \ 'buffer_name': 'exproler',
   \ 'toggle': 1,
@@ -13,8 +14,8 @@ call defx#custom#option('_', {
 
 function! s:defx_my_mappings()
   " Define mappings
-  nnoremap <silent><buffer><expr> <CR> defx#do_action('open')
-  nnoremap <silent><buffer><expr> t defx#do_action('open','tabnew')
+  nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+  nnoremap <silent><buffer><expr> t defx#do_action('open','tabnew') . ":<C-u>Defx -resume -search=`expand('%:p')` `getcwd()`<CR>"
   nnoremap <silent><buffer><expr> c defx#do_action('copy')
   nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
   nnoremap <silent><buffer><expr> m defx#do_action('move')
@@ -50,6 +51,8 @@ function! s:defx_my_mappings()
   xnoremap <silent><buffer><expr> <CR> defx#do_action('toggle_select_visual')
   nnoremap <silent><buffer><expr> <C-g> defx#do_action('print')
   nnoremap <silent><buffer><expr> <Tab> winnr('$') != 1 ? ':<C-u>wincmd w<CR>' : ':<C-u>Defx -buffer-name=temp -split=vertical<CR>'
+  nnoremap <silent><buffer><expr> > defx#do_action('resize', defx#get_context().winwidth + 10)
+  nnoremap <silent><buffer><expr> < defx#do_action('resize', defx#get_context().winwidth - 10)
 endfunction
 
 autocmd FileType     defx call s:defx_my_mappings()

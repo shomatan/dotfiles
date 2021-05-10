@@ -1,0 +1,40 @@
+" https://qiita.com/sei40kr/items/09e7e92eb7686f9b5950
+
+set clipboard=unnamed,unnamedplus
+
+noremap 1 0
+noremap 2 $
+
+" Tab
+nnoremap <Space>w :w<CR>
+nnoremap <Space>q :wq<CR>
+nnoremap <Space><ESC> :q<CR>
+nnoremap gn :<C-u>action NextTab<CR>
+nnoremap gp :<C-u>action PreviousTab<CR>
+
+" Search
+nnoremap / :<C-u>action Find<CR>
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+" Jump
+nnoremap <C-o> :<C-u>action Back<CR>
+nnoremap <C-i> :<C-u>action Forward<CR>
+nnoremap <C-S-o> <C-o>
+nnoremap <C-S-i> <C-i>
+
+nnoremap <Space>p :<C-u>action GotoFile<CR>
+nnoremap <Space>c :<C-u>action GotoAction<CR>
+nnoremap <Space>o :<C-u>action FileStructurePopup<CR>
+nnoremap <Space>f :<C-u>action SearchEverywhere<CR>
+nnoremap <Space>t :<C-u>action ActivateTerminalToolWindow<CR>
+nnoremap <Space>b :<C-u>action RecentFiles<CR>
+
+nnoremap dp :<C-u>action GotoPreviousError<CR>
+nnoremap dn :<C-u>action GotoNextError<CR>
+
+nnoremap gd :<C-u>action GotoDeclaration<CR>
+nnoremap gy :<C-u>action GotoTypeDeclaration<CR>
+nnoremap gi :<C-u>action GotoImplementation<CR>
+
+nnoremap K :<C-u>action QuickJavaDoc<CR>
+

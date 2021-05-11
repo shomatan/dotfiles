@@ -78,6 +78,8 @@
         dest: ~/.config/tmux/tmux.conf
       - path: ~/dotfiles/tig/.tigrc
         dest: ~/.config/tig/.tigrc
+      - path: ~/dotfiles/intellij/.ideavimrc
+        dest: ~/.ideavimrc
       # - path: ~/dotfiles/vscode/settings.json
       #   dest: ~/Library/Application Support/Code/User/settings.json
       # - path: ~/dotfiles/vscode/locale.json

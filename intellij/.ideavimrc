@@ -1,6 +1,7 @@
 " https://qiita.com/sei40kr/items/09e7e92eb7686f9b5950
 
 set clipboard=unnamed,unnamedplus
+set NERDTree
 
 noremap 1 0
 noremap 2 $

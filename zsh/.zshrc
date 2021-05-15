@@ -46,8 +46,13 @@ alias -g G='| grep'
 alias docker-login='(){ docker exec -it $1 sh -lc "su - $2" }'
 
 # vim
-alias vi='/usr/local/bin/nvim'
-alias vim='/usr/bin/vi'
+if [[ -f "/usr/local/bin/nvim" ]]; then
+  alias vi='/usr/local/bin/nvim'
+  alias vim='/usr/bin/vi'
+else
+  alias vi=nvim
+  alias vim='/usr/bin/vim'  
+fi
 alias vic='vi .'
 
 # git
@@ -64,11 +69,11 @@ alias gico='git checkout'
 alias t='tmux -f ~/.config/tmux/tmux.conf'
 
 # docker-compose
-alias dc='docker-compose'
-alias dcud='docker-compose up -d'
-alias dcd='docker-compose down'
+alias dc='docker compose'
+alias dcud='docker compose up -d'
+alias dcd='docker compose down'
 alias dcdv='docker-compose down -v'
-alias dcl='docker-compose logs -f'
+alias dcl='docker compose logs -f'
 
 
 # -----------------------------------------------------------------------------

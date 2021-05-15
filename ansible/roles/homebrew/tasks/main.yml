@@ -7,3 +7,4 @@
   shell: brew bundle --file=~/dotfiles/ansible/roles/homebrew/files/Brewfile
   register: install_packages_result
   changed_when: '"Installing" in install_packages_result.stdout'
+  ignore_errors: true

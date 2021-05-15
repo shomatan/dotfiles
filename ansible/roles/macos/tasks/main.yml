@@ -1,0 +1,9 @@
+---
+- name: Set system defaults
+  osx_defaults: >
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+  with_items: '{{ macos_settings|default([]) }}'
+  when: item.domain is defined and item.key is defined and item.type is defined and item.value is defined and item != ''

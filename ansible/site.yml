@@ -3,6 +3,8 @@
   roles:
     - role: homebrew
       when: ansible_facts['os_family'] == "Darwin"
+    - role: macos
+      when: ansible_facts['os_family'] == "Darwin"
     - role: apt
       when: ansible_facts['os_family'] == "Debian"
     - role: dnf
@@ -84,7 +86,7 @@
       #   dest: ~/Library/Application Support/Code/User/settings.json
       # - path: ~/dotfiles/vscode/locale.json
       #   dest: ~/Library/Application Support/Code/User/locale.json
-    asdf_version: v0.7.8
+    asdf_version: v0.8.0
     asdf_plugins:
       - name: java
         version: corretto-8.275.01.1
@@ -111,3 +113,4 @@
       - trinm1709.dracula-theme-from-intellij
       - vscodevim.vim
       - ms-vscode-remote.vscode-remote-extensionpack
+    macos_settings: []

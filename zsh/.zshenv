@@ -43,3 +43,11 @@ export ZPLUG_HOME=~/.local/share/zplug
 if [[ -f "/etc/profile.d/apps-bin-path.sh" ]]; then
     source /etc/profile.d/apps-bin-path.sh
 fi
+
+# homebrew on M1 Mac
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
+# sbt publish
+export GPG_TTY=$(tty)2

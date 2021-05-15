@@ -150,8 +150,3 @@ asdf where java > /dev/null 2>&1
 if [ $? = 0 ]; then
     . ~/.asdf/plugins/java/set-java-home.zsh
 fi
-
-
-# sbt publish
-export GPG_TTY=$(tty)
-

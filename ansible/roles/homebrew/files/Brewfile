@@ -9,6 +9,7 @@ brew "sbt"
 brew "tig"
 brew "tmux"
 brew "reattach-to-user-namespace"
+brew "gnupg"
 
 cask "adoptopenjdk"
 cask "bitwarden"

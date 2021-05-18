@@ -30,6 +30,7 @@ nnoremap <Space>f :<C-u>action SearchEverywhere<CR>
 nnoremap <Space>t :<C-u>action ActivateTerminalToolWindow<CR>
 nnoremap <Space>b :<C-u>action RecentFiles<CR>
 nnoremap <Space>d :<C-u>action ActivateProblemsViewToolWindow<CR>
+nnoremap <Space>rn :<C-u>action RenameElement<CR>
 
 nnoremap dp :<C-u>action GotoPreviousError<CR>
 nnoremap dn :<C-u>action GotoNextError<CR>

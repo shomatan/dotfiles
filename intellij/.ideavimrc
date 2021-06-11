@@ -36,6 +36,7 @@ nnoremap dp :<C-u>action GotoPreviousError<CR>
 nnoremap dn :<C-u>action GotoNextError<CR>
 
 nnoremap gd :<C-u>action GotoDeclaration<CR>
+nnoremap gr :<C-u>action FindUsages<CR>
 nnoremap gy :<C-u>action GotoTypeDeclaration<CR>
 nnoremap gi :<C-u>action GotoImplementation<CR>
 

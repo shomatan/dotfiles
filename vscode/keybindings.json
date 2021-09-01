@@ -28,5 +28,20 @@
     "key": "shift+alt+f12",
     "command": "-references-view.find",
     "when": "editorHasReferenceProvider"
+  },
+  {
+    "key": "space w",
+    "command": "workbench.action.files.save",
+    "when": "vim.mode != 'Insert' && editorFocus"
+  },
+  {
+    "key": "space q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "vim.mode != 'Insert' && editorFocus"
+  },
+  {
+    "key": "space escape",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "vim.mode != 'Insert' && editorFocus"
   }
 ]

@@ -25,5 +25,11 @@
   },
   "metals.showImplicitArguments": true,
   "metals.showInferredType": true,
-  "metals.superMethodLensesEnabled": true
+  "metals.superMethodLensesEnabled": true,
+  "vim.vimrc.enable": true,
+  "vim.enableNeovim": true,
+  "vim.neovimUseConfigFile": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

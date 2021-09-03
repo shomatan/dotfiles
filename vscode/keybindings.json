@@ -43,5 +43,15 @@
     "key": "space escape",
     "command": "workbench.action.closeActiveEditor",
     "when": "vim.mode != 'Insert' && editorFocus"
+  },
+  {
+    "key": "space p",
+    "command": "workbench.action.findInFiles",
+    "when": "vim.mode != 'Insert' && editorFocus"
+  },
+  {
+    "key": "space c",
+    "command": "workbench.action.showCommands",
+    "when": "vim.mode != 'Insert' && editorFocus"
   }
 ]

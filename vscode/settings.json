@@ -26,10 +26,14 @@
   "metals.showImplicitArguments": true,
   "metals.showInferredType": true,
   "metals.superMethodLensesEnabled": true,
-  "vim.vimrc.enable": true,
+  "vim.easymotion": true,
   "vim.enableNeovim": true,
+  "vim.hlsearch": true,
   "vim.neovimUseConfigFile": true,
+  "vim.useSystemClipboard": true,
+  "vim.vimrc.enable": true,
+  "vim.visualstar": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
 }

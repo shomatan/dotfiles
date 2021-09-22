@@ -32,17 +32,17 @@
   {
     "key": "space w",
     "command": "workbench.action.files.save",
-    "when": "vim.mode != 'Insert' && editorFocus"
+    "when": "vim.mode != 'Insert' && editorFocus && !findWidgetVisible"
   },
   {
     "key": "space q",
     "command": "workbench.action.closeActiveEditor",
-    "when": "vim.mode != 'Insert' && editorFocus"
+    "when": "vim.mode != 'Insert' && editorFocus && !findWidgetVisible"
   },
   {
     "key": "space escape",
     "command": "workbench.action.closeActiveEditor",
-    "when": "vim.mode != 'Insert' && editorFocus"
+    "when": "vim.mode != 'Insert' && editorFocus && !findWidgetVisible"
   },
   {
     "key": "shift+cmd+f",
@@ -51,17 +51,17 @@
   {
     "key": "space f",
     "command": "workbench.action.findInFiles",
-    "when": "vim.mode != 'Insert' && editorFocus"
+    "when": "vim.mode != 'Insert' && editorFocus && !findWidgetVisible"
   },
   {
     "key": "space c",
     "command": "workbench.action.showCommands",
-    "when": "vim.mode != 'Insert' && editorFocus"
+    "when": "vim.mode != 'Insert' && editorFocus && !findWidgetVisible"
   },
   {
     "key": "space b",
     "command": "workbench.action.showAllEditorsByMostRecentlyUsed",
-    "when": "vim.mode != 'Insert' && editorFocus"
+    "when": "vim.mode != 'Insert' && editorFocus && !findWidgetVisible"
   },
   {
     "key": "cmd+p",
@@ -70,6 +70,6 @@
   {
     "key": "space p",
     "command": "workbench.action.quickOpen",
-    "when": "vim.mode != 'Insert' && editorFocus"
+    "when": "vim.mode != 'Insert' && editorFocus && !findWidgetVisible"
   }
 ]

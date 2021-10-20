@@ -15,7 +15,6 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "workbench.colorTheme": "Darcula Theme from IntelliJ",
   "[dockerfile]": {},
-  "window.zoomLevel": 0,
   "extensions.ignoreRecommendations": false,
   "terminal.integrated.scrollback": 50000,
   "files.watcherExclude": {
@@ -48,4 +47,5 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false
   },
+  "security.workspace.trust.untrustedFiles": "open",
 }

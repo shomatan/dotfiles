@@ -86,15 +86,15 @@
       #   dest: ~/Library/Application Support/Code/User/settings.json
       # - path: ~/dotfiles/vscode/locale.json
       #   dest: ~/Library/Application Support/Code/User/locale.json
-    asdf_version: v0.8.0
+    asdf_version: v0.9.0
     asdf_plugins:
       - name: java
-        version: corretto-8.275.01.1
+        version: zulu-11.54.23
       - name: nodejs
-        version: 14.16.1
-        post_add: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+        version: 16.13.2
+        # post_add: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
       - name: python
-        version: 3.9.0
+        version: 3.10.0
     vscode_files:
       - path: ~/dotfiles/vscode/settings.json
         dest: ~/Library/Application Support/Code/User/settings.json

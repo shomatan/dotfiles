@@ -33,6 +33,7 @@ let mapleader = "\<space>"
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>q :wq<CR>
 nnoremap <silent> <leader><ESC> :q<CR>
+inoremap <silent> jj <ESC>
 
 nmap s- :split<Return><C-w>w
 nmap s<Bar> :vsplit<Return><C-w>w

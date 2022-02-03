@@ -6,6 +6,9 @@ set NERDTree
 noremap 1 0
 noremap 2 $
 
+" Common
+inoremap <silent> jj <ESC>
+
 " Tab
 nnoremap <Space>w :w<CR>
 nnoremap <Space>q :wq<CR>

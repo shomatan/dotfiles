@@ -48,4 +48,5 @@
     "editor.wordBasedSuggestions": false
   },
   "security.workspace.trust.untrustedFiles": "open",
+  "window.zoomLevel": 1,
 }

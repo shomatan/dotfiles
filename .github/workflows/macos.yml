@@ -6,21 +6,33 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      # https://github.com/actions/virtual-environments/issues/1811
-      # - name: Homebrew workaround
-      #   run: |
-      #     brew uninstall openssl@1.0.2t
-      #     brew uninstall python@2.7.17
-      #     brew untap local/openssl
-      #     brew untap local/python2
-      #     brew cask install xquartz
-      #     brew update
-      #     brew upgrade
+      - uses: actions/checkout@latest
 
-      - name: checkout
-        uses: actions/checkout@v2
+      - name: Setup GraalVM
+        uses: DeLaGuardo/setup-graalvm@5.0
+        with:
+          graalvm: '22.2.0'
+          java: 'java11'
+          arch: 'aarch64'
 
-      - name: Run
-        run: ./install.sh
-        env:
-          CI: true
+      - run: java -version
+
+      - run: gu install native-image
+
+      - run: brew install sbt
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.sbt/boot
+            ~/.sbt/launchers
+            ~/.ivy2/cache
+            ~/.cache/coursier/v1
+          key: scala-cache-${{ hashFiles('build.sbt') }}-${{ hashFiles('project/plugins.sbt') }}-${{ hashFiles('project/build.properties') }}
+
+      - run: sbt nativeImage
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: artifact
+          path: target/native-image

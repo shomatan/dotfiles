@@ -15,5 +15,5 @@ jobs:
       - name: Install goss
         run: curl -fsSL https://goss.rocks/install | sudo sh
 
-      - name: Provision
-        run: ./install.sh 
+#      - name: Provision
+#        run: ./install.sh

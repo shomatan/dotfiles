@@ -12,7 +12,7 @@ jobs:
       - name: Install goss
         run: curl -fsSL https://goss.rocks/install | sudo sh
 
-      - name: Provision
-        run: |
-          cd test
-          make run-centos7
+#      - name: Provision
+#        run: |
+#          cd test
+#          make run-centos7

@@ -5,22 +5,40 @@ on: push
 jobs:
   test:
     runs-on: macos-latest
+    env:
+      JAVA_HOME: /opt/graalvm
     steps:
-      # https://github.com/actions/virtual-environments/issues/1811
-      # - name: Homebrew workaround
-      #   run: |
-      #     brew uninstall openssl@1.0.2t
-      #     brew uninstall python@2.7.17
-      #     brew untap local/openssl
-      #     brew untap local/python2
-      #     brew cask install xquartz
-      #     brew update
-      #     brew upgrade
+      - uses: actions/checkout@v3
 
-      - name: checkout
-        uses: actions/checkout@v2
+      - uses: DeLaGuardo/setup-graalvm@5.0
+        with:
+          graalvm: '22.0.0.2'
+          java: 'java11'
+          arch: 'amd64'
 
-      - name: Run
-        run: ./install.sh
-        env:
-          CI: true
+      - run: |
+          curl -SL -o graalvm.tar.gz https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/22.2.0-dev-20220413_0309/graalvm-ce-java11-darwin-amd64-dev.tar.gz 
+          tar -xzf graalvm.tar.gz
+          rm -f graalvm.tar.gz
+          sudo mv graalvm-ce-java11-22.2.0-dev /opt/graalvm
+        working-directory: /tmp
+
+      - run: java -version
+
+      - run: gu install native-image
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.sbt/boot
+            ~/.sbt/launchers
+            ~/.ivy2/cache
+            ~/.cache/coursier/v1
+          key: scala-cache-${{ hashFiles('build.sbt') }}-${{ hashFiles('project/plugins.sbt') }}-${{ hashFiles('project/build.properties') }}
+
+      - run: sbt nativeImage
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: artifact
+          path: target/native-image/dotfiles

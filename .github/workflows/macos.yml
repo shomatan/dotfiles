@@ -5,21 +5,27 @@ on: push
 jobs:
   test:
     runs-on: macos-latest
+    env:
+      JAVA_HOME: /opt/graalvm
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@v3
 
-      - name: Setup GraalVM
-        uses: DeLaGuardo/setup-graalvm@5.0
+      - uses: DeLaGuardo/setup-graalvm@5.0
         with:
-          graalvm: '22.2.0'
+          graalvm: '22.0.0.2'
           java: 'java11'
-          arch: 'aarch64'
+          arch: 'amd64'
+
+      - run: |
+          curl -SL -o graalvm.tar.gz https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/22.2.0-dev-20220413_0309/graalvm-ce-java11-darwin-amd64-dev.tar.gz 
+          tar -xzf graalvm.tar.gz
+          rm -f graalvm.tar.gz
+          sudo mv graalvm-ce-java11-22.2.0-dev /opt/graalvm
+        working-directory: /tmp
 
       - run: java -version
 
       - run: gu install native-image
-
-      - run: brew install sbt
 
       - uses: actions/cache@v3
         with:
@@ -35,4 +41,4 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: artifact
-          path: target/native-image
+          path: target/native-image/dotfiles

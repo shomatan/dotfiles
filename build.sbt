@@ -8,6 +8,10 @@ lazy val root = (project in file("."))
   )
 
 nativeImageInstalled := true
+nativeImageOptions ++= List(
+  "--no-fallback"
+//  "--link-at-build-time"
+)
 
 enablePlugins(NativeImagePlugin)
 

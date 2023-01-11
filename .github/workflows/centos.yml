@@ -6,13 +6,9 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - run: curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/install.sh | bash
 
       - name: Install goss
         run: curl -fsSL https://goss.rocks/install | sudo sh
-
-#      - name: Provision
-#        run: |
-#          cd test
-#          make run-centos7

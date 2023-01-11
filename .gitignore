@@ -5,8 +5,3 @@ karabiner/automatic_backups
 ## IDE
 .idea
 .vscode
-
-## Scala
-.bsp
-.metals
-target

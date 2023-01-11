@@ -2,7 +2,13 @@
 
 set -x
 
-git clone https://github.com/shomatan/dotfiles.git ~/dotfiles
+if [ ! -d ~/dotfiles ]; then
+  git clone https://github.com/shomatan/dotfiles.git ~/dotfiles
+  cd dotfiles
+else
+  cd dotfiles
+  git pull
+fi
 
 INVENTORY_NAME="default"
 ARGS=""

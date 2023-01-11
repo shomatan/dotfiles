@@ -14,6 +14,7 @@ INVENTORY_NAME="default"
 ARGS=""
 
 if [ "$(uname)" == 'Darwin' ]; then
+  export PATH=$PATH:/opt/homebrew/bin
   which brew > /dev/null 2>&1
   if [ $? -eq 1 ]; then
     sudo xcode-select --install

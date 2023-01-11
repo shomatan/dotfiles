@@ -1,80 +1,52 @@
 {
-	"[javascript]": {
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2
-	},
-	"[dart]": {
-		"editor.suggest.snippetsPreventQuickSuggestions": false,
-		"editor.suggestSelection": "first",
-		"editor.tabCompletion": "onlySnippets",
-		"editor.wordBasedSuggestions": false,
-		"editor.selectionHighlight": false,
-		"editor.formatOnSave": true,
-		"editor.formatOnType": true,
-		"editor.rulers": [
-			80
-		]
-	},
-	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"vim.neovimUseConfigFile": true,
-	"security.workspace.trust.untrustedFiles": "open",
-	"typescript.updateImportsOnFileMove.enabled": "always",
-	"editor.accessibilitySupport": "off",
-	"editor.suggestSelection": "first",
-	"vim.vimrc.enable": true,
-	"explorer.confirmDragAndDrop": false,
-	"explorer.confirmDelete": false,
-	"[dockerfile]": {},
-	"vim.useSystemClipboard": true,
-	"vim.enableNeovim": true,
-	"metals.superMethodLensesEnabled": true,
-	"metals.showInferredType": true,
-	"files.watcherExclude": {
-		"**/.ammonite": true,
-		"**/.bloop": true,
-		"**/.metals": true
-	},
-	"workbench.editor.enablePreview": false,
-	"workbench.colorTheme": "Darcula Theme from IntelliJ",
-	"window.zoomLevel": 1,
-	"vim.hlsearch": true,
-	"editor.formatOnSave": true,
-	"javascript.updateImportsOnFileMove.enabled": "always",
-	"editor.detectIndentation": false,
-	"terminal.integrated.scrollback": 50000,
-	"metals.showImplicitArguments": true,
-	"extensions.ignoreRecommendations": false,
-	"vim.visualstar": true,
-	"editor.tabSize": 2,
-	"vim.easymotion": true,
-	"terminal.integrated.env.osx": {
-		"FIG_NEW_SESSION": "1"
-	},
-  "npm.keybindingsChangedWarningShown": true,
-  "java.import.gradle.java.home": "/Users/shoma/.asdf/installs/java/zulu-11.54.23",
-	"git.autofetch": true,
-	"[csharp]": {
-		"editor.formatOnSave": true,
-		"editor.tabSize": 4,
-		"emmet.triggerExpansionOnTab": true,
-		"editor.insertSpaces": false
-	},
-	"git.confirmSync": false,
-	"redhat.telemetry.enabled": false,
-	"mssql.connections": [
-		{
-			"server": "{{put-server-name-here}}",
-			"database": "{{put-database-name-here}}",
-			"user": "{{put-username-here}}",
-			"password": ""
-		}
-	],
-	"laravel-pint.enable": true,
-	"editor.unicodeHighlight.invisibleCharacters": false,
-	"editor.unicodeHighlight.ambiguousCharacters": false,
-	"editor.insertSpaces": false,
-	"yaml.maxItemsComputed": 50000
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "editor.formatOnSave": true,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.editor.enablePreview": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.colorTheme": "Darcula Theme from IntelliJ",
+  "[dockerfile]": {},
+  "extensions.ignoreRecommendations": false,
+  "terminal.integrated.scrollback": 50000,
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  },
+  "metals.showImplicitArguments": true,
+  "metals.showInferredType": true,
+  "metals.superMethodLensesEnabled": true,
+  "vim.easymotion": true,
+  "vim.enableNeovim": true,
+  "vim.hlsearch": true,
+  "vim.neovimUseConfigFile": true,
+  "vim.useSystemClipboard": true,
+  "vim.vimrc.enable": true,
+  "vim.visualstar": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "window.zoomLevel": 1,
 }

@@ -51,4 +51,3 @@ fi
 
 # sbt publish
 export GPG_TTY=$(tty)2
-

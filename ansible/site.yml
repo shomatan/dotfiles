@@ -12,6 +12,8 @@
     - role: zsh
     - role: dotfiles
     - role: asdf
+    - role: vscode
+      when: ansible_facts['os_family'] == "Darwin"
     - role: nvim
     - role: tmux
     - role: tig
@@ -80,6 +82,10 @@
         dest: ~/.config/tig/.tigrc
       - path: ~/dotfiles/intellij/.ideavimrc
         dest: ~/.ideavimrc
+      # - path: ~/dotfiles/vscode/settings.json
+      #   dest: ~/Library/Application Support/Code/User/settings.json
+      # - path: ~/dotfiles/vscode/locale.json
+      #   dest: ~/Library/Application Support/Code/User/locale.json
     asdf_version: v0.9.0
     asdf_plugins:
       - name: java
@@ -89,4 +95,22 @@
         # post_add: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
       - name: python
         version: 3.10.0
+    vscode_files:
+      - path: ~/dotfiles/vscode/settings.json
+        dest: ~/Library/Application Support/Code/User/settings.json
+      - path: ~/dotfiles/vscode/keybindings.json
+        dest: ~/Library/Application Support/Code/User/keybindings.json
+    vscode_extensions:
+      - dbaeumer.vscode-eslint
+      - eamodio.gitlens
+      - esbenp.prettier-vscode
+      - humao.rest-client
+      - ms-azuretools.vscode-docker
+      - ms-python.python
+      - ms-vsliveshare.vsliveshare-pack
+      - mtxr.sqltools
+      - scalameta.metals
+      - trinm1709.dracula-theme-from-intellij
+      - vscodevim.vim
+      - ms-vscode-remote.vscode-remote-extensionpack
     macos_settings: []

@@ -9,9 +9,11 @@ jobs:
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
     steps:
-      - uses: actions/checkout@v3
-
-      - run: curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/master/install.sh | bash
+      - name: checkout
+        uses: actions/checkout@v2
 
       - name: Install goss
         run: curl -fsSL https://goss.rocks/install | sudo sh
+
+#      - name: Provision
+#        run: ./install.sh

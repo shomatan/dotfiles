@@ -4,11 +4,10 @@ zinit wait lucid for \
     zdharma-continuum/history-search-multi-word \
     mollifier/anyframe \
     OMZ::plugins/kubectl \
+    paulirish/git-open \
   atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
   blockf \
     zsh-users/zsh-completions \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
-
-zinit light paulirish/git-open

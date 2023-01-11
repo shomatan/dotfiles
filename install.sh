@@ -6,15 +6,18 @@ INVENTORY_NAME="default"
 ARGS=""
 
 if [ "$(uname)" == 'Darwin' ]; then
-    # create vscode dir
-    mkdir -p ~/Library/Application\ Support/Code/User
-
-    xcode-select --install
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew install ansible
-    if [ -z ${CI} ] ; then
-        ARGS="--ask-become-pass"
-    fi
+  which brew > /dev/null 2>&1
+  if [ $? -eq 1 ]; then
+    sudo xcode-select --install
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    softwareupdate --install-rosetta --agree-to-license
+  else
+    brew update
+  fi
+  brew install ansible
+  if [ -z ${CI} ] ; then
+    ARGS="--ask-become-pass"
+  fi
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     OS=`cat /etc/os-release | grep -E '^ID=' | awk -F'=' '{print $2}' | sed 's/"//g'`
     VERSION=`cat /etc/os-release | grep -E '^VERSION_ID=' | awk -F'=' '{print $2}' | sed 's/"//g'`

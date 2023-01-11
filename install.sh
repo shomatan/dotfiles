@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 git clone https://github.com/shomatan/dotfiles.git ~/dotfiles
 
 INVENTORY_NAME="default"

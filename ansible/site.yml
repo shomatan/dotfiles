@@ -80,7 +80,7 @@
         dest: ~/.config/tig/.tigrc
       - path: ~/dotfiles/intellij/.ideavimrc
         dest: ~/.ideavimrc
-    asdf_version: v0.9.0
+    asdf_version: v0.11.1
     asdf_plugins:
       - name: java
         version: zulu-11.54.23

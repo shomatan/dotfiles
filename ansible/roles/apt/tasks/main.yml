@@ -16,14 +16,14 @@
   when: item is defined and item != ''
   become: true
 
-- name: Install and upgrade snap packages
-  snap:
-    name: "{{ item.name|default(item) }}"
-    state: "{{ item.state|default('present') }}"
-    classic: yes
-  with_items: "{{ snap_packages|default([]) }}"
-  when: item is defined and item != ''
-  become: true
+# - name: Install and upgrade snap packages
+#   snap:
+#     name: "{{ item.name|default(item) }}"
+#     state: "{{ item.state|default('present') }}"
+#     classic: yes
+#   with_items: "{{ snap_packages|default([]) }}"
+#   when: item is defined and item != ''
+#   become: true
 
 # bat (ubuntu 18)
 - name: Check bat is installed

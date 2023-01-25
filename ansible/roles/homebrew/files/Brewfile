@@ -7,6 +7,7 @@ brew "sbt"
 brew "tig"
 brew "tmux"
 brew "gnupg"
+brew "Virtuslab/scala-cli/scala-cli"
 
 cask "cmd-eikana"
 cask "discord"

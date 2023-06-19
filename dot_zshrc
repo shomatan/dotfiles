@@ -1,4 +1,21 @@
 
+# aliases
+# -----------------------------------------------------------------------------
+alias la='ls -la'
+alias ll='ls -l'
+alias l='ll'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias mkdir='mkdir -p'
+
+alias sudoi='sudo -i'
+
+# global
+alias -g L='| less'
+alias -g G='| grep'
 
 
 # Homebrew
@@ -10,4 +27,6 @@ fi
 
 # asdf
 # -----------------------------------------------------------------------------
-. $HOME/.asdf/asdf.sh	
+echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+
+. ~/.asdf/plugins/java/set-java-home.zsh

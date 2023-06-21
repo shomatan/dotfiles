@@ -78,11 +78,15 @@ alias sudoi='sudo -i'
 alias -g L='| less'
 alias -g G='| grep'
 
+# editor
+alias vi=nvim
+
 
 # key bind
 # -----------------------------------------------------------------------------
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
 bindkey '^R' history-incremental-pattern-search-backward
+
 
 # Homebrew
 # -----------------------------------------------------------------------------
@@ -96,3 +100,5 @@ fi
 echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
 
 . ~/.asdf/plugins/java/set-java-home.zsh
+
+

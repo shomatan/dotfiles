@@ -11,3 +11,6 @@ jobs:
       
       - name: Install and setup
         run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
+
+      - name: Test
+        run: cat ~/.zshrc

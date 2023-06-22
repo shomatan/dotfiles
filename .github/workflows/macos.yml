@@ -12,5 +12,9 @@ jobs:
       - name: Install and setup
         run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
 
-      - name: Test
+      - name: Test - .zshrc
         run: cat ~/.zshrc
+
+      - name: Test - Homebrew
+        run: brew doctor
+      

@@ -24,5 +24,7 @@ jobs:
         run: cat ~/.zshrc
 
       - name: Test - Homebrew
-        run: /usr/local/homebrew/bin/brew doctor
+        run: |
+          echo 'export PATH="/usr/local/homebrew/bin:$PATH"' >> /Users/runner/.bash_profile
+          brew doctor
       

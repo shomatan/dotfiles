@@ -26,5 +26,6 @@ jobs:
       - name: Test - Homebrew
         run: |
           echo 'export PATH="/usr/local/homebrew/bin:$PATH"' >> /Users/runner/.bash_profile
+          brew cleanup
           brew doctor
       

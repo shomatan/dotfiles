@@ -14,5 +14,5 @@ zinit self-update
 
 ### Apply Setting
 ```
-curl -sS https://raw.githubusercontent.com/shomatan/dotfiles/main/scripts/install.sh | bash
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
 ```

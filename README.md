@@ -1,4 +1,5 @@
 # dotfiles
+![macOS](https://github.com/shomatan/dotfiles/workflows/macOS/badge.svg?branch=main)
 
 ## Usage
 ### Install

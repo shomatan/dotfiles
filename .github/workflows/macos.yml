@@ -16,5 +16,5 @@ jobs:
         run: cat ~/.zshrc
 
       - name: Test - Homebrew
-        run: brew doctor
+        run: /opt/homebrew/bin/brew doctor
       

@@ -8,6 +8,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Cache Homebrew
+        uses: actions/cache@v2
+        with:
+          path: ~/Library/Caches/Homebrew
+          key: ${{ runner.os }}-homebrew-${{ hashFiles('**/.Brewfile.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-homebrew-
       
       - name: Install and setup
         run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan

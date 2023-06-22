@@ -23,7 +23,6 @@ jobs:
       - name: Test - .zshrc
         run: cat ~/.zshrc
 
-      # - name: Test - Homebrew
-      #   run: /opt/homebrew/bin/brew doctor
-      #   shell: /bin/zsh
+      - name: Test - Homebrew
+        run: /usr/local/homebrew/bin/brew doctor
       

@@ -15,11 +15,9 @@ jobs:
       - name: Test - .zshrc
         run: cat ~/.zshrc
 
-      # - name: Test - Homebrew
-      #   run: |
-      #     brew cleanup
-      #     brew doctor
-      #   shell: /bin/zsh {0}
+      - name: Test - Homebrew
+        run: brew cleanup && brew doctor
+        shell: /bin/zsh {0}
 
       - name: Test - chezmoi
         run: chezmoi doctor

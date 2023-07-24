@@ -42,6 +42,7 @@ nnoremap gd :<C-u>action GotoDeclaration<CR>
 nnoremap gr :<C-u>action FindUsages<CR>
 nnoremap gy :<C-u>action GotoTypeDeclaration<CR>
 nnoremap gi :<C-u>action GotoImplementation<CR>
+nnoremap go :<C-u>action Github.Open.In.Browser<CR>
 
 nnoremap K :<C-u>action QuickJavaDoc<CR>
 

@@ -106,6 +106,8 @@ fi
 # java
 . ~/.asdf/plugins/java/set-java-home.zsh
 
+# flutter
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # zinit
 # -----------------------------------------------------------------------------

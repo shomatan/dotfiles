@@ -109,6 +109,11 @@ fi
 # flutter
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
+# go
+if [[ -f "~/.asdf/plugins/golang/set-env.zsh" ]]; then
+    . ~/.asdf/plugins/golang/set-env.zsh
+fi
+
 # zinit
 # -----------------------------------------------------------------------------
 

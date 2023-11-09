@@ -110,9 +110,10 @@ fi
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # go
-if [[ -f "~/.asdf/plugins/golang/set-env.zsh" ]]; then
-    . ~/.asdf/plugins/golang/set-env.zsh
+if [[ -f "$HOME/.asdf/plugins/golang/set-env.zsh" ]]; then
+    . $HOME/.asdf/plugins/golang/set-env.zsh
 fi
+
 
 # zinit
 # -----------------------------------------------------------------------------

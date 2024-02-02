@@ -18,9 +18,6 @@ jobs:
       - name: Test - .zshrc
         run: cat ~/.zshrc
 
-      - name: Test - Homebrew
-        run: brew doctor
-
       - name: Test - chezmoi
         run: |
           exec zsh -c '

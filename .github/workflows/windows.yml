@@ -16,7 +16,4 @@ jobs:
         run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
 
       - name: Test - chezmoi
-        run: |
-          zsh -c '
-            chezmoi doctor && asdf info
-          '
+        run: chezmoi doctor && asdf info

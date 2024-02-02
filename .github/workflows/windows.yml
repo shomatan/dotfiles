@@ -17,6 +17,6 @@ jobs:
 
       - name: Test - chezmoi
         run: |
-          exec zsh -c '
+          zsh -c '
             chezmoi doctor && asdf info
           '

@@ -20,7 +20,9 @@ jobs:
           additional-packages: curl
 
       - name: Install and setup
-        run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
+        run: |
+          sudo update-ca-certificates
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
 
       - name: Test - .zshrc
         run: cat ~/.zshrc

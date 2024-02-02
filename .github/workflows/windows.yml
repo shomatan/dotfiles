@@ -21,8 +21,6 @@ jobs:
 
       - name: Setup wsl network
         run: |
-          echo "net.ipv6.conf.all.autoconf=0" | sudo tee -a /etc/sysctl.conf
-          sudo sysctl -p
           sudo rm /etc/resolv.conf
           sudo bash -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
           sudo bash -c 'echo "[network]" > /etc/wsl.conf'

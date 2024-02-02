@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v4
 
       - uses: Vampire/setup-wsl@v2
+        with:
+          additional-packages: curl
 
       - name: Install and setup
         run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan

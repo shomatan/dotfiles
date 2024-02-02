@@ -1,0 +1,25 @@
+name: Windows
+
+on: push
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install and setup
+        run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
+
+      - name: Test - .zshrc
+        run: cat ~/.zshrc
+
+      - name: Test - chezmoi
+        run: |
+          exec zsh -c '
+            chezmoi doctor && asdf info
+          '

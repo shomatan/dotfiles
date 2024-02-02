@@ -80,4 +80,3 @@ noremap 2 $
 
 " GUI options
 set guioptions+=a
-

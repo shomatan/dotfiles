@@ -12,5 +12,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - uses: Vampire/setup-wsl@v2
+
       - name: Install and setup
         run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
+        shell: wsl-bash_Ubuntu-20.04 {0}
+
+      - name: Test - .zshrc
+        run: cat ~/.zshrc
+        shell: wsl-bash_Ubuntu-20.04 {0}
+
+      - name: Test - chezmoi
+        run: |
+          exec zsh -c '
+            chezmoi doctor && asdf info
+          '
+        shell: wsl-bash_Ubuntu-20.04 {0}

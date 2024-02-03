@@ -5,3 +5,9 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew bundle --global
 {{ end }}
+
+# Install asdf
+{{ if eq .chezmoi.os "linux" }}
+apt install curl git
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+{{ end }}

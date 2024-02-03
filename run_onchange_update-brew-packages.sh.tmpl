@@ -1,5 +1,8 @@
 #!/bin/bash
 
 # Brewfile hash: {{ include "dot_Brewfile.tmpl" | sha256sum }}
+
+{{ if eq .chezmoi.os "darwin" }}
 brew bundle --global
 brew bundle --global cleanup --force
+{{ end }}

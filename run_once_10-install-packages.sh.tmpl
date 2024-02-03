@@ -8,6 +8,6 @@ brew bundle --global
 
 # Install asdf
 {{ if eq .chezmoi.os "linux" }}
-apt install curl git
+sudo apt install curl git
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 {{ end }}

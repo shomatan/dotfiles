@@ -101,7 +101,12 @@ fi
 # asdf
 # -----------------------------------------------------------------------------
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# もしdawinのとき
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    . /opt/homebrew/opt/asdf/libexec/asdf.sh
+else
+    . ~/.asdf/asdf.sh
+fi
 
 # java
 . ~/.asdf/plugins/java/set-java-home.zsh

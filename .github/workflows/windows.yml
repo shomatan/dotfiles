@@ -21,12 +21,13 @@ jobs:
 
       - name: Install chezmoi
         run: |
-          sh -cxe "$(wget -qO- get.chezmoi.io)"
-          ls -la ~/bin
+          wget -O chezmoi.tar.gz https://github.com/twpayne/chezmoi/releases/download/v2.46.1/chezmoi_2.46.1_linux_amd64.tar.gz
+          tar xzf chezmoi.tar.gz
+          ls -l ~/
 
       - name: Setup with chezmoi
         run: |
-          ~/bin/chezmoi -- init --apply shomatan
+          ~/chezmoi init --apply shomatan
 
       - name: Test - .zshrc
         run: cat ~/.zshrc

@@ -29,6 +29,5 @@ jobs:
 
       - name: Test - chezmoi
         run: |
-          exec zsh -c '
-            chezmoi doctor && asdf info
-          '
+          chezmoi doctor && asdf info
+        shell: wsl-zsh {0}

@@ -11,3 +11,9 @@ brew bundle --global
 sudo apt install -y curl git
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 {{ end }}
+
+# Install zsh
+{{ if eq .chezmoi.os "linux" }}
+sudo apt install -y zsh
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+{{ end }}

@@ -17,14 +17,11 @@ jobs:
 
       - uses: Vampire/setup-wsl@v3
         with:
-          additional-packages: wget ca-certificates openssl
+          additional-packages: curl ca-certificates openssl
 
       - name: Install and setup chezmoi
         run: |
-          wget -O chezmoi.tar.gz --no-check-certificate https://github.com/twpayne/chezmoi/releases/download/v2.46.1/chezmoi_2.46.1_linux_amd64.tar.gz
-          tar xzf chezmoi.tar.gz
-          ls -l
-          ./chezmoi init --apply shomatan
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
 
       - name: Test - .zshrc
         run: cat ~/.zshrc

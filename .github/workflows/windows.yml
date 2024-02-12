@@ -17,7 +17,7 @@ jobs:
 
       - uses: Vampire/setup-wsl@v3
         with:
-          additional-packages: curl
+          additional-packages: wget
 
       - name: Setup wsl network
         run: |
@@ -31,7 +31,7 @@ jobs:
 
       - name: Install and setup
         run: |
-          sh -c "$(curl -fsLSkv get.chezmoi.io)" -- init --apply shomatan
+          sh -c "$(wget -qO- get.chezmoi.io/getlb)" -- init --apply shomatan
 
       - name: Test - .zshrc
         run: cat ~/.zshrc

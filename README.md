@@ -1,6 +1,7 @@
 # dotfiles
 
 ![macOS](https://github.com/shomatan/dotfiles/workflows/macOS/badge.svg?branch=main)
+![Windows(WSL)](https://github.com/shomatan/dotfiles/workflows/Windows/badge.svg?branch=main)
 
 ## Usage
 

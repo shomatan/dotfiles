@@ -17,7 +17,7 @@ jobs:
 
       - uses: Vampire/setup-wsl@v3
         with:
-          additional-packages: wget
+          additional-packages: wget ca-certificates openssl
 
       - name: Install and setup chezmoi
         run: |

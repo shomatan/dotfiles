@@ -17,7 +17,7 @@ jobs:
 
       - uses: Vampire/setup-wsl@v3
         with:
-          additional-packages: curl ca-certificates openssl
+          additional-packages: curl ca-certificates openssl zsh
           use-cache: "false"
 
       - name: Install and setup chezmoi

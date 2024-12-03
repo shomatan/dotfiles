@@ -74,4 +74,6 @@
     },
     "editor.mouseWheelZoom": true, // マウスホイールズームを有効化
     "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
+    "workbench.activityBar.orientation": "vertical",
+    "files.autoSave": "afterDelay",
 }

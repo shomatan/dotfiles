@@ -17,20 +17,36 @@ jobs:
 
       - uses: Vampire/setup-wsl@v3
         with:
-          additional-packages: curl ca-certificates openssl zsh
+          additional-packages: curl ca-certificates openssl zsh git
           use-cache: "false"
 
-      - name: Install and setup chezmoi
+      - name: System setup
         run: |
-          sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
-          export PATH=$PATH:$HOME/bin
+          sudo apt-get update
+          sudo apt-get install -y zsh git
+
+      - name: Install chezmoi
+        run: |
+          curl -fsLS get.chezmoi.io | sudo tee /usr/local/bin/chezmoi >/dev/null
+          sudo chmod +x /usr/local/bin/chezmoi
+          which chezmoi
+
+      - name: Setup chezmoi
+        run: |
+          chezmoi init --apply shomatan
+
+      - name: Install asdf
+        run: |
+          git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+          echo '. "$HOME/.asdf/asdf.sh"' >> ~/.bashrc
           source ~/.bashrc
-  
-      - name: Test - .zshrc
-        run: cat ~/.zshrc
-  
-      - name: Test - chezmoi
+
+      - name: Verify installation
         run: |
-          export PATH=$PATH:$HOME/bin
-          chezmoi doctor && asdf info
-        shell: wsl-bash {0}
+          echo "Testing chezmoi..."
+          chezmoi --version
+          chezmoi doctor
+          
+          echo "Testing asdf..."
+          source ~/.asdf/asdf.sh
+          asdf --version

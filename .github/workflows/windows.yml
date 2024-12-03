@@ -35,12 +35,6 @@ jobs:
         run: |
           chezmoi init --apply shomatan
 
-      - name: Install asdf
-        run: |
-          git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-          echo '. "$HOME/.asdf/asdf.sh"' >> ~/.bashrc
-          source ~/.bashrc
-
       - name: Verify installation
         run: |
           echo "Testing chezmoi..."

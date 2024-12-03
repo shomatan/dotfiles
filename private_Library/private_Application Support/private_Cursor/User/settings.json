@@ -76,4 +76,5 @@
     "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
     "workbench.activityBar.orientation": "vertical",
     "files.autoSave": "afterDelay",
+    "workbench.tree.expandMode": "doubleClick"
 }

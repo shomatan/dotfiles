@@ -23,11 +23,14 @@ jobs:
       - name: Install and setup chezmoi
         run: |
           sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
-
+          export PATH=$PATH:$HOME/bin
+          source ~/.bashrc
+  
       - name: Test - .zshrc
         run: cat ~/.zshrc
-
+  
       - name: Test - chezmoi
         run: |
+          export PATH=$PATH:$HOME/bin
           chezmoi doctor && asdf info
         shell: wsl-bash {0}

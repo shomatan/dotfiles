@@ -12,4 +12,16 @@
         "key": "cmd+.",
         "command": "aichat.newchataction",
     },
+    {
+        "key": "cmd+e",
+        "command": "workbench.action.openRecent"
+    },
+    {
+        "key": "cmd+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.showAllEditors"
+    }
 ]

@@ -27,8 +27,7 @@ jobs:
 
       - name: Install chezmoi
         run: |
-          curl -fsLS get.chezmoi.io | sudo tee /usr/local/bin/chezmoi >/dev/null
-          sudo chmod +x /usr/local/bin/chezmoi
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
           which chezmoi
 
       - name: Setup chezmoi

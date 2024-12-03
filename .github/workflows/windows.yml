@@ -30,4 +30,4 @@ jobs:
       - name: Test - chezmoi
         run: |
           chezmoi doctor && asdf info
-        shell: wsl-zsh {0}
+        shell: wsl-bash {0}

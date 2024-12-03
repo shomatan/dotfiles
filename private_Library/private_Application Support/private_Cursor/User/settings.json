@@ -73,4 +73,5 @@
         "editor.hoverHighlightBackground": "#4A4A4A", // ホバー時のハイライト背景色
     },
     "editor.mouseWheelZoom": true, // マウスホイールズームを有効化
+    "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
 }

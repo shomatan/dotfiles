@@ -51,5 +51,26 @@
         "**/.trunk/*out/": true,
         "**/.trunk/*plugins/": true
     },
-    "window.newWindowProfile": "imported"
+    "window.newWindowProfile": "imported",
+    "workbench.colorCustomizations": {
+        "sideBar.background": "#2B2B2B", // サイドバーの背景色
+        "sideBar.foreground": "#FFFFFF", // テキスト色
+        "sideBarSectionHeader.background": "#3C3F41", // セクションヘッダーの背景色
+        "sideBarSectionHeader.foreground": "#FFC107", // セクションヘッダーのテキスト色
+        "activityBar.background": "#2B2B2B", // アクティビティバーの背景色
+        "activityBar.foreground": "#FFFFFF", // アクティビティバーのテキスト色
+        "activityBar.activeBorder": "#FFC107", // アクティビティバーのアクティブな境界線色
+        "editor.foreground": "#FFFFFF", // エディタのテキスト色
+        "editor.background": "#2B2B2B", // エディタの背景色
+        "editorCursor.foreground": "#FFC107", // カーソルの色
+        "editor.lineHighlightBackground": "#3C3F41", // 行ハイライトの背景色
+        "editor.selectionBackground": "#4A4A4A", // 選択時の背景色
+        "editor.selectionForeground": "#FFFFFF", // 選択時のテキスト色
+        "editor.wordHighlightBackground": "#3C3F41", // 語のハイライト背景色
+        "editor.wordHighlightBorder": "#FFC107", // 語のハイライト境界線の色
+        "editor.findMatchBackground": "#FFC107", // 検索一致の背景色
+        "editor.findMatchHighlightBackground": "#4A4A4A", // 検索の一致ハイライト背景色
+        "editor.hoverHighlightBackground": "#4A4A4A", // ホバー時のハイライト背景色
+    },
+    "editor.mouseWheelZoom": true, // マウスホイールズームを有効化
 }

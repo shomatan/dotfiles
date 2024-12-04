@@ -68,7 +68,7 @@
         "editor.selectionForeground": "#FFFFFF", // 選択時のテキスト色
         "editor.wordHighlightBackground": "#3C3F41", // 語のハイライト背景色
         "editor.wordHighlightBorder": "#4d594d", // 語のハイライト境界線の色
-        "editor.findMatchBackground": "#FFC107", // 検索一致の背景色
+        "editor.findMatchBackground": "#ddd0a8", // 検索一致の背景色
         "editor.findMatchHighlightBackground": "#4A4A4A", // 検索の一致ハイライト背景色
         "editor.hoverHighlightBackground": "#4A4A4A", // ホバー時のハイライト背景色
     },

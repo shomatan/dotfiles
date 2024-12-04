@@ -136,27 +136,38 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
+# Turboモードを活用してプラグインを高速ロード
+zinit wait lucid for \
+    atinit"zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+    atload"_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions \
+    blockf atpull'zinit creinstall -q .' \
+    zsh-users/zsh-completions
+
+# 即時ロードが必要なプラグインのみ通常ロード
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-### End of Zinit's installer chunk
-
-# plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-zinit light zdharma/history-search-multi-word
-
-zinit light zsh-users/zsh-history-substring-search
-bindkey '^[[A' history-substring-search-up;
-bindkey '^[[B' history-substring-search-down;
-
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# asdfの読み込みを最適化
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    zinit ice wait lucid
+    zinit snippet /opt/homebrew/opt/asdf/libexec/asdf.sh
+else
+    zinit ice wait lucid
+    zinit snippet ~/.asdf/asdf.sh
+fi
+
+# ファイルをコンパイル
+if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
+    zcompile ~/.zshrc
+fi
+if [ ! -f ~/.p10k.zsh.zwc -o ~/.p10k.zsh -nt ~/.p10k.zsh.zwc ]; then
+    zcompile ~/.p10k.zsh
+fi

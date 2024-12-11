@@ -150,14 +150,20 @@ zinit wait lucid for \
     atload"_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
     blockf atpull'zinit creinstall -q .' \
-    zsh-users/zsh-completions
+    zsh-users/zsh-completions \
+    zdharma/history-search-multi-word
 
 # 即時ロードが必要なプラグインのみ通常ロード
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
+    zdharma-continuum/zinit-annex-rust \
+    zsh-users/zsh-history-substring-search
+
+# キーバインディングの設定
+bindkey '^[[A' history-substring-search-up    # 上矢印キー
+bindkey '^[[B' history-substring-search-down  # 下矢印キー
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k

@@ -51,7 +51,6 @@
         "**/.trunk/*out/": true,
         "**/.trunk/*plugins/": true
     },
-    "window.newWindowProfile": "imported",
     "workbench.colorCustomizations": {
         "sideBar.background": "#2B2B2B", // サイドバーの背景色
         "sideBar.foreground": "#FFFFFF", // テキスト色

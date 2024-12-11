@@ -8,3 +8,7 @@
 ### Install
 
     sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
+
+### Update
+
+    cd ~/.local/share/chezmoi && git pull && chezmoi apply -v

@@ -13,7 +13,7 @@
         "**/.trunk/*plugins/": true
     },
     "java.import.gradle.java.home": "/Users/shoma/.asdf/installs/java/zulu-11.54.23",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": -0.5,
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "terminal.integrated.fontWeight": "normal",
     "editor.inlineSuggest.enabled": true,
@@ -76,5 +76,6 @@
     "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
     "workbench.activityBar.orientation": "vertical",
     "files.autoSave": "afterDelay",
-    "workbench.tree.expandMode": "doubleClick"
+    "workbench.tree.expandMode": "doubleClick",
+    "editor.fontSize": 16
 }

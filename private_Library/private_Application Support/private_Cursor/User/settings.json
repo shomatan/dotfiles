@@ -76,5 +76,10 @@
     "files.autoSave": "afterDelay",
     "workbench.tree.expandMode": "doubleClick",
     "editor.fontSize": 17,
-    "window.zoomLevel": -0.1
+    "window.zoomLevel": -0.1,
+    "git.openRepositoryInParentFolders": "never",
+    "editor.formatOnSave": true,
+    "makefile.configureOnOpen": false,
+    "cursor.composer.shouldAutoScrollToBottom": false,
+    "cursor.general.gitGraphIndexing": "enabled"
 }

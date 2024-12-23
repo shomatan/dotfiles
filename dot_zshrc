@@ -91,6 +91,9 @@ alias -g G='| grep'
 # editor
 alias vi=nvim
 
+# JavaScript
+alias pp=pnpm
+
 
 # key bind
 # -----------------------------------------------------------------------------

@@ -25,21 +25,11 @@
     "explorer.confirmDragAndDrop": false,
     "files.autoSave": "afterDelay",
     "files.exclude": {
-        "**/.trunk/*actions/": true,
-        "**/.trunk/*logs/": true,
-        "**/.trunk/*notifications/": true,
-        "**/.trunk/*out/": true,
-        "**/.trunk/*plugins/": true
     },
     "files.watcherExclude": {
         "**/.ammonite": true,
         "**/.bloop": true,
         "**/.metals": true,
-        "**/.trunk/*actions/": true,
-        "**/.trunk/*logs/": true,
-        "**/.trunk/*notifications/": true,
-        "**/.trunk/*out/": true,
-        "**/.trunk/*plugins/": true
     },
     "git.openRepositoryInParentFolders": "never",
     "github.copilot.enable": {

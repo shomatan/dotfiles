@@ -1,32 +1,4 @@
 {
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "omnisharp.useModernNet": false,
-    "files.watcherExclude": {
-        "**/.bloop": true,
-        "**/.metals": true,
-        "**/.ammonite": true,
-        "**/.trunk/*actions/": true,
-        "**/.trunk/*logs/": true,
-        "**/.trunk/*notifications/": true,
-        "**/.trunk/*out/": true,
-        "**/.trunk/*plugins/": true
-    },
-    "java.import.gradle.java.home": "/Users/shoma/.asdf/installs/java/zulu-11.54.23",
-    "terminal.integrated.fontFamily": "MesloLGS NF",
-    "terminal.integrated.fontWeight": "normal",
-    "editor.inlineSuggest.enabled": true,
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": true,
-        "markdown": false,
-        "scminput": false
-    },
-    "redhat.telemetry.enabled": false,
-    "vim.vimrc.enable": true,
-    "workbench.settings.applyToAllProfiles": [
-        "vim.vimrc.enable"
-    ],
     "[dart]": {
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
@@ -38,11 +10,20 @@
         "editor.tabCompletion": "onlySnippets",
         "editor.wordBasedSuggestions": "off"
     },
-    "dart.openDevTools": "flutter",
+    "cursor.composer.shouldAutoScrollToBottom": false,
     "cursor.cpp.disabledLanguages": [
         "markdown",
         "scminput"
     ],
+    "cursor.general.gitGraphIndexing": "enabled",
+    "dart.openDevTools": "flutter",
+    "editor.fontSize": 17,
+    "editor.formatOnSave": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.mouseWheelZoom": true, // マウスホイールズームを有効化
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "afterDelay",
     "files.exclude": {
         "**/.trunk/*actions/": true,
         "**/.trunk/*logs/": true,
@@ -50,36 +31,55 @@
         "**/.trunk/*out/": true,
         "**/.trunk/*plugins/": true
     },
+    "files.watcherExclude": {
+        "**/.ammonite": true,
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.trunk/*actions/": true,
+        "**/.trunk/*logs/": true,
+        "**/.trunk/*notifications/": true,
+        "**/.trunk/*out/": true,
+        "**/.trunk/*plugins/": true
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": false,
+        "plaintext": true,
+        "scminput": false
+    },
+    "java.import.gradle.java.home": "/Users/shoma/.asdf/installs/java/zulu-11.54.23",
+    "makefile.configureOnOpen": false,
+    "omnisharp.useModernNet": false,
+    "redhat.telemetry.enabled": false,
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.fontWeight": "normal",
+    "vim.vimrc.enable": true,
+    "window.zoomLevel": -0.1,
+    "workbench.activityBar.orientation": "vertical",
     "workbench.colorCustomizations": {
-        "sideBar.background": "#2B2B2B", // サイドバーの背景色
-        "sideBar.foreground": "#FFFFFF", // テキスト色
-        "sideBarSectionHeader.background": "#3C3F41", // セクションヘッダーの背景色
-        "sideBarSectionHeader.foreground": "#FFC107", // セクションヘッダーのテキスト色
+        "activityBar.activeBorder": "#FFC107", // アクティビティバーのアクティブな境界線色
         "activityBar.background": "#2B2B2B", // アクティビティバーの背景色
         "activityBar.foreground": "#FFFFFF", // アクティビティバーのテキスト色
-        "activityBar.activeBorder": "#FFC107", // アクティビティバーのアクティブな境界線色
-        "editor.foreground": "#FFFFFF", // エディタのテキスト色
         "editor.background": "#2B2B2B", // エディタの背景色
-        "editorCursor.foreground": "#FFC107", // カーソルの色
+        "editor.findMatchBackground": "#ddd0a8", // 検索一致の背景色
+        "editor.findMatchHighlightBackground": "#4A4A4A", // 検索の一致ハイライト背景色
+        "editor.foreground": "#FFFFFF", // エディタのテキスト色
+        "editor.hoverHighlightBackground": "#4A4A4A", // ホバー時のハイライト背景色
         "editor.lineHighlightBackground": "#3C3F41", // 行ハイライトの背景色
         "editor.selectionBackground": "#4A4A4A", // 選択時の背景色
         "editor.selectionForeground": "#FFFFFF", // 選択時のテキスト色
         "editor.wordHighlightBackground": "#3C3F41", // 語のハイライト背景色
         "editor.wordHighlightBorder": "#4d594d", // 語のハイライト境界線の色
-        "editor.findMatchBackground": "#ddd0a8", // 検索一致の背景色
-        "editor.findMatchHighlightBackground": "#4A4A4A", // 検索の一致ハイライト背景色
-        "editor.hoverHighlightBackground": "#4A4A4A", // ホバー時のハイライト背景色
+        "editorCursor.foreground": "#FFC107", // カーソルの色
+        "sideBar.background": "#2B2B2B", // サイドバーの背景色
+        "sideBar.foreground": "#FFFFFF", // テキスト色
+        "sideBarSectionHeader.background": "#3C3F41", // セクションヘッダーの背景色
+        "sideBarSectionHeader.foreground": "#FFC107" // セクションヘッダーのテキスト色
     },
-    "editor.mouseWheelZoom": true, // マウスホイールズームを有効化
     "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
-    "workbench.activityBar.orientation": "vertical",
-    "files.autoSave": "afterDelay",
-    "workbench.tree.expandMode": "doubleClick",
-    "editor.fontSize": 17,
-    "window.zoomLevel": -0.1,
-    "git.openRepositoryInParentFolders": "never",
-    "editor.formatOnSave": true,
-    "makefile.configureOnOpen": false,
-    "cursor.composer.shouldAutoScrollToBottom": false,
-    "cursor.general.gitGraphIndexing": "enabled"
+    "workbench.settings.applyToAllProfiles": [
+        "vim.vimrc.enable"
+    ],
+    "workbench.tree.expandMode": "doubleClick"
 }

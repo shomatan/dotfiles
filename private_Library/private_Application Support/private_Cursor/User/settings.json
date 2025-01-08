@@ -24,8 +24,7 @@
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "files.autoSave": "afterDelay",
-    "files.exclude": {
-    },
+    "files.exclude": {},
     "files.watcherExclude": {
         "**/.ammonite": true,
         "**/.bloop": true,
@@ -71,5 +70,13 @@
     "workbench.settings.applyToAllProfiles": [
         "vim.vimrc.enable"
     ],
-    "workbench.tree.expandMode": "doubleClick"
+    "workbench.tree.expandMode": "doubleClick",
+    "roo-cline.allowedCommands": [
+        "npm test",
+        "npm install",
+        "tsc",
+        "git log",
+        "git diff",
+        "git show"
+    ]
 }

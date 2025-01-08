@@ -52,14 +52,14 @@
         "activityBar.background": "#2B2B2B", // アクティビティバーの背景色
         "activityBar.foreground": "#FFFFFF", // アクティビティバーのテキスト色
         "editor.background": "#2B2B2B", // エディタの背景色
-        "editor.findMatchBackground": "#ddd0a8", // 検索一致の背景色
-        "editor.findMatchHighlightBackground": "#4A4A4A", // 検索の一致ハイライト背景色
+        "editor.findMatchBackground": "#ddd0a820", // 検索一致の背景色（より透明に）
+        "editor.findMatchHighlightBackground": "#4A4A4A40", // 検索の一致ハイライト背景色（より透明に）
         "editor.foreground": "#FFFFFF", // エディタのテキスト色
-        "editor.hoverHighlightBackground": "#4A4A4A", // ホバー時のハイライト背景色
-        "editor.lineHighlightBackground": "#3C3F41", // 行ハイライトの背景色
-        "editor.selectionBackground": "#4A4A4A", // 選択時の背景色
+        "editor.hoverHighlightBackground": "#4A4A4A40", // ホバー時のハイライト背景色（25%不透明度）
+        "editor.lineHighlightBackground": "#3C3F4140", // 行ハイライトの背景色（25%不透明度）
+        "editor.selectionBackground": "#4A4A4A40", // 選択時の背景色（25%不透明度）
         "editor.selectionForeground": "#FFFFFF", // 選択時のテキスト色
-        "editor.wordHighlightBackground": "#3C3F41", // 語のハイライト背景色
+        "editor.wordHighlightBackground": "#3C3F4140", // 語のハイライト背景色（25%不透明度）
         "editor.wordHighlightBorder": "#4d594d", // 語のハイライト境界線の色
         "editorCursor.foreground": "#FFC107", // カーソルの色
         "sideBar.background": "#2B2B2B", // サイドバーの背景色

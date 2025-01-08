@@ -78,5 +78,9 @@ set noswapfile
 noremap 1 0
 noremap 2 $
 
+"" Error navigation
+nnoremap dn :cnext<CR>
+nnoremap dp :cprevious<CR>
+
 " GUI options
 set guioptions+=a

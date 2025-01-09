@@ -56,7 +56,7 @@
         "editor.foreground": "#FFFFFF", // エディタのテキスト色
         "editor.hoverHighlightBackground": "#4A4A4A40", // ホバー時のハイライト背景色（25%不透明度）
         "editor.lineHighlightBackground": "#3C3F4140", // 行ハイライトの背景色（25%不透明度）
-        "editor.selectionBackground": "#4A4A4A40", // 選択時の背景色（25%不透明度）
+        "editor.selectionBackground": "#4A4A4A70", // 選択時の背景色（70%不透明度）
         "editor.selectionForeground": "#FFFFFF", // 選択時のテキスト色
         "editor.wordHighlightBackground": "#3C3F4140", // 語のハイライト背景色（25%不透明度）
         "editor.wordHighlightBorder": "#4d594d", // 語のハイライト境界線の色
@@ -64,7 +64,9 @@
         "sideBar.background": "#2B2B2B", // サイドバーの背景色
         "sideBar.foreground": "#FFFFFF", // テキスト色
         "sideBarSectionHeader.background": "#3C3F41", // セクションヘッダーの背景色
-        "sideBarSectionHeader.foreground": "#FFC107" // セクションヘッダーのテキスト色
+        "sideBarSectionHeader.foreground": "#FFC107", // セクションヘッダーのテキスト色
+        "editor.selectionHighlightBackground": "#4A4A4A60", // 関連する選択のハイライト（60%不透明度）
+        "editor.selectionHighlightBorder": "#6A6A6A" // 選択領域の境界線
     },
     "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
     "workbench.settings.applyToAllProfiles": [
@@ -78,5 +80,6 @@
         "git log",
         "git diff",
         "git show"
-    ]
+    ],
+    "editor.accessibilitySupport": "off"
 }

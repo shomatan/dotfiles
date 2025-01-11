@@ -74,12 +74,12 @@
     ],
     "workbench.tree.expandMode": "doubleClick",
     "roo-cline.allowedCommands": [
-        "npm test",
-        "npm install",
         "tsc",
-        "git log",
-        "git diff",
-        "git show"
+        "gh",
+        "git",
+        "pnpm",
+        "npm",
+        "asdf"
     ],
     "editor.accessibilitySupport": "off"
 }

@@ -5,8 +5,6 @@ brew "jq"
 brew "neovim"
 brew "chezmoi"
 
-{{- if ne (env "CI") "true" }}
-tap "homebrew/cask-fonts"
 tap "virtuslab/scala-cli"
 
 brew "sbt"
@@ -21,4 +19,3 @@ cask "istat-menus"
 cask "raycast"
 cask "slack"
 cask "cursor"
-{{- end }}

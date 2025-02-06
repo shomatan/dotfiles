@@ -167,13 +167,7 @@ zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
 # asdfの読み込みを最適化
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    zinit ice wait lucid
-    zinit snippet /opt/homebrew/opt/asdf/libexec/asdf.sh
-else
-    zinit ice wait lucid
-    zinit snippet ~/.asdf/asdf.sh
-fi
+zinit ice wait lucid
 
 # ファイルをコンパイル
 if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then

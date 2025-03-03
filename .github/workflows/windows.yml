@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: Vampire/setup-wsl@v4
+      - uses: Vampire/setup-wsl@v5
         with:
           additional-packages: curl ca-certificates openssl zsh git
           use-cache: "false"

@@ -3,13 +3,15 @@
 # Install Homebrew
 {{ if eq .chezmoi.os "darwin" }}
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew bundle --global
 {{ end }}
 
 # Install asdf
 {{ if eq .chezmoi.os "linux" }}
 sudo apt install -y curl git
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+{{ end }}
+{{ if eq .chezmoi.os "darwin" }}
+# brew install asdf
 {{ end }}
 
 # Install zsh

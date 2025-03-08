@@ -68,7 +68,6 @@
         "editor.selectionHighlightBackground": "#4A4A4A60", // 関連する選択のハイライト（60%不透明度）
         "editor.selectionHighlightBorder": "#6A6A6A" // 選択領域の境界線
     },
-    "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
     "workbench.settings.applyToAllProfiles": [
         "vim.vimrc.enable"
     ],
@@ -81,5 +80,6 @@
         "npm",
         "asdf"
     ],
-    "editor.accessibilitySupport": "off"
+    "editor.accessibilitySupport": "off",
+    "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme"
 }

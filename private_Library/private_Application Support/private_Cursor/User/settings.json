@@ -10,6 +10,9 @@
         "editor.tabCompletion": "onlySnippets",
         "editor.wordBasedSuggestions": "off"
     },
+    "[javascript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
     "cursor.composer.shouldAutoScrollToBottom": false,
     "cursor.cpp.disabledLanguages": [
         "markdown",
@@ -21,6 +24,10 @@
     "editor.formatOnSave": true,
     "editor.inlineSuggest.enabled": true,
     "editor.mouseWheelZoom": true, // マウスホイールズームを有効化
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
+    },
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "files.autoSave": "afterDelay",

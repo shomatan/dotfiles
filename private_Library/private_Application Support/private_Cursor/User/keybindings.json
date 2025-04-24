@@ -23,5 +23,9 @@
     {
         "key": "cmd+j",
         "command": "workbench.action.showAllEditors"
+    },
+    {
+        "key": "cmd+i",
+        "command": "composerMode.agent"
     }
 ]

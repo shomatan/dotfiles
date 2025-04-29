@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Check if we're on macOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "Running brew upgrade..."
+    brew upgrade
+fi 

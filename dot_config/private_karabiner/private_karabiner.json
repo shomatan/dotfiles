@@ -43,6 +43,7 @@
                     {
                         "available_since": "12.3.0",
                         "description": "Change button5 + mouse motion to scroll wheel (rev 1)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

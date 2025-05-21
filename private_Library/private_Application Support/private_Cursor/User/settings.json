@@ -88,5 +88,6 @@
         "asdf"
     ],
     "editor.accessibilitySupport": "off",
-    "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme"
+    "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }

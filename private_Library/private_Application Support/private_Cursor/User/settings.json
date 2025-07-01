@@ -89,5 +89,8 @@
     ],
     "editor.accessibilitySupport": "off",
     "workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
-    "typescript.updateImportsOnFileMove.enabled": "always"
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    }
 }

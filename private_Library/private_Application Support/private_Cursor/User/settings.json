@@ -92,5 +92,6 @@
     "typescript.updateImportsOnFileMove.enabled": "always",
     "accessibility.signals.terminalBell": {
         "sound": "on"
-    }
+    },
+    "terminal.integrated.bellDuration": 500
 }

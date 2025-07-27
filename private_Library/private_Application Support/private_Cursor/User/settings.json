@@ -48,7 +48,6 @@
     "makefile.configureOnOpen": false,
     "omnisharp.useModernNet": false,
     "redhat.telemetry.enabled": false,
-    "terminal.integrated.fontFamily": "MesloLGS NF",
     "terminal.integrated.fontWeight": "normal",
     "vim.vimrc.enable": true,
     "window.zoomLevel": -0.1,

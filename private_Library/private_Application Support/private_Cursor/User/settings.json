@@ -93,5 +93,6 @@
     "accessibility.signals.terminalBell": {
         "sound": "on"
     },
-    "terminal.integrated.bellDuration": 500
+    "terminal.integrated.bellDuration": 500,
+    "remote.autoForwardPortsSource": "hybrid"
 }

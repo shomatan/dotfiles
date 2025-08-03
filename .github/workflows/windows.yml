@@ -40,6 +40,5 @@ jobs:
           chezmoi --version
           chezmoi doctor
           
-          echo "Testing asdf..."
-          source ~/.asdf/asdf.sh
-          asdf --version
+          echo "Testing mise..."
+          ~/.local/bin/mise --version

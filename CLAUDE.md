@@ -53,7 +53,7 @@ chezmoi diff
    - `private_Library/private_Application Support/private_Cursor/User/`: Cursorエディタ設定
 
 3. **自動化スクリプト**
-   - `run_once_5-install-packages.sh.tmpl`: 初期パッケージインストール（Homebrew、asdf、zsh）
+   - `run_once_5-install-packages.sh.tmpl`: 初期パッケージインストール（Homebrew、mise、zsh）
    - `run_after_10-brew-upgrade.sh.tmpl`: macOSでの自動brew upgrade
 
 4. **Claude Code連携**

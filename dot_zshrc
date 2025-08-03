@@ -113,9 +113,6 @@ fi
 
 eval "$(mise activate zsh)"
 
-# flutter
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-
 
 # zinit
 # -----------------------------------------------------------------------------

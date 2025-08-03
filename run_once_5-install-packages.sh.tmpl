@@ -5,13 +5,13 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 {{ end }}
 
-# Install asdf
+# Install mise
 {{ if eq .chezmoi.os "linux" }}
 sudo apt install -y curl git
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+curl https://mise.run | sh
 {{ end }}
 {{ if eq .chezmoi.os "darwin" }}
-# brew install asdf
+brew install mise
 {{ end }}
 
 # Install zsh

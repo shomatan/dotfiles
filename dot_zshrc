@@ -108,21 +108,13 @@ if [[ -f "/opt/homebrew/bin/brew" ]]; then
 fi
 
 
-# asdf
+# mise
 # -----------------------------------------------------------------------------
 
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-
-# java
-. ~/.asdf/plugins/java/set-java-home.zsh
+eval "$(mise activate zsh)"
 
 # flutter
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-# go
-if [[ -f "$HOME/.asdf/plugins/golang/set-env.zsh" ]]; then
-    . $HOME/.asdf/plugins/golang/set-env.zsh
-fi
 
 
 # zinit
@@ -166,8 +158,6 @@ bindkey '^[[B' history-substring-search-down  # 下矢印キー
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
-# asdfの読み込みを最適化
-zinit ice wait lucid
 
 # ファイルをコンパイル
 if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then

@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install and setup
         run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan

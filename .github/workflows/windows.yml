@@ -15,30 +15,38 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - uses: Vampire/setup-wsl@v6
+      - name: Setup WSL
+        uses: Vampire/setup-wsl@v3
         with:
-          additional-packages: curl ca-certificates openssl zsh git
-          use-cache: "false"
+          distribution: Ubuntu-22.04
+          additional-packages:
+            curl
+            ca-certificates
+            git
+            zsh
 
       - name: System setup
         run: |
           sudo apt-get update
-          sudo apt-get install -y zsh git
+          sudo apt-get install -y curl git zsh
 
       - name: Install chezmoi
         run: |
-          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
+          export PATH="$HOME/.local/bin:$PATH"
           which chezmoi
 
       - name: Setup chezmoi
         run: |
+          export PATH="$HOME/.local/bin:$PATH"
           chezmoi init --apply shomatan
 
       - name: Verify installation
         run: |
+          export PATH="$HOME/.local/bin:$PATH"
           echo "Testing chezmoi..."
           chezmoi --version
           chezmoi doctor
-          
+
           echo "Testing mise..."
-          ~/.local/bin/mise --version
+          mise --version

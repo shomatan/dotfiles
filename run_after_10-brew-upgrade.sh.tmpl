@@ -2,6 +2,22 @@
 
 # Check if we're on macOS
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "Running brew upgrade..."
-    brew upgrade
+    # Ensure Homebrew is in PATH
+    if ! command -v brew &> /dev/null; then
+        if [ -f /opt/homebrew/bin/brew ]; then
+            # Apple Silicon Mac
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        elif [ -f /usr/local/bin/brew ]; then
+            # Intel Mac
+            eval "$(/usr/local/bin/brew shellenv)"
+        fi
+    fi
+
+    # Run brew upgrade if brew is available
+    if command -v brew &> /dev/null; then
+        echo "Running brew upgrade..."
+        brew upgrade
+    else
+        echo "Warning: Homebrew is not installed or not found"
+    fi
 fi 

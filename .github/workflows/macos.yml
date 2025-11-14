@@ -12,14 +12,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Install and setup
-        run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shomatan
+      - name: Install chezmoi
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Setup chezmoi
+        run: chezmoi init --apply shomatan
 
       - name: Test - .zshrc
         run: cat ~/.zshrc
 
-      - name: Test - chezmoi
+      - name: Test - chezmoi and mise
         run: |
-          exec zsh -c '
-            chezmoi doctor && mise doctor
-          '
+          export PATH="$HOME/.local/bin:$PATH"
+          zsh -c 'source ~/.zshrc && chezmoi doctor && mise doctor'

@@ -2,7 +2,23 @@
 
 # Install Homebrew
 {{ if eq .chezmoi.os "darwin" }}
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! command -v brew &> /dev/null; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # Add Homebrew to PATH immediately after installation
+    if [ -f /opt/homebrew/bin/brew ]; then
+        # Apple Silicon Mac
+        echo "Adding Homebrew (Apple Silicon) to PATH..."
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    elif [ -f /usr/local/bin/brew ]; then
+        # Intel Mac
+        echo "Adding Homebrew (Intel) to PATH..."
+        eval "$(/usr/local/bin/brew shellenv)"
+    fi
+else
+    echo "Homebrew is already installed"
+fi
 {{ end }}
 
 # Install mise
@@ -11,7 +27,12 @@ sudo apt install -y curl git
 curl https://mise.run | sh
 {{ end }}
 {{ if eq .chezmoi.os "darwin" }}
-brew install mise
+if ! command -v mise &> /dev/null; then
+    echo "Installing mise via Homebrew..."
+    brew install mise
+else
+    echo "mise is already installed"
+fi
 {{ end }}
 
 # Install zsh

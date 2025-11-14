@@ -20,6 +20,4 @@ jobs:
 
       - name: Test - chezmoi
         run: |
-          exec zsh -c '
-            chezmoi doctor && mise doctor
-          '
+          zsh -c 'source ~/.zshrc && chezmoi doctor && mise doctor'

@@ -93,5 +93,6 @@
         "sound": "on"
     },
     "terminal.integrated.bellDuration": 500,
-    "remote.autoForwardPortsSource": "hybrid"
+    "remote.autoForwardPortsSource": "hybrid",
+    "claudeCode.preferredLocation": "panel"
 }

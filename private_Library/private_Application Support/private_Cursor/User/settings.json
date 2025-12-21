@@ -94,5 +94,6 @@
     },
     "terminal.integrated.bellDuration": 500,
     "remote.autoForwardPortsSource": "hybrid",
-    "claudeCode.preferredLocation": "panel"
+    "claudeCode.preferredLocation": "panel",
+    "coderabbit.agentType": "Claude Code"
 }

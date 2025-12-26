@@ -95,5 +95,7 @@
     "terminal.integrated.bellDuration": 500,
     "remote.autoForwardPortsSource": "hybrid",
     "claudeCode.preferredLocation": "panel",
-    "coderabbit.agentType": "Claude Code"
+    "coderabbit.agentType": "Claude Code",
+    "terminal.explorerKind": "external",
+    "terminal.external.osxExec": "Ghostty.app"
 }

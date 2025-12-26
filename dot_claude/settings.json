@@ -23,7 +23,7 @@
       }
     ]
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
   "enabledPlugins": {
     "Notion@claude-plugins-official": true
   }

@@ -1,0 +1,10 @@
+# This is the configuration file for Ghostty.
+
+# 背景の透過度（0.0 〜 1.0）
+background-opacity = 0.85
+
+# 背景のぼかし（macOS のみ）
+background-blur-radius = 20
+
+# 非アクティブなスプリットの透過度
+unfocused-split-opacity = 0.7

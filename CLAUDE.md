@@ -48,7 +48,7 @@ chezmoi diff
    - `dot_p10k.zsh`: Powerlevel10kテーマ設定
 
 2. **エディタ設定**
-   - `dot_config/nvim/init.vim`: Neovim設定
+   - `dot_config/nvim/`: LazyVimベースのNeovim設定（`init.lua`）
    - `dot_ideavimrc`: JetBrains IDE用のIdeaVim設定
    - `private_Library/private_Application Support/private_Cursor/User/`: Cursorエディタ設定
 

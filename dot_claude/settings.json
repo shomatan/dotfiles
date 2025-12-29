@@ -25,6 +25,7 @@
   },
   "alwaysThinkingEnabled": true,
   "enabledPlugins": {
-    "Notion@claude-plugins-official": true
+    "Notion@claude-plugins-official": true,
+    "example-skills@anthropic-agent-skills": true
   }
 }

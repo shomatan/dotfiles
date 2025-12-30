@@ -91,6 +91,9 @@ alias -g G='| grep'
 # editor
 alias vi=nvim
 
+# Claude
+alias ccd='claude --dangerously-skip-permissions'
+
 # JavaScript
 alias pp=pnpm
 

@@ -1,8 +1,9 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
-return {
-  keys = {
+local M = {}
+
+M.keys = {
     -- ============================================
     -- リーダーキー (Ctrl+a) を使ったtmux風バインド
     -- ============================================
@@ -103,8 +104,30 @@ return {
 
     { key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },             -- 1ページ上へ
     { key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },            -- 1ページ下へ
-  },
 
+    -- ============================================
+    -- ペイン操作（Ctrl+Shift）
+    -- ============================================
+
+    -- ペイン分割
+    { key = '-', mods = 'CTRL|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+    { key = '|', mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+
+    -- ペイン移動
+    { key = 'h', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Left' },
+    { key = 'j', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Down' },
+    { key = 'k', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Up' },
+    { key = 'l', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Right' },
+
+    -- ペイン操作
+    { key = 'z', mods = 'CTRL|SHIFT', action = act.TogglePaneZoomState },
+
+    -- タブ操作（Ctrl+Shift）
+    { key = 'n', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(1) },
+    { key = 'p', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
+  }
+
+M.key_tables = {
   -- ============================================
   -- コピーモード（Vim風）
   -- ============================================
@@ -187,3 +210,5 @@ return {
     { key = 'DownArrow', mods = 'NONE', action = act.CopyMode 'NextMatch' },       -- 次の一致へ
   },
 }
+
+return M

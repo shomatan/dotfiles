@@ -125,6 +125,11 @@ M.keys = {
     -- タブ操作（Ctrl+Shift）
     { key = 'n', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(1) },
     { key = 'p', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
+
+    -- ============================================
+    -- Git Worktree 操作
+    -- ============================================
+    { key = 'g', mods = 'CTRL|SHIFT', action = act.ActivateKeyTable { name = 'git_mode', one_shot = true } },
   }
 
 M.key_tables = {
@@ -208,6 +213,16 @@ M.key_tables = {
     { key = 'PageDown', mods = 'NONE', action = act.CopyMode 'NextMatchPage' },    -- 次のページの一致へ
     { key = 'UpArrow', mods = 'NONE', action = act.CopyMode 'PriorMatch' },        -- 前の一致へ
     { key = 'DownArrow', mods = 'NONE', action = act.CopyMode 'NextMatch' },       -- 次の一致へ
+  },
+
+  -- ============================================
+  -- Git Worktree モード
+  -- ============================================
+  git_mode = {
+    { key = 'w', mods = 'NONE', action = act.EmitEvent 'select-worktree' },  -- Worktree選択
+    { key = 'a', mods = 'NONE', action = act.EmitEvent 'create-worktree' },  -- Worktree作成
+    { key = 'd', mods = 'NONE', action = act.EmitEvent 'remove-worktree' },  -- Worktree削除
+    { key = 'Escape', mods = 'NONE', action = 'PopKeyTable' },               -- キャンセル
   },
 }
 

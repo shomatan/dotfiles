@@ -7,6 +7,9 @@ return {
       cli = {
         name = "claude",
         mux = { enabled = false }, -- tmux/zellij 不要
+        tools = {
+          claude = { cmd = { "claude", "--dangerously-skip-permissions" } },
+        },
       },
     },
     keys = {

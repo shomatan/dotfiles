@@ -232,7 +232,7 @@
 		<key>scrollKillSwitch</key>
 		<false/>
 		<key>showMenuBarItem</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>License</key>
 	<dict>

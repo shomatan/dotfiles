@@ -3,3 +3,31 @@
 -- Add any additional options here
 local opt = vim.opt
 opt.spelllang = { "en", "cjk" }
+
+-- 背景透過設定
+local function set_transparent()
+  local groups = {
+    "Normal",
+    "NormalNC",
+    "NormalFloat",
+    "FloatBorder",
+    "SignColumn",
+    "EndOfBuffer",
+    "MsgArea",
+    "TelescopeNormal",
+    "TelescopeBorder",
+    "NeoTreeNormal",
+    "NeoTreeNormalNC",
+  }
+  for _, group in ipairs(groups) do
+    vim.api.nvim_set_hl(0, group, { bg = "NONE", ctermbg = "NONE" })
+  end
+end
+
+vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+  pattern = "*",
+  callback = set_transparent,
+})
+
+-- 遅延後にも適用（プラグインが上書きする場合の対策）
+vim.defer_fn(set_transparent, 100)

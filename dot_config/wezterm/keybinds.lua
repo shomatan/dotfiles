@@ -129,7 +129,9 @@ M.keys = {
     -- ============================================
     -- Git Worktree 操作
     -- ============================================
-    { key = 'g', mods = 'CTRL|SHIFT', action = act.ActivateKeyTable { name = 'git_mode', one_shot = true } },
+    { key = 'w', mods = 'CTRL|SHIFT', action = act.EmitEvent 'select-worktree' },  -- Worktree選択
+    { key = 'c', mods = 'CTRL|SHIFT', action = act.EmitEvent 'create-worktree' },  -- Worktree作成
+    { key = 'd', mods = 'CTRL|SHIFT', action = act.EmitEvent 'remove-worktree' },  -- Worktree削除
   }
 
 M.key_tables = {
@@ -215,15 +217,6 @@ M.key_tables = {
     { key = 'DownArrow', mods = 'NONE', action = act.CopyMode 'NextMatch' },       -- 次の一致へ
   },
 
-  -- ============================================
-  -- Git Worktree モード
-  -- ============================================
-  git_mode = {
-    { key = 'w', mods = 'NONE', action = act.EmitEvent 'select-worktree' },  -- Worktree選択
-    { key = 'a', mods = 'NONE', action = act.EmitEvent 'create-worktree' },  -- Worktree作成
-    { key = 'd', mods = 'NONE', action = act.EmitEvent 'remove-worktree' },  -- Worktree削除
-    { key = 'Escape', mods = 'NONE', action = 'PopKeyTable' },               -- キャンセル
-  },
 }
 
 return M

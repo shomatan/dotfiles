@@ -35,9 +35,9 @@
 | その他 | `Leader` → `]` | ペースト |
 | その他 | `Leader` → `r` | 設定再読み込み |
 | その他 | `Leader` → `:` | コマンドパレット |
-| Git | `Ctrl+Shift+g` → `w` | Worktree選択 → 新タブで開く |
-| Git | `Ctrl+Shift+g` → `a` | Worktree作成 |
-| Git | `Ctrl+Shift+g` → `d` | Worktree削除 |
+| Git | `Ctrl+Shift+w` | Worktree選択 → 新タブで開く |
+| Git | `Ctrl+Shift+c` | Worktree作成 |
+| Git | `Ctrl+Shift+d` | Worktree削除 |
 | ショートカット | `Ctrl+Shift+-` | 縦分割 |
 | ショートカット | `Ctrl+Shift+\|` | 横分割 |
 | ショートカット | `Ctrl+Shift+h/j/k/l` | ペイン移動 |
@@ -58,7 +58,7 @@ LazyVim ベース
 | 検索 | `Space s w` | カーソル下の単語を検索 |
 | 検索 | `Space /` | バッファ内検索 |
 | 検索 | `Space :` | コマンド履歴 |
-| バッファ | `S-h` / `S-l` | 前/次のバッファ |
+| バッファ | `Shift+h` / `Shift+l` | 前/次のバッファ |
 | バッファ | `Space b d` | バッファを閉じる |
 | ウィンドウ | `Ctrl+h/j/k/l` | ウィンドウ移動 |
 | ウィンドウ | `Space w` | ウィンドウ操作 |

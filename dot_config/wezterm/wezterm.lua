@@ -18,6 +18,7 @@ config.window_background_gradient = {
 	colors = { "#000000" },
 }
 config.show_new_tab_button_in_tab_bar = false
+config.tab_max_width = 50
 config.show_close_tab_button_in_tabs = false
 config.colors = {
 	tab_bar = {
@@ -26,6 +27,35 @@ config.colors = {
 }
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
+
+-- タブタイトル用のキャッシュ
+local tab_title_cache = {}
+
+wezterm.on("update-status", function(window, pane)
+	local pane_id = pane:pane_id()
+	local info = pane:get_foreground_process_info()
+	if info and info.cwd then
+		local cwd = info.cwd
+		local dir_name = cwd:match("([^/]+)$") or cwd
+
+		-- git worktree判定
+		local title = dir_name
+		local success, stdout = wezterm.run_child_process({ "git", "-C", cwd, "rev-parse", "--git-common-dir" })
+		if success then
+			local git_common = stdout:gsub("%s+$", "")
+			local _, git_dir_out = wezterm.run_child_process({ "git", "-C", cwd, "rev-parse", "--git-dir" })
+			if git_dir_out then
+				local git_dir = git_dir_out:gsub("%s+$", "")
+				if git_common ~= git_dir then
+					-- worktreeの場合もdir_nameのみ表示
+					title = dir_name
+				end
+			end
+		end
+
+		tab_title_cache[pane_id] = title
+	end
+end)
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local background = "#5c6d74"
@@ -38,7 +68,10 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	end
 
 	local edge_foreground = background
-	local title = "   " .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. "   "
+	local pane = tab.active_pane
+	local cached_title = tab_title_cache[pane.pane_id]
+	local tab_title = cached_title or pane.title
+	local title = "   " .. wezterm.truncate_right(tab.tab_index + 1 .. ": " .. tab_title, max_width - 1) .. "   "
 
 	return {
 		{ Background = { Color = edge_background } },

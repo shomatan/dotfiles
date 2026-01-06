@@ -15,6 +15,8 @@
 
 ## WezTerm
 
+> 詳細: [dot_config/wezterm/README.md](dot_config/wezterm/README.md)
+
 リーダーキー: `Ctrl+a`
 
 | カテゴリ | キー | 機能 |
@@ -45,6 +47,8 @@
 | ショートカット | `Ctrl+Shift+n/p` | 次/前のタブ |
 
 ## Neovim
+
+> 詳細: [dot_config/nvim/README.md](dot_config/nvim/README.md)
 
 LazyVim ベース
 

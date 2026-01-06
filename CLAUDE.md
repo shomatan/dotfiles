@@ -72,6 +72,16 @@ chezmoi diff
 3. `chezmoi apply -v` で変更を適用
 4. gitにコミットしてプッシュ
 
+## ドキュメント更新ルール
+
+キーバインドを変更した場合、対応するREADMEも更新すること：
+
+| 設定ファイル | README |
+|-------------|--------|
+| `dot_config/nvim/lua/plugins/*.lua` | `dot_config/nvim/README.md` |
+| `dot_config/wezterm/*.lua` | `dot_config/wezterm/README.md` |
+| `dot_ideavimrc` | `README.md`（IdeaVimセクション） |
+
 ## Claude Codeフック
 
 このリポジトリには、Claude Codeがタスクを完了した際に通知を送るカスタムフックが含まれています。フックは `dot_claude/settings.json` で設定され、停止イベント時に `~/.claude/claude-completion-notify.sh` を実行します。

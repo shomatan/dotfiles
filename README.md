@@ -11,7 +11,7 @@
 
 ### Update
 
-    cd ~/.local/share/chezmoi && git pull && chezmoi apply -v
+    chezmoi update
 
 ## ツール別ドキュメント
 

@@ -6,8 +6,36 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim",
+      "mfussenegger/nvim-dap",
     },
     config = function()
+      -- Dartアダプターを登録
+      local dap = require("dap")
+      dap.adapters.dart = {
+        type = "executable",
+        command = "flutter",
+        args = { "debug_adapter" },
+      }
+
+      -- VSCodeのlaunch.jsonを読み込み、デフォルト値を補完
+      dap.configurations.dart = {}  -- 既存設定をクリア（重複防止）
+      require("dap.ext.vscode").load_launchjs(nil, { dart = { "dart" } })
+      if dap.configurations.dart then
+        for _, config in ipairs(dap.configurations.dart) do
+          if not config.program then
+            config.program = vim.fn.getcwd() .. "/lib/main.dart"
+          end
+          if not config.cwd then
+            config.cwd = vim.fn.getcwd()
+          end
+          -- argsをtoolArgsに変換（flutter runコマンドに渡すため）
+          if config.args and not config.toolArgs then
+            config.toolArgs = config.args
+            config.args = nil
+          end
+        end
+      end
+
       require("flutter-tools").setup({
         flutter_lookup_cmd = "mise where flutter",
         ui = {
@@ -20,8 +48,7 @@ return {
           },
         },
         debugger = {
-          enabled = true,
-          run_via_dap = true,
+          enabled = false,
         },
         widget_guides = {
           enabled = true,
@@ -59,12 +86,4 @@ return {
     end,
   },
 
-  -- DAP (デバッガー) 設定
-  {
-    "mfussenegger/nvim-dap",
-    optional = true,
-    dependencies = {
-      "akinsho/flutter-tools.nvim",
-    },
-  },
 }

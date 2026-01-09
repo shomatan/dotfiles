@@ -4,6 +4,17 @@
 local opt = vim.opt
 opt.spelllang = { "en", "cjk" }
 
+-- ウィンドウ区切り線の設定
+opt.fillchars = {
+  vert = "│",
+  horiz = "─",
+  horizup = "┴",
+  horizdown = "┬",
+  vertleft = "┤",
+  vertright = "├",
+  verthoriz = "┼",
+}
+
 -- 背景透過設定
 local function set_transparent()
   local groups = {
@@ -22,6 +33,8 @@ local function set_transparent()
   for _, group in ipairs(groups) do
     vim.api.nvim_set_hl(0, group, { bg = "NONE", ctermbg = "NONE" })
   end
+  -- ウィンドウ区切り線の色（背景透過対応）
+  vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#565f89", bg = "NONE" })
 end
 
 vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {

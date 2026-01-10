@@ -1,0 +1,29 @@
+#!/bin/bash
+# Pre-commit hook: Replace absolute home path with chezmoi template variable
+
+HOME_PATH="$HOME"
+TEMPLATE_VAR='{{ .chezmoi.homeDir }}'
+
+# Find staged .tmpl files containing absolute home path
+staged_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.tmpl$')
+
+if [ -z "$staged_files" ]; then
+  exit 0
+fi
+
+modified=false
+
+for file in $staged_files; do
+  if grep -q "$HOME_PATH" "$file" 2>/dev/null; then
+    sed -i '' "s|$HOME_PATH|$TEMPLATE_VAR|g" "$file"
+    git add "$file"
+    modified=true
+    echo "Fixed absolute path in: $file"
+  fi
+done
+
+if [ "$modified" = true ]; then
+  echo "Home paths replaced with {{ .chezmoi.homeDir }}"
+fi
+
+exit 0

@@ -15,7 +15,11 @@ modified=false
 
 for file in $staged_files; do
   if grep -q "$HOME_PATH" "$file" 2>/dev/null; then
-    sed -i '' "s|$HOME_PATH|$TEMPLATE_VAR|g" "$file"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      sed -i '' "s|$HOME_PATH|$TEMPLATE_VAR|g" "$file"
+    else
+      sed -i "s|$HOME_PATH|$TEMPLATE_VAR|g" "$file"
+    fi
     git add "$file"
     modified=true
     echo "Fixed absolute path in: $file"

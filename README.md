@@ -13,6 +13,20 @@
 
     chezmoi update
 
+### テンプレートファイルの更新
+
+Claude Code プラグイン設定などテンプレート管理しているファイルを更新する場合：
+
+```bash
+git add-tmpl ~/.claude/plugins/known_marketplaces.json
+git commit -m "update plugins"
+```
+
+- `git add-tmpl` は `chezmoi add --template` + sed置換 + `git add` のエイリアス
+- 絶対パスは自動で `{{ .chezmoi.homeDir }}` に置換される（冪等）
+
+新マシンでは `chezmoi apply` 時に git alias と hooks が自動設定される。
+
 ## ツール別ドキュメント
 
 | ツール | 説明 | ドキュメント |

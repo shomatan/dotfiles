@@ -48,7 +48,8 @@ return {
           },
         },
         debugger = {
-          enabled = false,
+          enabled = true,
+          run_via_dap = true,
         },
         widget_guides = {
           enabled = true,

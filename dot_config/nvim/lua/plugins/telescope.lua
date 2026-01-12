@@ -4,16 +4,24 @@ return {
     "nvim-telescope/telescope.nvim",
     opts = function(_, opts)
       local actions = require("telescope.actions")
-      opts.defaults = opts.defaults or {}
-      opts.defaults.mappings = opts.defaults.mappings or {}
-      opts.defaults.mappings.i = opts.defaults.mappings.i or {}
-      opts.defaults.mappings.n = opts.defaults.mappings.n or {}
 
-      -- Enterでタブを開く、Ctrl+tで現在のウィンドウで開く
-      opts.defaults.mappings.i["<CR>"] = actions.select_tab
-      opts.defaults.mappings.n["<CR>"] = actions.select_tab
-      opts.defaults.mappings.i["<C-t>"] = actions.select_default
-      opts.defaults.mappings.n["<C-t>"] = actions.select_default
+      -- ファイル選択系のpickerのみ: Enterで新しいタブ、Ctrl+tで現在ウィンドウ
+      local file_picker_mappings = {
+        i = {
+          ["<CR>"] = actions.select_tab,
+          ["<C-t>"] = actions.select_default,
+        },
+        n = {
+          ["<CR>"] = actions.select_tab,
+          ["<C-t>"] = actions.select_default,
+        },
+      }
+
+      opts.pickers = opts.pickers or {}
+      opts.pickers.find_files = { mappings = file_picker_mappings }
+      opts.pickers.git_files = { mappings = file_picker_mappings }
+      opts.pickers.oldfiles = { mappings = file_picker_mappings }
+      opts.pickers.buffers = { mappings = file_picker_mappings }
 
       return opts
     end,

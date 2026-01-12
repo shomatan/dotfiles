@@ -81,6 +81,18 @@ LazyVimベースのNeovim設定です。
 | `<leader>gg` | Lazygit |
 | `<leader>gb` | Git blame |
 
+#### Flutter（`<leader>df` プレフィックス）
+| キー | 動作 |
+|------|------|
+| `<leader>dfr` | Flutter Run |
+| `<leader>dfR` | Flutter Restart |
+| `<leader>dfl` | Flutter Reload (Hot) |
+| `<leader>dfq` | Flutter Quit |
+| `<leader>dfd` | Flutter Devices |
+| `<leader>dfe` | Flutter Emulators |
+| `<leader>dfo` | Flutter Outline |
+| `<leader>dft` | Flutter DevTools |
+
 #### ターミナル
 | キー | 動作 |
 |------|------|

@@ -106,6 +106,20 @@ M.keys = {
     { key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },            -- 1ページ下へ
 
     -- ============================================
+    -- ペイン操作（Ctrl）- Neovimと統一
+    -- ============================================
+
+    -- ペイン移動
+    { key = 'h', mods = 'CTRL', action = act.ActivatePaneDirection 'Left' },
+    { key = 'j', mods = 'CTRL', action = act.ActivatePaneDirection 'Down' },
+    { key = 'k', mods = 'CTRL', action = act.ActivatePaneDirection 'Up' },
+    { key = 'l', mods = 'CTRL', action = act.ActivatePaneDirection 'Right' },
+
+    -- タブ移動
+    { key = 'n', mods = 'CTRL', action = act.ActivateTabRelative(1) },
+    { key = 'p', mods = 'CTRL', action = act.ActivateTabRelative(-1) },
+
+    -- ============================================
     -- ペイン操作（Ctrl+Shift）
     -- ============================================
 
@@ -113,18 +127,8 @@ M.keys = {
     { key = '-', mods = 'CTRL|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
     { key = '|', mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
 
-    -- ペイン移動
-    { key = 'h', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Left' },
-    { key = 'j', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Down' },
-    { key = 'k', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Up' },
-    { key = 'l', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Right' },
-
     -- ペイン操作
     { key = 'z', mods = 'CTRL|SHIFT', action = act.TogglePaneZoomState },
-
-    -- タブ操作（Ctrl+Shift）
-    { key = 'n', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(1) },
-    { key = 'p', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
 
     -- ============================================
     -- Git Worktree 操作

@@ -4,10 +4,6 @@ return {
     event = { "InsertLeave", "TextChanged" },
     opts = {
       enabled = true,
-      -- 保存時のメッセージを非表示
-      execution_message = {
-        enabled = false,
-      },
       -- 保存トリガー
       trigger_events = {
         immediate_save = { "BufLeave", "FocusLost" },

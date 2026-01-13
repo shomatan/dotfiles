@@ -7,13 +7,13 @@
 -- Ctrl = WezTerm、Shift = Neovim
 -- ============================================
 
--- LazyVimデフォルトを無効化
-vim.keymap.del("n", "<C-h>")
-vim.keymap.del("n", "<C-j>")
-vim.keymap.del("n", "<C-k>")
-vim.keymap.del("n", "<C-l>")
-vim.keymap.del("n", "<S-h>")
-vim.keymap.del("n", "<S-l>")
+-- LazyVimデフォルトを無効化（存在しない場合はスキップ）
+pcall(vim.keymap.del, "n", "<C-h>")
+pcall(vim.keymap.del, "n", "<C-j>")
+pcall(vim.keymap.del, "n", "<C-k>")
+pcall(vim.keymap.del, "n", "<C-l>")
+pcall(vim.keymap.del, "n", "<S-h>")
+pcall(vim.keymap.del, "n", "<S-l>")
 
 -- ウィンドウ移動: Shift+h/j/k/l
 vim.keymap.set("n", "<S-h>", "<C-w>h", { desc = "Go to left window" })
@@ -37,3 +37,11 @@ vim.keymap.set("t", "<C-j><C-j>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 
 -- ターミナルモードからAIビューを閉じる
 vim.keymap.set("t", "<C-j>q", "<C-\\><C-n>:q<CR>", { desc = "Exit terminal and close window" })
+
+-- ============================================
+-- 行頭・行末移動
+-- ============================================
+
+-- 1で行頭（最初の非空白文字）、2で行末
+vim.keymap.set({ "n", "v" }, "1", "^", { desc = "Go to first non-blank character" })
+vim.keymap.set({ "n", "v" }, "2", "$", { desc = "Go to end of line" })

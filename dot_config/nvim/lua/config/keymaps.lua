@@ -33,10 +33,10 @@ vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { desc = "Hover documentatio
 -- ============================================
 
 -- ターミナルモードから抜ける（分割キーボード向け）
-vim.keymap.set("t", "<C-j><C-j>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<C-g><C-g>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- ターミナルモードからAIビューを閉じる
-vim.keymap.set("t", "<C-j>q", "<C-\\><C-n>:q<CR>", { desc = "Exit terminal and close window" })
+vim.keymap.set("t", "<C-g>q", "<C-\\><C-n>:q<CR>", { desc = "Exit terminal and close window" })
 
 -- ============================================
 -- 行頭・行末移動

@@ -181,8 +181,17 @@ neo-treeを無効化し、oil.nvimを使用。バッファのようにファイ�
 | 移動 | `dd` → 移動先で `p` → `:w` |
 | コピー | `yy` → 移動先で `p` → `:w` |
 
+## オートセーブ
+
+編集後に自動保存。Oilバッファは除外されるため安全。
+
+| コマンド | 動作 |
+|---------|------|
+| `:AutoSaveToggle` | オートセーブのオン/オフ切り替え |
+
 ## プラグイン構成
 
 - **Oil.nvim**: ファイルエクスプローラー（neo-tree無効化）
 - **Sidekick.nvim**: Claude Code連携
 - **Flutter-tools.nvim**: Flutter/Dart開発環境
+- **auto-save.nvim**: オートセーブ（Oil除外）

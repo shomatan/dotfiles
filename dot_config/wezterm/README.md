@@ -75,15 +75,20 @@ tmux風のキーバインドを設定したWezTerm設定です。
 | `Cmd+Enter` | フルスクリーン |
 | `Cmd+=/-/0` | フォント拡大/縮小/リセット |
 
+### Ctrl操作（Neovimと統一）
+
+| キー | 動作 |
+|------|------|
+| `Ctrl+h/j/k/l` | ペイン移動 |
+| `Ctrl+n/p` | 次/前のタブ |
+
 ### Ctrl+Shift操作
 
 | キー | 動作 |
 |------|------|
 | `Ctrl+Shift -` | 縦分割 |
 | `Ctrl+Shift \|` | 横分割 |
-| `Ctrl+Shift h/j/k/l` | ペイン移動 |
 | `Ctrl+Shift z` | ペインズーム |
-| `Ctrl+Shift n/p` | 次/前のタブ |
 
 ### Git Worktree操作
 

@@ -289,7 +289,7 @@
 		</dict>
 		<key>licenseStateCacheHash</key>
 		<data>
-		fruqgHR/8XyQbjOOJqigLZi7O3k7fO5cSEJUhPWA+pw=
+		ViW8LCy/iMYH2UM7+ny6b9JMLz23RfPR/DF60pHX7yA=
 		</data>
 	</dict>
 	<key>Pointer</key>
@@ -431,13 +431,13 @@
 	<key>State</key>
 	<dict>
 		<key>autosave_tabID</key>
-		<string>buttons</string>
+		<string>general</string>
 		<key>lastLaunchedBundleVersion</key>
 		<integer>24310</integer>
 		<key>launchesOfCurrentBundleVersion</key>
-		<integer>3</integer>
+		<integer>6</integer>
 		<key>launchesOverall</key>
-		<integer>8</integer>
+		<integer>11</integer>
 		<key>remapsAreInitialized</key>
 		<true/>
 	</dict>

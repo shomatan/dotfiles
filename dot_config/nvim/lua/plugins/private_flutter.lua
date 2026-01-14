@@ -48,7 +48,8 @@ return {
           },
         },
         debugger = {
-          enabled = false,
+          enabled = true,
+          run_via_dap = true,
         },
         widget_guides = {
           enabled = true,
@@ -73,6 +74,15 @@ return {
           },
         },
       })
+
+      -- Flutter キーバインド (<leader>df 系)
+      vim.keymap.set("n", "<leader>dfr", ":FlutterRestart<CR>", { desc = "Flutter Restart" })
+      vim.keymap.set("n", "<leader>dfl", ":FlutterReload<CR>", { desc = "Flutter Reload (Hot)" })
+      vim.keymap.set("n", "<leader>dfq", ":FlutterQuit<CR>", { desc = "Flutter Quit" })
+      vim.keymap.set("n", "<leader>dfd", ":FlutterDevices<CR>", { desc = "Flutter Devices" })
+      vim.keymap.set("n", "<leader>dfe", ":FlutterEmulators<CR>", { desc = "Flutter Emulators" })
+      vim.keymap.set("n", "<leader>dfo", ":FlutterOutlineToggle<CR>", { desc = "Flutter Outline" })
+      vim.keymap.set("n", "<leader>dft", ":FlutterDevTools<CR>", { desc = "Flutter DevTools" })
     end,
   },
 

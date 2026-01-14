@@ -20,6 +20,8 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- DAP (デバッガー) の基盤を有効化
     { import = "lazyvim.plugins.extras.dap.core" },
+    -- snacks.nvim picker (IntelliJ風の統合検索)
+    { import = "lazyvim.plugins.extras.editor.snacks_picker" },
     -- import/override with your plugins
     { import = "plugins" },
   },

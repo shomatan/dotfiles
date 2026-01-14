@@ -8,6 +8,8 @@ LazyVimベースのNeovim設定です。
 
 | キー | 動作 | プラグイン |
 |------|------|-----------|
+| `1` | 行頭（最初の非空白文字）へ移動 | - |
+| `2` | 行末へ移動 | - |
 | `-` | 親ディレクトリを開く | Oil |
 | `<leader>e` | Explorer (Oil) | Oil |
 | `q` | Oilを閉じる | Oil |
@@ -23,6 +25,14 @@ LazyVimベースのNeovim設定です。
 | `<leader>fr` | 最近のファイル |
 | `<leader>fb` | バッファ検索 |
 
+#### Telescope（ファイル選択時）
+| キー | 動作 |
+|------|------|
+| `Enter` | 新しいタブで開く |
+| `<C-t>` | 現在のウィンドウで開く |
+| `<C-x>` | 水平分割で開く |
+| `<C-v>` | 垂直分割で開く |
+
 #### 検索
 | キー | 動作 |
 |------|------|
@@ -34,8 +44,8 @@ LazyVimベースのNeovim設定です。
 #### バッファ操作
 | キー | 動作 |
 |------|------|
-| `<S-h>` | 前のバッファ |
-| `<S-l>` | 次のバッファ |
+| `<S-n>` | 次のバッファ（WezTermと統一） |
+| `<S-p>` | 前のバッファ（WezTermと統一） |
 | `<leader>,` | バッファ一覧 |
 | `<leader>bb` | 直前のバッファに切り替え |
 | `<leader>bd` | バッファを閉じる |
@@ -43,7 +53,7 @@ LazyVimベースのNeovim設定です。
 #### ウィンドウ操作（分割/ペイン）
 | キー | 動作 |
 |------|------|
-| `<C-h/j/k/l>` | ウィンドウ間移動 |
+| `<S-h/j/k/l>` | ウィンドウ間移動（WezTermと統一） |
 | `<C-Up/Down/Left/Right>` | ウィンドウサイズ変更 |
 | `<leader>-` | 水平分割 |
 | `<leader>\|` | 垂直分割 |
@@ -71,7 +81,7 @@ LazyVimベースのNeovim設定です。
 |------|------|
 | `gd` | 定義へジャンプ |
 | `gr` | 参照検索 |
-| `K` | ドキュメント表示 |
+| `<leader>k` | ドキュメント表示（ホバー） |
 | `<leader>ca` | コードアクション |
 | `<leader>cr` | リネーム |
 
@@ -81,13 +91,25 @@ LazyVimベースのNeovim設定です。
 | `<leader>gg` | Lazygit |
 | `<leader>gb` | Git blame |
 
+#### Flutter（`<leader>df` プレフィックス）
+| キー | 動作 |
+|------|------|
+| `<leader>dfr` | Flutter Run |
+| `<leader>dfR` | Flutter Restart |
+| `<leader>dfl` | Flutter Reload (Hot) |
+| `<leader>dfq` | Flutter Quit |
+| `<leader>dfd` | Flutter Devices |
+| `<leader>dfe` | Flutter Emulators |
+| `<leader>dfo` | Flutter Outline |
+| `<leader>dft` | Flutter DevTools |
+
 #### ターミナル
 | キー | 動作 |
 |------|------|
 | `<C-/>` | ターミナル（トグル） |
 | `<leader>ft` | フローティングターミナル |
-| `<C-j><C-j>` | ターミナルモードから抜ける（分割キーボード向け） |
-| `<C-j>q` | AIビューを閉じる |
+| `<C-g><C-g>` | ターミナルモードから抜ける（分割キーボード向け） |
+| `<C-q>` | AIビューを閉じる |
 
 #### その他
 | キー | 動作 |
@@ -159,8 +181,17 @@ neo-treeを無効化し、oil.nvimを使用。バッファのようにファイ�
 | 移動 | `dd` → 移動先で `p` → `:w` |
 | コピー | `yy` → 移動先で `p` → `:w` |
 
+## オートセーブ
+
+編集後に自動保存。Oilバッファは除外されるため安全。
+
+| コマンド | 動作 |
+|---------|------|
+| `:AutoSaveToggle` | オートセーブのオン/オフ切り替え |
+
 ## プラグイン構成
 
 - **Oil.nvim**: ファイルエクスプローラー（neo-tree無効化）
 - **Sidekick.nvim**: Claude Code連携
 - **Flutter-tools.nvim**: Flutter/Dart開発環境
+- **auto-save.nvim**: オートセーブ（Oil除外）

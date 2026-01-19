@@ -98,6 +98,17 @@ tmux風のキーバインドを設定したWezTerm設定です。
 | `Ctrl+Shift c` | Worktree作成 |
 | `Ctrl+Shift d` | Worktree削除 |
 
+### セッション保存・復元（resurrect.wezterm）
+
+| キー | 動作 |
+|------|------|
+| `Leader S` | ワークスペース状態を保存 |
+| `Leader R` | 保存した状態をfuzzy finderで選択して復元 |
+
+**自動機能:**
+- 起動時に前回のセッションを自動復元
+- 60秒ごとにワークスペース・ウィンドウ・タブを自動保存
+
 ## コピーモード（Vim風）
 
 | キー | 動作 |

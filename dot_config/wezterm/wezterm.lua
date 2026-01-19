@@ -1,6 +1,11 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+-- ============================================
+-- セッション復元プラグイン (resurrect.wezterm)
+-- ============================================
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
+
 config.automatically_reload_config = true
 
 config.font_size = 12.0
@@ -88,8 +93,36 @@ end)
 
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 config.disable_default_key_bindings = true
-config.keys = require("keybinds").keys
-config.key_tables = require("keybinds").key_tables
+
+-- keybindsモジュールにresurrectを渡してキーバインドを取得
+local keybinds = require("keybinds")
+config.keys = keybinds.create_keys(resurrect)
+config.key_tables = keybinds.key_tables
+
+-- ============================================
+-- セッション復元設定
+-- ============================================
+
+-- 起動時の自動復元
+wezterm.on("gui-startup", function()
+	local workspace_state = resurrect.workspace_state
+	local state = resurrect.state_manager.load_state("default", "workspace")
+	if state then
+		workspace_state.restore_workspace(state, {
+			relative = true,
+			restore_text = true,
+			on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+		})
+	end
+end)
+
+-- 定期的な自動保存（60秒ごと）
+resurrect.state_manager.periodic_save({
+	interval_seconds = 60,
+	save_workspaces = true,
+	save_windows = true,
+	save_tabs = true,
+})
 
 -- ============================================
 -- Git Worktree 管理

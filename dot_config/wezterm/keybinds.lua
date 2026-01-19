@@ -3,7 +3,9 @@ local act = wezterm.action
 
 local M = {}
 
-M.keys = {
+-- resurrectを受け取ってキーバインドを生成する関数
+function M.create_keys(resurrect)
+  local keys = {
     -- ============================================
     -- リーダーキー (Ctrl+a) を使ったtmux風バインド
     -- ============================================
@@ -136,7 +138,50 @@ M.keys = {
     { key = 'w', mods = 'CTRL|SHIFT', action = act.EmitEvent 'select-worktree' },  -- Worktree選択
     { key = 'c', mods = 'CTRL|SHIFT', action = act.EmitEvent 'create-worktree' },  -- Worktree作成
     { key = 'd', mods = 'CTRL|SHIFT', action = act.EmitEvent 'remove-worktree' },  -- Worktree削除
+
+    -- ============================================
+    -- セッション保存・復元 (resurrect.wezterm)
+    -- ============================================
+    -- ワークスペース状態を保存
+    {
+      key = 'S',
+      mods = 'LEADER|SHIFT',
+      action = wezterm.action_callback(function(win, pane)
+        resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
+        win:toast_notification("wezterm", "ワークスペースを保存しました", nil, 3000)
+      end),
+    },
+    -- 保存した状態をfuzzy finderで選択して復元
+    {
+      key = 'R',
+      mods = 'LEADER|SHIFT',
+      action = wezterm.action_callback(function(win, pane)
+        resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id, label)
+          local type = string.match(id, "^([^/]+)")
+          id = string.match(id, "([^/]+)$")
+          id = string.match(id, "(.+)%.%..+$")
+          local opts = {
+            relative = true,
+            restore_text = true,
+            on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+          }
+          if type == "workspace" then
+            local state = resurrect.state_manager.load_state(id, "workspace")
+            resurrect.workspace_state.restore_workspace(state, opts)
+          elseif type == "window" then
+            local state = resurrect.state_manager.load_state(id, "window")
+            resurrect.window_state.restore_window(pane:window(), state, opts)
+          elseif type == "tab" then
+            local state = resurrect.state_manager.load_state(id, "tab")
+            resurrect.tab_state.restore_tab(pane:tab(), state, opts)
+          end
+        end)
+      end),
+    },
   }
+
+  return keys
+end
 
 M.key_tables = {
   -- ============================================

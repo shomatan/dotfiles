@@ -45,3 +45,28 @@ vim.keymap.set("t", "<C-q>", "<C-\\><C-n>:q<CR>", { desc = "Exit terminal and cl
 -- 1で行頭（最初の非空白文字）、2で行末
 vim.keymap.set({ "n", "v" }, "1", "^", { desc = "Go to first non-blank character" })
 vim.keymap.set({ "n", "v" }, "2", "$", { desc = "Go to end of line" })
+
+-- ============================================
+-- バッファ操作
+-- ============================================
+
+-- バッファを閉じる（空になったらOilを開く）
+vim.keymap.set("n", "<leader>bd", function()
+  local buf_to_delete = vim.api.nvim_get_current_buf()
+
+  -- 他のlistedバッファがあるか確認
+  local bufs = vim.tbl_filter(function(b)
+    return vim.api.nvim_buf_is_valid(b)
+      and vim.bo[b].buflisted
+      and b ~= buf_to_delete
+      and vim.api.nvim_buf_get_name(b) ~= ""
+  end, vim.api.nvim_list_bufs())
+
+  -- バッファを閉じる
+  Snacks.bufdelete()
+
+  -- 他にバッファがなければOilを開く
+  if #bufs == 0 then
+    vim.cmd("Oil")
+  end
+end, { desc = "Delete buffer (open Oil if empty)" })

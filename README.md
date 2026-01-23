@@ -27,6 +27,12 @@ brew install ghq
 brew install fzf
 ```
 
+### bat（catの代替）
+
+```bash
+brew install bat
+```
+
 ### テンプレートファイルの更新
 
 Claude Code プラグイン設定などテンプレート管理しているファイルを更新する場合：

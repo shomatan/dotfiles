@@ -13,6 +13,20 @@
 
     chezmoi update
 
+### ghq（リポジトリ管理）
+
+```bash
+brew install ghq
+```
+
+リポジトリは `~/dev` に配置される。
+
+### fzf（ファジーファインダー）
+
+```bash
+brew install fzf
+```
+
 ### テンプレートファイルの更新
 
 Claude Code プラグイン設定などテンプレート管理しているファイルを更新する場合：

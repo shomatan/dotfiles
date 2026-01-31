@@ -20,6 +20,7 @@ return {
         ["q"] = "actions.close",
         ["<C-h>"] = false, -- ウィンドウ移動を優先
         ["<C-l>"] = false,
+        ["<C-r>"] = "actions.refresh",
       },
     },
   },

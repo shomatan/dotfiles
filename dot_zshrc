@@ -18,6 +18,9 @@ export LC_CTYPE="${LANGUAGE}"
 export EDITOR=nvim
 export GIT_EDITOR="${EDITOR}"
 
+# PATH
+export PATH="$HOME/.local/bin:$PATH"
+
 # history
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000

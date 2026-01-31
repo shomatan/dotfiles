@@ -8,6 +8,9 @@ fi
 # environments
 # -----------------------------------------------------------------------------
 
+# PATH
+export PATH="$HOME/.local/bin:$PATH"
+
 # Language
 export LANGUAGE="en_US.UTF-8"
 export LANG="${LANGUAGE}"

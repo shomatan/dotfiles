@@ -70,3 +70,6 @@ vim.keymap.set("n", "<leader>bd", function()
     vim.cmd("Oil")
   end
 end, { desc = "Delete buffer (open Oil if empty)" })
+
+-- バッファを再読み込み
+vim.keymap.set("n", "<leader>r", "<cmd>e<cr>", { desc = "Reload buffer" })

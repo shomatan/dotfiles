@@ -49,7 +49,7 @@
     "omnisharp.useModernNet": false,
     "redhat.telemetry.enabled": false,
     "terminal.integrated.fontWeight": "normal",
-    "vim.vimrc.enable": true,
+    "vim.vimrc.enable": false,
     "window.zoomLevel": -0.1,
     "workbench.activityBar.orientation": "vertical",
     "workbench.colorCustomizations": {
@@ -74,9 +74,7 @@
         "editor.selectionHighlightBackground": "#4A4A4A60", // 関連する選択のハイライト（60%不透明度）
         "editor.selectionHighlightBorder": "#6A6A6A" // 選択領域の境界線
     },
-    "workbench.settings.applyToAllProfiles": [
-        "vim.vimrc.enable"
-    ],
+    "workbench.settings.applyToAllProfiles": [],
     "workbench.tree.expandMode": "doubleClick",
     "roo-cline.allowedCommands": [
         "tsc",

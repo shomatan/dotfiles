@@ -129,10 +129,12 @@ run = 'move-node-to-workspace 4'
     alt-f = 'layout floating tiling'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-    alt-h = 'focus left'
-    alt-j = 'focus down'
-    alt-k = 'focus up'
-    alt-l = 'focus right'
+    # --boundaries: モニター境界を越えてフォーカス移動可能にする
+    # --boundaries-action: 全モニターの端でラップアラウンド
+    alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+    alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+    alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+    alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-shift-h = 'move left'
@@ -167,6 +169,13 @@ run = 'move-node-to-workspace 4'
     alt-shift-8 = 'move-node-to-workspace 8'
     alt-shift-9 = 'move-node-to-workspace 9'
     alt-shift-0 = 'move-node-to-workspace 0'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#focus-monitor
+    # モニター間の直接フォーカス移動
+    alt-ctrl-h = 'focus-monitor left'
+    alt-ctrl-j = 'focus-monitor down'
+    alt-ctrl-k = 'focus-monitor up'
+    alt-ctrl-l = 'focus-monitor right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'

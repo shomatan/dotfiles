@@ -58,6 +58,28 @@
                         ]
                     },
                     {
+                        "description": "Command+SpaceでIMEをオフにする",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    { "key_code": "japanese_eisuu" },
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "available_since": "12.3.0",
                         "description": "Change button5 + mouse motion to scroll wheel (rev 1)",
                         "enabled": false,

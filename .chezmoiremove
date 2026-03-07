@@ -1,2 +1,4 @@
 # Remove old nvim init.vim that was replaced by init.lua (LazyVim)
 .config/nvim/init.vim
+# alt-tab macOSアプリの設定ファイル（chezmoi管理から削除）
+Library/Preferences/com.lwouis.alt-tab-macos.plist

@@ -90,7 +90,7 @@ if ! command -v ghq &> /dev/null; then
     GHQ_VERSION=$(curl -s "https://api.github.com/repos/x-motemen/ghq/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
     curl -Lo /tmp/ghq.zip "https://github.com/x-motemen/ghq/releases/download/v${GHQ_VERSION}/ghq_linux_${ARCH}.zip"
     unzip -o /tmp/ghq.zip -d /tmp/ghq
-    sudo install /tmp/ghq/ghq /usr/local/bin
+    sudo install /tmp/ghq/ghq_linux_${ARCH}/ghq /usr/local/bin
     rm -rf /tmp/ghq /tmp/ghq.zip
     git config --global ghq.root ~/dev
 fi

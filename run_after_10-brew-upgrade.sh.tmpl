@@ -1,6 +1,34 @@
 #!/bin/bash
 
-# Check if we're on macOS
+# Linux: apt upgrade + GitHub Releases更新
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    echo "Running apt upgrade..."
+    sudo apt update -y && sudo apt upgrade -y
+
+    ARCH=$(dpkg --print-architecture)
+
+    # ghq
+    echo "Updating ghq..."
+    GHQ_VERSION=$(curl -s "https://api.github.com/repos/x-motemen/ghq/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo /tmp/ghq.deb "https://github.com/x-motemen/ghq/releases/download/v${GHQ_VERSION}/ghq_linux_${ARCH}.deb"
+    sudo dpkg -i /tmp/ghq.deb
+    rm /tmp/ghq.deb
+
+    # lazygit
+    echo "Updating lazygit..."
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    if [ "$ARCH" = "arm64" ] || [ "$ARCH" = "aarch64" ]; then
+        LAZYGIT_ARCH="arm64"
+    else
+        LAZYGIT_ARCH="x86_64"
+    fi
+    curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_${LAZYGIT_ARCH}.tar.gz"
+    tar xf /tmp/lazygit.tar.gz -C /tmp lazygit
+    sudo install /tmp/lazygit /usr/local/bin
+    rm /tmp/lazygit /tmp/lazygit.tar.gz
+fi
+
+# macOS: brew upgrade
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Ensure Homebrew is in PATH
     if ! command -v brew &> /dev/null; then

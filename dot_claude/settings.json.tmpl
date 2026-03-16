@@ -9,7 +9,11 @@
         "hooks": [
           {
             "type": "command",
+{{- if eq .chezmoi.os "darwin" }}
             "command": "osascript -e 'display notification \"タスクが完了しました\" with title \"Claude Code\" subtitle \"処理終了\" sound name \"Hero\"'"
+{{- else }}
+            "command": "echo '[Claude Code] タスクが完了しました'"
+{{- end }}
           }
         ]
       }
@@ -20,7 +24,11 @@
         "hooks": [
           {
             "type": "command",
+{{- if eq .chezmoi.os "darwin" }}
             "command": "osascript -e 'display notification \"Claude Codeが許可を求めています\" with title \"Claude Code\" subtitle \"確認待ち\" sound name \"Glass\"'"
+{{- else }}
+            "command": "echo '[Claude Code] Claude Codeが許可を求めています'"
+{{- end }}
           }
         ]
       }

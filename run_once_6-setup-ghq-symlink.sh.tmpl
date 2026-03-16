@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # ghqでchezmoiを管理するためのシンボリックリンクを作成
-{{ if eq .chezmoi.os "darwin" }}
 GHQ_ROOT=~/dev
 SYMLINK_PATH="$GHQ_ROOT/github.com/shomatan/dotfiles"
 
@@ -13,4 +12,3 @@ if [ ! -L "$SYMLINK_PATH" ]; then
 else
     echo "Symlink already exists: $SYMLINK_PATH"
 fi
-{{ end }}

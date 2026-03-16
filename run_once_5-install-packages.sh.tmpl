@@ -39,7 +39,13 @@ sudo apt install -y neovim ripgrep fd-find luarocks build-essential unzip fzf
 
 # Install tree-sitter CLI from GitHub releases
 echo "Installing tree-sitter CLI..."
-curl -Lo /tmp/tree-sitter.gz https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz
+ARCH=$(dpkg --print-architecture)
+if [ "$ARCH" = "arm64" ] || [ "$ARCH" = "aarch64" ]; then
+    TREE_SITTER_ARCH="aarch64"
+else
+    TREE_SITTER_ARCH="x64"
+fi
+curl -Lo /tmp/tree-sitter.gz "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-${TREE_SITTER_ARCH}.gz"
 gunzip -f /tmp/tree-sitter.gz
 sudo install /tmp/tree-sitter /usr/local/bin
 rm /tmp/tree-sitter
@@ -47,7 +53,12 @@ rm /tmp/tree-sitter
 # Install lazygit from GitHub releases
 echo "Installing lazygit..."
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+if [ "$ARCH" = "arm64" ] || [ "$ARCH" = "aarch64" ]; then
+    LAZYGIT_ARCH="arm64"
+else
+    LAZYGIT_ARCH="x86_64"
+fi
+curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_${LAZYGIT_ARCH}.tar.gz"
 tar xf /tmp/lazygit.tar.gz -C /tmp lazygit
 sudo install /tmp/lazygit /usr/local/bin
 rm /tmp/lazygit /tmp/lazygit.tar.gz
@@ -59,6 +70,40 @@ curl -fLo /tmp/Hack.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/
 unzip -o /tmp/Hack.zip -d ~/.local/share/fonts
 rm /tmp/Hack.zip
 fc-cache -fv
+
+# GitHub CLI
+if ! command -v gh &> /dev/null; then
+    echo "Installing GitHub CLI..."
+    (type -p wget >/dev/null || sudo apt install -y wget) \
+    && sudo mkdir -p -m 755 /etc/apt/keyrings \
+    && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+    && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+    && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+    && sudo apt update \
+    && sudo apt install -y gh
+fi
+
+# ghq
+if ! command -v ghq &> /dev/null; then
+    echo "Installing ghq..."
+    if ! command -v go &> /dev/null; then
+        sudo apt install -y golang-go
+    fi
+    go install github.com/x-motemen/ghq@latest
+    # ghq root設定
+    git config --global ghq.root ~/dev
+fi
+
+# Docker
+if ! command -v docker &> /dev/null; then
+    echo "Installing Docker..."
+    curl -fsSL https://get.docker.com | sh
+    sudo usermod -aG docker $USER
+fi
+
+# tmux
+sudo apt install -y tmux
 {{ end }}
 {{ if eq .chezmoi.os "darwin" }}
 if ! command -v mise &> /dev/null; then

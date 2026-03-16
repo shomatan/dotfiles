@@ -10,9 +10,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # ghq
     echo "Updating ghq..."
     GHQ_VERSION=$(curl -s "https://api.github.com/repos/x-motemen/ghq/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo /tmp/ghq.deb "https://github.com/x-motemen/ghq/releases/download/v${GHQ_VERSION}/ghq_linux_${ARCH}.deb"
-    sudo dpkg -i /tmp/ghq.deb
-    rm /tmp/ghq.deb
+    curl -Lo /tmp/ghq.zip "https://github.com/x-motemen/ghq/releases/download/v${GHQ_VERSION}/ghq_linux_${ARCH}.zip"
+    unzip -o /tmp/ghq.zip -d /tmp/ghq
+    sudo install /tmp/ghq/ghq /usr/local/bin
+    rm -rf /tmp/ghq /tmp/ghq.zip
 
     # lazygit
     echo "Updating lazygit..."

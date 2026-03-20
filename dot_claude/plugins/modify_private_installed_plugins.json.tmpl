@@ -1,0 +1,55 @@
+#!/bin/bash
+# chezmoi modify_スクリプト: installed_plugins.jsonの管理
+# プラグインの「どれをインストールするか」だけ管理し、
+# version, lastUpdated, gitCommitSha, installPath等の動的フィールドは各マシンの値を保持する
+set -euo pipefail
+
+HOME_DIR="{{ .chezmoi.homeDir }}"
+
+# stdinから現在のファイル内容を読み取る
+CURRENT=$(cat)
+
+# ファイルが空や不正な場合はベースJSONを使用
+if [ -z "$CURRENT" ] || ! echo "$CURRENT" | jq empty 2>/dev/null; then
+  CURRENT='{"version": 2, "plugins": {}}'
+fi
+
+# 管理対象プラグイン一覧
+PLUGINS='[
+  "lua-lsp@claude-plugins-official",
+  "code-simplifier@claude-plugins-official",
+  "agents-language-specialists@buildwithclaude",
+  "agents-development-architecture@buildwithclaude",
+  "agents-quality-security@buildwithclaude",
+  "frontend-design@claude-plugins-official",
+  "figma@claude-plugins-official",
+  "atlassian@claude-plugins-official",
+  "code-review@claude-plugins-official",
+  "security-guidance@claude-plugins-official",
+  "coderabbit@claude-plugins-official",
+  "superpowers@claude-plugins-official",
+  "context7@claude-plugins-official"
+]'
+
+RESULT=$(echo "$CURRENT" | jq --arg home "$HOME_DIR" --argjson plugins "$PLUGINS" '
+  .version = 2 |
+  reduce ($plugins[]) as $key (.;
+    ($key | split("@")) as $parts |
+    $parts[0] as $name |
+    $parts[1] as $marketplace |
+    if .plugins[$key] then
+      .
+    else
+      .plugins[$key] = [{
+        "scope": "user",
+        "installPath": ($home + "/.claude/plugins/cache/" + $marketplace + "/" + $name + "/unknown"),
+        "version": "unknown",
+        "installedAt": "1970-01-01T00:00:00.000Z",
+        "lastUpdated": "1970-01-01T00:00:00.000Z"
+      }]
+    end
+  )
+')
+
+# 末尾改行なしで出力
+printf '%s' "$RESULT"

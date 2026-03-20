@@ -3,9 +3,7 @@ Claude Code関連の設定ファイルをchezmoiに同期してください。
 手順:
 1. `chezmoi status` で `.claude/` 配下の変更を確認
 
-2. プラグイン設定ファイルは `git add-tmpl` で追加:
-   - `~/.claude/plugins/installed_plugins.json`
-   - `~/.claude/plugins/known_marketplaces.json`
+2. `.claude/scripts/sync-plugins.sh` を実行してプラグイン設定を同期
 
 3. `settings.json` は専用スクリプトで同期:
    - `python3 .claude/scripts/sync-settings-tmpl.py` を実行

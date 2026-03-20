@@ -12,18 +12,21 @@ if [ -z "$CURRENT" ] || [ "$CURRENT" = "{}" ]; then
   CURRENT='{}'
 fi
 
+# 管理対象マーケットプレイス（sync-plugins.shで自動更新される）
+MARKETPLACES='{
+  "claude-plugins-official": {"source":"github","repo":"anthropics/claude-plugins-official"},
+  "buildwithclaude": {"source":"github","repo":"davepoon/buildwithclaude"}
+}'
+
 RESULT="$(echo "$CURRENT" | jq \
   --arg home "$HOME_DIR" \
+  --argjson marketplaces "$MARKETPLACES" \
   '
-  # claude-plugins-official エントリを保証
-  .["claude-plugins-official"].source = {"source": "github", "repo": "anthropics/claude-plugins-official"} |
-  .["claude-plugins-official"].installLocation = ($home + "/.claude/plugins/marketplaces/claude-plugins-official") |
-  .["claude-plugins-official"].lastUpdated //= "1970-01-01T00:00:00.000Z" |
-
-  # buildwithclaude エントリを保証
-  .["buildwithclaude"].source = {"source": "github", "repo": "davepoon/buildwithclaude"} |
-  .["buildwithclaude"].installLocation = ($home + "/.claude/plugins/marketplaces/buildwithclaude") |
-  .["buildwithclaude"].lastUpdated //= "1970-01-01T00:00:00.000Z"
+  reduce ($marketplaces | to_entries[]) as $entry (.;
+    .[$entry.key].source = $entry.value |
+    .[$entry.key].installLocation = ($home + "/.claude/plugins/marketplaces/" + $entry.key) |
+    .[$entry.key].lastUpdated //= "1970-01-01T00:00:00.000Z"
+  )
   ')"
 
 # 末尾改行を除去（Claude Codeが生成するJSONには末尾改行がない）

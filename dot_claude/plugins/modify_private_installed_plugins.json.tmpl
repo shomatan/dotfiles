@@ -14,21 +14,21 @@ if [ -z "$CURRENT" ] || ! echo "$CURRENT" | jq empty 2>/dev/null; then
   CURRENT='{"version": 2, "plugins": {}}'
 fi
 
-# 管理対象プラグイン一覧
+# 管理対象プラグイン一覧（sync-plugins.shで自動更新される）
 PLUGINS='[
-  "lua-lsp@claude-plugins-official",
-  "code-simplifier@claude-plugins-official",
-  "agents-language-specialists@buildwithclaude",
   "agents-development-architecture@buildwithclaude",
+  "agents-language-specialists@buildwithclaude",
   "agents-quality-security@buildwithclaude",
-  "frontend-design@claude-plugins-official",
-  "figma@claude-plugins-official",
   "atlassian@claude-plugins-official",
   "code-review@claude-plugins-official",
-  "security-guidance@claude-plugins-official",
+  "code-simplifier@claude-plugins-official",
   "coderabbit@claude-plugins-official",
-  "superpowers@claude-plugins-official",
-  "context7@claude-plugins-official"
+  "context7@claude-plugins-official",
+  "figma@claude-plugins-official",
+  "frontend-design@claude-plugins-official",
+  "lua-lsp@claude-plugins-official",
+  "security-guidance@claude-plugins-official",
+  "superpowers@claude-plugins-official"
 ]'
 
 RESULT=$(echo "$CURRENT" | jq --arg home "$HOME_DIR" --argjson plugins "$PLUGINS" '

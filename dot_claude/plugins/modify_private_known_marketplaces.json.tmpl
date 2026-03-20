@@ -1,0 +1,30 @@
+#!/bin/bash
+# chezmoiのmodify_スクリプト: known_marketplaces.jsonのマーケットプレイスエントリを管理する
+# source と installLocation は定義済みの値で設定し、lastUpdated は既存値を保持する
+
+set -euo pipefail
+
+HOME_DIR="{{ .chezmoi.homeDir }}"
+
+# stdinから現在のファイル内容を読み取る（空の場合は空のJSONオブジェクト）
+CURRENT="$(cat)"
+if [ -z "$CURRENT" ] || [ "$CURRENT" = "{}" ]; then
+  CURRENT='{}'
+fi
+
+RESULT="$(echo "$CURRENT" | jq \
+  --arg home "$HOME_DIR" \
+  '
+  # claude-plugins-official エントリを保証
+  .["claude-plugins-official"].source = {"source": "github", "repo": "anthropics/claude-plugins-official"} |
+  .["claude-plugins-official"].installLocation = ($home + "/.claude/plugins/marketplaces/claude-plugins-official") |
+  .["claude-plugins-official"].lastUpdated //= "1970-01-01T00:00:00.000Z" |
+
+  # buildwithclaude エントリを保証
+  .["buildwithclaude"].source = {"source": "github", "repo": "davepoon/buildwithclaude"} |
+  .["buildwithclaude"].installLocation = ($home + "/.claude/plugins/marketplaces/buildwithclaude") |
+  .["buildwithclaude"].lastUpdated //= "1970-01-01T00:00:00.000Z"
+  ')"
+
+# 末尾改行を除去（Claude Codeが生成するJSONには末尾改行がない）
+printf '%s' "$RESULT"

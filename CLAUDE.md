@@ -59,6 +59,10 @@ chezmoi diff
 4. **Claude Code連携**
    - `dot_claude/settings.json`: Claude Codeのフック設定
    - `dot_claude/executable_claude-completion-notify.sh`: タスク完了時の通知スクリプト
+   - `dot_claude/plugins/modify_private_known_marketplaces.json.tmpl`: マーケットプレイス管理（modify_スクリプト）
+   - `dot_claude/plugins/modify_private_installed_plugins.json.tmpl`: プラグイン管理（modify_スクリプト）
+     - プラグイン追加・削除時はスクリプト内の`PLUGINS`配列を編集する
+     - version/lastUpdated等の動的フィールドは各マシンの値を保持する
 
 ### テンプレート変数
 テンプレートはchezmoiの組み込み変数を使用：

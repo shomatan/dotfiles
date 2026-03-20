@@ -1,13 +1,9 @@
 Claude Code関連の設定ファイルをchezmoiに同期してください。
+すべての手順を自動で実行し、結果をユーザーに報告してください。
 
 手順:
-1. `chezmoi status` で `.claude/` 配下の変更を確認
-
-2. `.claude/scripts/sync-plugins.sh` を実行してプラグイン設定を同期
-
-3. `settings.json` は専用スクリプトで同期:
-   - `python3 .claude/scripts/sync-settings-tmpl.py` を実行
-   - スクリプトが hooks セクションの Go テンプレート構文を保持しつつ、非テンプレート部分を実ファイルに合わせて更新する
-   - 変更があれば `git add dot_claude/settings.json.tmpl` でステージング
-
-4. `git status --short` でステージング状態を表示
+1. `.claude/scripts/sync-plugins.sh` を実行してプラグイン設定を同期する
+2. `python3 .claude/scripts/sync-settings-tmpl.py` を実行してsettings.jsonを同期する
+3. `chezmoi diff` で差分を確認する
+4. 差分がある場合は変更内容をユーザーに報告し、コミットするか確認する
+5. コミットする場合は変更ファイルをステージングしてコミットする

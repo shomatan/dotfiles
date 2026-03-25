@@ -38,6 +38,9 @@ vim.keymap.set("t", "<C-g><C-g>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 -- ターミナルモードからAIビューを閉じる
 vim.keymap.set("t", "<C-q>", "<C-\\><C-n>:q<CR>", { desc = "Exit terminal and close window" })
 
+-- Ctrl+/ でターミナルをトグル（WezTermは <C-/> を <C-_> として送信するため）
+vim.keymap.set({ "n", "t" }, "<C-_>", function() Snacks.terminal() end, { desc = "Terminal (toggle)" })
+
 -- ============================================
 -- 行頭・行末移動
 -- ============================================

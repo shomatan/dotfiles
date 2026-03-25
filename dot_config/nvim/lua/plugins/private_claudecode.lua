@@ -14,7 +14,7 @@ return {
     },
     keys = {
       { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Claude切り替え" },
-      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Claudeフォーカス" },
+      { "<leader>af", "<cmd>ClaudeCodeOpen<cr>", desc = "Claudeフォーカス" },
       { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "再開" },
       { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "継続" },
       { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "モデル選択" },

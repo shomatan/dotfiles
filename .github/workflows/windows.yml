@@ -40,6 +40,7 @@ jobs:
       - name: Setup chezmoi
         run: |
           export PATH="$HOME/.local/bin:$PATH"
+          export CI=true
           chezmoi init --apply shomatan
 
       - name: Verify installation

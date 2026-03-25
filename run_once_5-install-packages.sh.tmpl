@@ -115,10 +115,12 @@ brew install --cask font-hack-nerd-font
 sudo apt install -y zsh
 {{ end }}
 
-# Install Claude Code
-if ! command -v claude &> /dev/null; then
+# Install Claude Code（CI環境ではスキップ）
+if [ -z "${CI:-}" ] && ! command -v claude &> /dev/null; then
     echo "Installing Claude Code..."
     curl -fsSL https://claude.ai/install.sh | bash
+elif [ -n "${CI:-}" ]; then
+    echo "Skipping Claude Code installation in CI"
 else
     echo "Claude Code is already installed"
 fi

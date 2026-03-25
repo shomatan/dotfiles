@@ -23,6 +23,7 @@ jobs:
             curl
             ca-certificates
             git
+            jq
             zsh
 
       - name: System setup

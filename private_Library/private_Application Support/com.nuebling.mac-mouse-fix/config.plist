@@ -424,7 +424,7 @@
 		<key>smooth</key>
 		<string>high</string>
 		<key>speed</key>
-		<string>high</string>
+		<string>system</string>
 		<key>trackpadSimulation</key>
 		<false/>
 	</dict>

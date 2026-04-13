@@ -57,8 +57,7 @@ chezmoi diff
    - `run_after_10-brew-upgrade.sh.tmpl`: macOSでの自動brew upgrade
 
 4. **Claude Code連携**
-   - `dot_claude/settings.json`: Claude Codeのフック設定
-   - `dot_claude/executable_claude-completion-notify.sh`: タスク完了時の通知スクリプト
+   - `dot_claude/settings.json.tmpl`: Claude Codeの設定（プラグイン、環境変数、モデル設定等）
    - `dot_claude/plugins/modify_private_known_marketplaces.json.tmpl`: マーケットプレイス管理（modify_スクリプト）
    - `dot_claude/plugins/modify_private_installed_plugins.json.tmpl`: プラグイン管理（modify_スクリプト）
      - プラグイン追加・削除時は `/sync-claude-config` で自動同期する
@@ -86,6 +85,3 @@ chezmoi diff
 | `dot_config/wezterm/*.lua` | `dot_config/wezterm/README.md` |
 | `dot_ideavimrc` | `README.md`（IdeaVimセクション） |
 
-## Claude Codeフック
-
-このリポジトリには、Claude Codeがタスクを完了した際に通知を送るカスタムフックが含まれています。フックは `dot_claude/settings.json` で設定され、停止イベント時に `~/.claude/claude-completion-notify.sh` を実行します。

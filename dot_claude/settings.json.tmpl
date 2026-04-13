@@ -1,38 +1,7 @@
 {
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
-  "hooks": {
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-{{- if eq .chezmoi.os "darwin" }}
-            "command": "osascript -e 'display notification \"タスクが完了しました\" with title \"Claude Code\" subtitle \"処理終了\" sound name \"Hero\"'"
-{{- else }}
-            "command": "echo '[Claude Code] タスクが完了しました'"
-{{- end }}
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-{{- if eq .chezmoi.os "darwin" }}
-            "command": "osascript -e 'display notification \"Claude Codeが許可を求めています\" with title \"Claude Code\" subtitle \"確認待ち\" sound name \"Glass\"'"
-{{- else }}
-            "command": "echo '[Claude Code] Claude Codeが許可を求めています'"
-{{- end }}
-          }
-        ]
-      }
-    ]
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_NO_FLICKER": "1"
   },
   "enabledPlugins": {
     "lua-lsp@claude-plugins-official": true,

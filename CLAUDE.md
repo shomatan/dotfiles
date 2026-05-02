@@ -79,9 +79,9 @@ chezmoi diff
 
 キーバインドを変更した場合、対応するREADMEも更新すること：
 
-| 設定ファイル | README |
+| 設定ファイル | ドキュメント |
 |-------------|--------|
 | `dot_config/nvim/lua/plugins/*.lua` | `dot_config/nvim/README.md` |
 | `dot_config/wezterm/*.lua` | `dot_config/wezterm/README.md` |
-| `dot_ideavimrc` | `README.md`（IdeaVimセクション） |
+| `dot_ideavimrc` / `dot_config/aerospace/*.toml` / `dot_config/private_karabiner/*.json` | `diagrams/keybindings.html`（全体マップ） |
 

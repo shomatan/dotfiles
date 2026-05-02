@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>キーバインディング全体マップ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root { color-scheme: light; }
+    html, body {
+      font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-bottom-width: 2px;
+      border-radius: 4px;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+    .layer-card { border-left: 6px solid; }
+    @media print {
+      nav.toc { page-break-after: always; }
+      section { page-break-inside: avoid; }
+      .no-print { display: none; }
+    }
+    .mermaid { background: white; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 6px 10px; border-bottom: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+    th { background: #f8fafc; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #475569; font-weight: 600; }
+    td.keys { white-space: nowrap; min-width: 180px; }
+    h2 { scroll-margin-top: 1rem; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+<div class="max-w-6xl mx-auto px-6 py-10">
+
+  <header class="mb-10 border-b pb-6">
+    <p class="text-sm text-slate-500">DOTFILES OVERVIEW</p>
+    <h1 class="text-3xl font-bold mt-1 text-slate-900">キーバインディング 全体マップ</h1>
+    <p class="text-slate-600 mt-2">Karabiner → Aerospace → WezTerm → Neovim / IdeaVim の4レイヤーを一望できる図解。キーイベントは下位レイヤーから順に処理される。</p>
+    <p class="text-xs text-slate-400 mt-3">生成: 2026-05-02 20:01 ／ 出典: ~/.local/share/chezmoi/dot_config/</p>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc mb-10 bg-white rounded-lg border p-5">
+    <h2 class="text-sm uppercase tracking-wider text-slate-500 mb-3">目次</h2>
+    <ol class="list-decimal list-inside grid md:grid-cols-2 gap-y-1 text-slate-700">
+      <li><a href="#overview" class="hover:underline">レイヤー構成と処理順</a></li>
+      <li><a href="#karabiner" class="hover:underline">Karabiner（OSレイヤー）</a></li>
+      <li><a href="#aerospace" class="hover:underline">Aerospace（ウィンドウ管理）</a></li>
+      <li><a href="#wezterm" class="hover:underline">WezTerm（ターミナル）</a></li>
+      <li><a href="#nvim" class="hover:underline">Neovim（エディタ）</a></li>
+      <li><a href="#ideavim" class="hover:underline">IdeaVim（JetBrains IDE）</a></li>
+      <li><a href="#cheatsheet" class="hover:underline">よく使うショートカット 早見表</a></li>
+    </ol>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">レイヤー構成と処理順</h2>
+    <p class="leading-relaxed mb-4">
+      物理キー入力は <strong>Karabiner</strong> で先にリマップされ、その後アプリ側に届く。
+      OSレベルでは <strong>Aerospace</strong> がワークスペース／ウィンドウ操作を、
+      ターミナル内では <strong>WezTerm</strong> がペイン／タブを、
+      エディタ内では <strong>Neovim</strong>（CLI）／<strong>IdeaVim</strong>（IDE）が編集を担当する。
+    </p>
+
+    <div class="bg-white rounded-lg border p-5 mb-6">
+      <pre class="mermaid">
+flowchart LR
+  K["⌨️ 物理キー"] --> KAR["Karabiner<br/>(OSフック)"]
+  KAR -->|Cmd空打ち→IME / Esc→英数 / CapsLock→Ctrl| AS["Aerospace<br/>(WM)"]
+  AS -->|Alt系: ワークスペース・ウィンドウ| APP["フォアグラウンドアプリ"]
+  APP --> WT["WezTerm<br/>(Terminal)"]
+  APP --> JB["JetBrains IDE"]
+  WT -->|Ctrl-a Leader / Cmd / Ctrl| NV["Neovim<br/>(CLI Editor)"]
+  JB --> IV["IdeaVim"]
+      </pre>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="layer-card border-rose-500 bg-rose-50 p-4 rounded">
+        <p class="text-xs text-rose-700 font-bold">LAYER 1 · OS</p>
+        <p class="font-semibold mt-1">Karabiner</p>
+        <p class="text-xs text-rose-900 mt-1">日本語IME・Vim向けの物理キー改造</p>
+      </div>
+      <div class="layer-card border-amber-500 bg-amber-50 p-4 rounded">
+        <p class="text-xs text-amber-700 font-bold">LAYER 2 · WM</p>
+        <p class="font-semibold mt-1">Aerospace</p>
+        <p class="text-xs text-amber-900 mt-1">タイル型ワークスペース管理</p>
+      </div>
+      <div class="layer-card border-emerald-500 bg-emerald-50 p-4 rounded">
+        <p class="text-xs text-emerald-700 font-bold">LAYER 3 · TERM</p>
+        <p class="font-semibold mt-1">WezTerm</p>
+        <p class="text-xs text-emerald-900 mt-1">tmux風 Leaderキー + Mac標準</p>
+      </div>
+      <div class="layer-card border-sky-500 bg-sky-50 p-4 rounded">
+        <p class="text-xs text-sky-700 font-bold">LAYER 4 · EDITOR</p>
+        <p class="font-semibold mt-1">Neovim / IdeaVim</p>
+        <p class="text-xs text-sky-900 mt-1">LazyVim拡張 + IDE Vim操作</p>
+      </div>
+    </div>
+
+    <div class="mt-6 p-4 rounded border-l-4 border-blue-500 bg-blue-50">
+      <p class="text-xs text-blue-700 font-bold mb-1">設計思想</p>
+      <p class="text-sm text-blue-900">
+        <kbd>Ctrl+h/j/k/l</kbd> = WezTermペイン移動 / <kbd>Shift+h/j/k/l</kbd> = Neovimウィンドウ移動 で Ctrl と Shift を役割分担。
+        Aerospaceは <kbd>Alt+h/j/k/l</kbd> でフォーカス、<kbd>Alt+Shift+...</kbd> でウィンドウ移動。
+        手の動き（hjkl）を保ったまま3レイヤーで統一されている。
+      </p>
+    </div>
+  </section>
+
+  <!-- KARABINER -->
+  <section id="karabiner" class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Karabiner（OSレイヤー）</h2>
+    <p class="text-sm text-slate-600 mb-4">物理キーを別のキーコードに置き換える。Vim操作と日本語入力の往復を高速化する設定が中心。</p>
+    <div class="bg-white rounded-lg border p-5">
+      <table>
+        <thead>
+          <tr><th class="keys">物理キー</th><th>変換後</th><th>目的</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="keys"><kbd>Caps Lock</kbd></td><td><kbd>Left Control</kbd></td><td>Apple内蔵キーボードのCapsをCtrlに</td></tr>
+          <tr><td class="keys"><kbd>Esc</kbd></td><td><kbd>Esc</kbd> + <kbd>英数</kbd></td><td>Vim抜け時に必ずIMEオフ</td></tr>
+          <tr><td class="keys"><kbd>左⌘</kbd> 単押し</td><td><kbd>英数</kbd></td><td>長押しで通常Cmd、単押しでIME英数</td></tr>
+          <tr><td class="keys"><kbd>右⌘</kbd> 単押し</td><td><kbd>かな</kbd></td><td>長押しで通常Cmd、単押しでIMEかな</td></tr>
+          <tr><td class="keys"><kbd>⌘</kbd>+<kbd>Space</kbd></td><td><kbd>英数</kbd> → <kbd>⌘+Space</kbd></td><td>IMEオフしてからSpotlight</td></tr>
+          <tr><td class="keys">マウスボタン5 + ドラッグ</td><td>スクロール</td><td>ホイール代替</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- AEROSPACE -->
+  <section id="aerospace" class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Aerospace（ウィンドウ管理）</h2>
+    <p class="text-sm text-slate-600 mb-4">タイル型WM。<kbd>Alt</kbd>系で完結し、Aerospace以外と衝突しないよう配慮されている。</p>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">フォーカス・移動</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>h/j/k/l</kbd></td><td>フォーカス移動（モニター跨ぎ可・wrap）</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>h/j/k/l</kbd></td><td>ウィンドウを移動</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>Ctrl</kbd>+<kbd>h/j/k/l</kbd></td><td>モニター間フォーカス</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>Tab</kbd></td><td>直前のワークスペースに戻る</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>ワークスペースを次モニターへ</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">ワークスペース切替</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>1</kbd>〜<kbd>0</kbd></td><td>ワークスペース 1〜10 へ</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd>〜<kbd>0</kbd></td><td>ウィンドウを ws 1〜10 へ移動</td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-500 mt-3">既定ワークスペース: Chrome→1, Slack/LINE→2, Obsidian→4, Fork→floating</p>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">レイアウト・サイズ</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>/</kbd></td><td>tiles レイアウト切替</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>,</kbd></td><td>accordion レイアウト切替</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>f</kbd></td><td>floating ⇔ tiling</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>-</kbd> / <kbd>=</kbd></td><td>スマートリサイズ -50 / +50</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">サービスモード</h3>
+        <p class="text-xs text-slate-500 mb-2"><kbd>Alt</kbd>+<kbd>;</kbd> でサービスモードに入る</p>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Esc</kbd></td><td>設定リロード + 通常モード</td></tr>
+            <tr><td class="keys"><kbd>r</kbd></td><td>レイアウトをフラット化（リセット）</td></tr>
+            <tr><td class="keys"><kbd>f</kbd></td><td>floating ⇔ tiling</td></tr>
+            <tr><td class="keys"><kbd>Backspace</kbd></td><td>カレント以外を全閉じ</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>h/j/k/l</kbd></td><td>方向にjoin</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEZTERM -->
+  <section id="wezterm" class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">WezTerm（ターミナル）</h2>
+    <p class="text-sm text-slate-600 mb-4">
+      Leader = <kbd>Ctrl+a</kbd>（tmux風）。Mac標準（<kbd>⌘</kbd>系）と Neovim統一系（<kbd>Ctrl+h/j/k/l</kbd>）も併用。
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">ペイン（Leader = <kbd>Ctrl+a</kbd>）</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys">Leader <kbd>-</kbd></td><td>縦分割</td></tr>
+            <tr><td class="keys">Leader <kbd>\</kbd> / <kbd>|</kbd></td><td>横分割</td></tr>
+            <tr><td class="keys">Leader <kbd>h/j/k/l</kbd></td><td>ペイン移動</td></tr>
+            <tr><td class="keys">Leader <kbd>o</kbd></td><td>次のペインへ</td></tr>
+            <tr><td class="keys">Leader <kbd>Shift</kbd>+<kbd>H/J/K/L</kbd></td><td>ペインサイズ調整(±5)</td></tr>
+            <tr><td class="keys">Leader <kbd>z</kbd></td><td>ズームトグル</td></tr>
+            <tr><td class="keys">Leader <kbd>x</kbd></td><td>ペインを閉じる</td></tr>
+            <tr><td class="keys">Leader <kbd>q</kbd></td><td>ペイン選択モード</td></tr>
+            <tr><td class="keys">Leader <kbd>Space</kbd></td><td>ペインを回転</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">ペイン（Ctrl 直 / Neovim統一）</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>h/j/k/l</kbd></td><td>ペイン移動</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>-</kbd></td><td>縦分割</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>|</kbd></td><td>横分割</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>z</kbd></td><td>ズームトグル</td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-500 mt-3">※ <kbd>Ctrl+h/j/k/l</kbd> はNeovimの <kbd>Shift+h/j/k/l</kbd> と役割分担</p>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">タブ</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys">Leader <kbd>c</kbd> / <kbd>⌘+t</kbd></td><td>新規タブ</td></tr>
+            <tr><td class="keys">Leader <kbd>n</kbd> / <kbd>p</kbd></td><td>次/前のタブ</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>n</kbd> / <kbd>Ctrl</kbd>+<kbd>p</kbd></td><td>次/前のタブ</td></tr>
+            <tr><td class="keys">Leader <kbd>0</kbd>〜<kbd>9</kbd></td><td>タブ1〜9 (9で末尾)</td></tr>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>1</kbd>〜<kbd>9</kbd></td><td>タブ1〜9 (9で末尾)</td></tr>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>{</kbd> / <kbd>}</kbd></td><td>前/次のタブ</td></tr>
+            <tr><td class="keys">Leader <kbd>Shift</kbd>+<kbd>&</kbd></td><td>タブを閉じる</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">Mac標準・その他</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>c/v</kbd></td><td>コピー / ペースト</td></tr>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>w</kbd></td><td>閉じる</td></tr>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>n</kbd></td><td>新規ウィンドウ</td></tr>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>f</kbd></td><td>検索</td></tr>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>k</kbd></td><td>スクロールバック消去</td></tr>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>=</kbd> / <kbd>-</kbd> / <kbd>0</kbd></td><td>フォント拡大/縮小/リセット</td></tr>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>Enter</kbd></td><td>フルスクリーン</td></tr>
+            <tr><td class="keys"><kbd>Shift</kbd>+<kbd>PageUp/Down</kbd></td><td>1ページスクロール</td></tr>
+            <tr><td class="keys">Leader <kbd>r</kbd></td><td>設定再読み込み</td></tr>
+            <tr><td class="keys">Leader <kbd>Shift</kbd>+<kbd>:</kbd></td><td>コマンドパレット</td></tr>
+            <tr><td class="keys">Leader <kbd>Shift</kbd>+<kbd>S</kbd> / <kbd>R</kbd></td><td>ワークスペース保存 / 復元 (resurrect)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">Git Worktree（カスタムイベント）</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>w</kbd></td><td>worktree 選択</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>c</kbd></td><td>worktree 作成</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>d</kbd></td><td>worktree 削除</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">コピーモード（Vim風） — Leader <kbd>[</kbd> で開始</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>h/j/k/l</kbd></td><td>カーソル移動</td></tr>
+            <tr><td class="keys"><kbd>w</kbd> / <kbd>b</kbd> / <kbd>e</kbd></td><td>単語前/後/末尾</td></tr>
+            <tr><td class="keys"><kbd>0</kbd> / <kbd>^</kbd> / <kbd>$</kbd></td><td>行頭/最初の文字/行末</td></tr>
+            <tr><td class="keys"><kbd>g</kbd> / <kbd>G</kbd></td><td>バッファ先頭/末尾</td></tr>
+            <tr><td class="keys"><kbd>H</kbd> / <kbd>M</kbd> / <kbd>L</kbd></td><td>画面 上/中/下</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>d/u/f/b</kbd></td><td>半/1ページスクロール</td></tr>
+            <tr><td class="keys"><kbd>v</kbd> / <kbd>V</kbd> / <kbd>Ctrl+v</kbd></td><td>文字/行/矩形選択</td></tr>
+            <tr><td class="keys"><kbd>y</kbd></td><td>ヤンク（コピー）して終了</td></tr>
+            <tr><td class="keys"><kbd>/</kbd> → <kbd>n</kbd> / <kbd>N</kbd></td><td>検索→次/前</td></tr>
+            <tr><td class="keys"><kbd>f/F/t/T</kbd> → <kbd>;</kbd> / <kbd>,</kbd></td><td>文字ジャンプ→繰り返し/逆</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- NVIM -->
+  <section id="nvim" class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">Neovim（LazyVimベース）</h2>
+    <p class="text-sm text-slate-600 mb-4">
+      Leader = <kbd>Space</kbd>。WezTermと役割分担: <strong>Ctrl系</strong>はWezTerm（ペイン）、<strong>Shift系</strong>はNeovim（ウィンドウ）。
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">移動・行頭行末</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>1</kbd> / <kbd>2</kbd></td><td>行頭(非空白) / 行末（カスタム）</td></tr>
+            <tr><td class="keys"><kbd>Shift</kbd>+<kbd>h/j/k/l</kbd></td><td>ウィンドウ移動（WezTerm統一）</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>↑↓←→</kbd></td><td>ウィンドウサイズ変更</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>o</kbd> / <kbd>i</kbd></td><td>ジャンプリスト 戻る/進む</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">バッファ</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Shift</kbd>+<kbd>n</kbd> / <kbd>p</kbd></td><td>次/前のバッファ</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>,</kbd></td><td>バッファ一覧</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>bb</kbd></td><td>直前のバッファ</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>bd</kbd></td><td>閉じる（空ならOilを開く）</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>r</kbd></td><td>再読み込み</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">ファイル・検索</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Space</kbd><kbd>Space</kbd></td><td>ファイル検索</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>ff</kbd></td><td>ファイル検索</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>fr</kbd></td><td>最近のファイル</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>fb</kbd></td><td>バッファ検索</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>sg</kbd></td><td>grep検索</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>sw</kbd></td><td>カーソル下の単語検索</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>/</kbd></td><td>バッファ内検索</td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-500 mt-3">Telescope内: <kbd>Enter</kbd>=新タブ / <kbd>Ctrl+t</kbd>=現ウィンドウ / <kbd>Ctrl+x/v</kbd>=分割</p>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">LSP / コード</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>gd</kbd></td><td>定義へジャンプ</td></tr>
+            <tr><td class="keys"><kbd>gr</kbd></td><td>参照検索</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>k</kbd></td><td>ホバー（K の代替）</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>ca</kbd></td><td>コードアクション</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>cr</kbd></td><td>リネーム</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>xx</kbd></td><td>診断一覧 (Trouble)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">ターミナル / Git</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>/</kbd></td><td>ターミナル トグル</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>ft</kbd></td><td>フローティングターミナル</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>g</kbd> <kbd>Ctrl</kbd>+<kbd>g</kbd></td><td>ターミナルから抜ける（分割キーボード向け）</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>q</kbd></td><td>AIビューを閉じる</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>gg</kbd></td><td>Lazygit</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>gb</kbd></td><td>Git blame</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">Oil（ファイラー）</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>-</kbd></td><td>親ディレクトリ</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>e</kbd></td><td>Oilを開く</td></tr>
+            <tr><td class="keys"><kbd>Enter</kbd> / <kbd>q</kbd></td><td>開く / 閉じる</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>s/t/p</kbd></td><td>垂直分割 / 新タブ / プレビュー</td></tr>
+            <tr><td class="keys"><kbd>g.</kbd> / <kbd>gs</kbd> / <kbd>g?</kbd></td><td>隠しファイル / ソート / ヘルプ</td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-500 mt-3">編集: <kbd>dd</kbd>削除 / 改行で新規 / <kbd>:w</kbd>確定（バッファ編集モデル）</p>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">Claude Code 連携（<kbd>Space</kbd>+<kbd>a*</kbd>）</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>ac</kbd></td><td>Claude切替</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>af</kbd></td><td>Claudeにフォーカス</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>ar</kbd> / <kbd>aC</kbd></td><td>再開 / 継続</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>am</kbd></td><td>モデル選択</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>ab</kbd> / <kbd>as</kbd></td><td>バッファ追加 / 選択範囲送信</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>aa</kbd> / <kbd>ad</kbd></td><td>差分 受け入れ / 拒否</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">Flutter（<kbd>Space</kbd>+<kbd>df*</kbd>）</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>dfr</kbd> / <kbd>dfR</kbd></td><td>Run / Restart</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>dfl</kbd> / <kbd>dfq</kbd></td><td>Hot Reload / Quit</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>dfd</kbd> / <kbd>dfe</kbd></td><td>Devices / Emulators</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>dfo</kbd> / <kbd>dft</kbd></td><td>Outline / DevTools</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDEAVIM -->
+  <section id="ideavim" class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">IdeaVim（JetBrains IDE）</h2>
+    <p class="text-sm text-slate-600 mb-4">JetBrains の IDEアクションを Vim 風キーから呼ぶ。Leader = <kbd>Space</kbd>。</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">基本</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>jj</kbd> (insert)</td><td>ESC</td></tr>
+            <tr><td class="keys"><kbd>1</kbd> / <kbd>2</kbd></td><td>行頭 / 行末（Neovimと統一）</td></tr>
+            <tr><td class="keys"><kbd>Esc</kbd><kbd>Esc</kbd></td><td>検索ハイライト消去</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>w</kbd> / <kbd>q</kbd> / <kbd>Esc</kbd></td><td>:w / :wq / :q</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">タブ・検索</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>gn</kbd> / <kbd>gp</kbd></td><td>NextTab / PreviousTab</td></tr>
+            <tr><td class="keys"><kbd>/</kbd></td><td>Find</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>o</kbd> / <kbd>i</kbd></td><td>Back / Forward</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>p</kbd></td><td>GotoFile</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>c</kbd></td><td>GotoAction</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>f</kbd></td><td>SearchEverywhere</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>b</kbd></td><td>RecentFiles</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>o</kbd></td><td>FileStructurePopup</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>t</kbd></td><td>ターミナル</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>d</kbd></td><td>Problemsビュー</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">ナビゲーション</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>gd</kbd></td><td>定義へ</td></tr>
+            <tr><td class="keys"><kbd>gr</kbd></td><td>参照</td></tr>
+            <tr><td class="keys"><kbd>gy</kbd></td><td>型定義</td></tr>
+            <tr><td class="keys"><kbd>gi</kbd></td><td>実装</td></tr>
+            <tr><td class="keys"><kbd>go</kbd></td><td>GitHubで開く</td></tr>
+            <tr><td class="keys"><kbd>K</kbd></td><td>QuickJavaDoc</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>rn</kbd></td><td>RenameElement</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">エラー・ツールウィンドウ</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>dn</kbd> / <kbd>dp</kbd></td><td>次/前のエラー</td></tr>
+            <tr><td class="keys"><kbd>sf</kbd></td><td>ProjectツールWindow</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHEATSHEET -->
+  <section id="cheatsheet" class="mb-12">
+    <h2 class="text-2xl font-bold mb-4">よく使うショートカット 早見表</h2>
+    <p class="text-sm text-slate-600 mb-4">「これだけ覚えれば日常作業ができる」核となるキー。</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">レイヤー横断のhjkl</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>h/j/k/l</kbd></td><td>Aerospace ウィンドウフォーカス</td></tr>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>h/j/k/l</kbd></td><td>WezTerm ペイン移動</td></tr>
+            <tr><td class="keys"><kbd>Shift</kbd>+<kbd>h/j/k/l</kbd></td><td>Neovim ウィンドウ移動</td></tr>
+            <tr><td class="keys"><kbd>h/j/k/l</kbd></td><td>Vim カーソル移動</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">ワークスペース・タブ</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>Ctrl</kbd>+<kbd>1</kbd>〜<kbd>9</kbd></td><td>Aerospace ワークスペース</td></tr>
+            <tr><td class="keys"><kbd>⌘</kbd>+<kbd>1</kbd>〜<kbd>9</kbd></td><td>WezTerm タブ</td></tr>
+            <tr><td class="keys"><kbd>Alt</kbd>+<kbd>Tab</kbd></td><td>直前のワークスペース</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">日本語入力</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys">左<kbd>⌘</kbd> 単押し</td><td>英数</td></tr>
+            <tr><td class="keys">右<kbd>⌘</kbd> 単押し</td><td>かな</td></tr>
+            <tr><td class="keys"><kbd>Esc</kbd></td><td>Vim抜け＋英数</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white rounded-lg border p-5">
+        <h3 class="font-bold mb-3">エディタ最頻出</h3>
+        <table>
+          <tbody>
+            <tr><td class="keys"><kbd>1</kbd> / <kbd>2</kbd></td><td>行頭 / 行末（NV/IdeaVim共通）</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd><kbd>Space</kbd></td><td>ファイル検索（NV）</td></tr>
+            <tr><td class="keys"><kbd>Space</kbd>+<kbd>p</kbd></td><td>GotoFile（IdeaVim）</td></tr>
+            <tr><td class="keys"><kbd>gd</kbd> / <kbd>gr</kbd></td><td>定義 / 参照（共通）</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-xs text-slate-400 pt-6 border-t">
+    出典: chezmoi <code>dot_config/</code> 配下の各設定ファイル。実際のキー動作はOSやアプリのバージョン・他設定との競合により変わる可能性があります。
+  </footer>
+</div>
+
+<script>
+  mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+</script>
+</body>
+</html>

@@ -4,3 +4,7 @@
 
 [ghq]
 	root = ~/dev
+
+# マシン固有設定（ローカルにのみ存在）。ファイルが無いマシンでは無視される
+[include]
+	path = ~/.config/git/local.gitconfig

@@ -3,9 +3,9 @@
 # gist 由来の Claude スキルを upstream から再取得し、差分があれば
 # chezmoi ソースと実体（~/.claude）へ反映してローカルコミットする。
 # chezmoi update の post フック（hooks.update.post）から呼ばれる。
-# 単体実行も可。--dry-run で取得と差分表示のみ（書き込み・コミットなし）。
+# 単体実行も可。--dry-run で取得と差分表示のみ（書き込み・コミット・push なし）。
 #
-# push は行わない（公開リポジトリへの反映は手動）。
+# 差分があれば source と ~/.claude へ反映し commit、origin（公開リポジトリ）へ push する。
 #
 set -euo pipefail
 
@@ -73,7 +73,7 @@ if [ "${#changed[@]}" -eq 0 ]; then
 fi
 
 if [ "$DRY_RUN" = 1 ]; then
-  echo "[dry-run] ${#changed[@]} 件に差分あり（コミットは行わない）" >&2
+  echo "[dry-run] ${#changed[@]} 件に差分あり（コミット・push は行わない）" >&2
   exit 0
 fi
 
@@ -84,4 +84,11 @@ if git -C "$SRC" diff --cached --quiet -- "${changed[@]}"; then
   exit 0
 fi
 git -C "$SRC" commit -q -m "chore(claude): gist 由来スキルを upstream に同期"
-echo "コミット: ${#changed[@]} 件（push は手動）" >&2
+echo "コミット: ${#changed[@]} 件" >&2
+
+# 公開リポジトリへ push（失敗は非致命。commit はローカルに残り次回持ち越す）
+if git -C "$SRC" push --quiet; then
+  echo "push: 完了" >&2
+else
+  echo "push: 失敗（後で手動 push してください）" >&2
+fi

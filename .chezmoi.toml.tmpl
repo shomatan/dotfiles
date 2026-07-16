@@ -1,0 +1,7 @@
+# chezmoi 設定（このファイルは source 側テンプレート。`chezmoi init` で
+# ~/.config/chezmoi/chezmoi.toml に生成される）。
+
+# `chezmoi update` のたびに gist 由来スキルを再取得し、差分があればコミットする。
+[hooks.update.post]
+    command = "bash"
+    args = ["{{ .chezmoi.sourceDir }}/scripts/sync-claude-skills.sh"]

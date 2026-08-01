@@ -54,7 +54,7 @@ ae.swap_table(doc, "項目状態備考", ae.table(
     ["項目", "状態", "備考"], [300, 200, 900],
     [["取込バッチ", "稼働中", "`processed=5`。日次で走る"]],
 ))
-ae.insert_after_section(doc, "現況", [ae.heading("補足", 3), ae.para("`code` と **強調** が使える")])
+ae.insert_after_section(doc, "現況", [ae.heading("補足", 3), ae.para("`code`、**強調**、[リンク](https://example.com) が使える")])
 ae.audit(doc)
 ae.save(doc, "new.json")
 ```
@@ -67,7 +67,7 @@ ae.save(doc, "new.json")
 - `swap_table(doc, ヘッダ連結文字列, 新table)`：表を丸ごと差し替え。目印はヘッダ行のセルを連結した文字列
 - `add_rows(表ノード, 目印の行, 行データ)`：既存行の構造を複製して行を足す
 - `insert_after_section(doc, 見出し語, ノード列)`：節の末尾へ挿入
-- `table` / `para` / `heading` / `panel` / `status`：ノード組み立て
+- `table` / `para` / `heading` / `panel` / `status`：ノード組み立て。セル文字列は `` `code` ``、`**強調**`、`[text](url)` を解釈する
 - `audit(doc)`：日本語の地の文に残った 2 倍ダッシュと中黒を報告する
 
 ### 4. 送信

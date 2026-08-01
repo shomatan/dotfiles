@@ -46,15 +46,21 @@ def flat(node):
 
 
 def runs(s):
-    """`code` と **strong** を解釈して text ノード列にする。"""
+    """`code`、**strong**、[text](url) を解釈して text ノード列にする。"""
     out = []
-    for part in re.split(r"(`[^`]+`|\*\*[^*]+\*\*)", s):
+    pattern = r"(`[^`]+`|\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))"
+    for part in re.split(pattern, s):
         if not part:
             continue
         if part.startswith("`") and part.endswith("`"):
             out.append({"type": "text", "text": part[1:-1], "marks": [{"type": "code"}]})
         elif part.startswith("**") and part.endswith("**"):
             out.append({"type": "text", "text": part[2:-2], "marks": [{"type": "strong"}]})
+        elif part.startswith("[") and part.endswith(")"):
+            label, href = re.match(r"\[([^\]]+)\]\(([^)]+)\)", part).groups()
+            out.append(
+                {"type": "text", "text": label, "marks": [{"type": "link", "attrs": {"href": href}}]}
+            )
         else:
             out.append({"type": "text", "text": part})
     return out

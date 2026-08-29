@@ -2,3 +2,8 @@
     type = "file"
     url = "https://raw.githubusercontent.com/vercel-labs/agent-browser/main/skills/agent-browser/SKILL.md"
     refreshPeriod = "168h"  # 1週間ごとに更新チェック
+
+[".claude/skills/grilling/SKILL.md"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grilling/SKILL.md"
+    refreshPeriod = "168h"  # 1週間ごとに更新チェック

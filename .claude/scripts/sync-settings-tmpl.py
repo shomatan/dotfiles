@@ -27,7 +27,7 @@ def load_template_text(path: Path) -> str:
         return f.read()
 
 
-def extract_hooks_section(template_text: str) -> str:
+def extract_hooks_section(template_text: str) -> str | None:
     """
     テンプレートから hooks セクションを Go テンプレート構文ごと抽出する。
 
@@ -45,8 +45,9 @@ def extract_hooks_section(template_text: str) -> str:
             hooks_start = i
             break
 
+    # hooks セクションは任意（通知フック廃止後のテンプレートには存在しない）
     if hooks_start == -1:
-        raise ValueError("テンプレート内に hooks セクションが見つかりません")
+        return None
 
     # 波括弧の深さを追跡（Go テンプレート行は無視）
     depth = 0
@@ -105,7 +106,7 @@ def serialize_scalar(value: object) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
-def build_template(actual: dict, hooks_section: str) -> str:
+def build_template(actual: dict, hooks_section: str | None) -> str:
     """
     実ファイルのキー順序に従って新しいテンプレートを構築する。
     hooks セクションはテンプレートから抽出したものをそのまま使用する。
@@ -117,7 +118,7 @@ def build_template(actual: dict, hooks_section: str) -> str:
         is_last = i == len(keys) - 1
         comma = "" if is_last else ","
 
-        if key == "hooks":
+        if key == "hooks" and hooks_section is not None:
             # テンプレートから抽出した hooks セクションを使用
             # 末尾のカンマを制御する
             section = hooks_section.rstrip()

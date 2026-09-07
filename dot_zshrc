@@ -129,6 +129,9 @@ elif [[ -f "/usr/local/bin/brew" ]]; then
     eval $(/usr/local/bin/brew shellenv)
 fi
 
+# Homebrew 6 から install/upgrade/reinstall の確認プロンプトが既定になったので無効化する
+export HOMEBREW_NO_ASK=1
+
 
 # mise
 # -----------------------------------------------------------------------------

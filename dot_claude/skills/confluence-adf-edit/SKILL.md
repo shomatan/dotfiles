@@ -22,10 +22,17 @@ MCP を使ってよいのは次の 2 つだけ。
 
 ### 1. 認証
 
-**API トークンを新たに発行する必要はない。** MCP の Atlassian サーバーへ接続済みなら、その OAuth アクセストークンが macOS Keychain の `Claude Code-credentials` に入っており、Confluence REST v2 へそのまま通る。
+**API トークンを新たに発行する必要はない。** MCP の Atlassian サーバーへ接続済みなら、その OAuth アクセストークンが Claude Code の認証情報に入っており、Confluence REST v2 へそのまま通る。置き場所は OS で違い、macOS は Keychain の `Claude Code-credentials`、Linux は `${CLAUDE_CONFIG_DIR:-~/.claude}/.credentials.json` にある（中身は同じ JSON）。
 
 ```bash
-TOK=$(security find-generic-password -s "Claude Code-credentials" -w | python3 -c '
+creds() {
+  if [ "$(uname -s)" = Darwin ]; then
+    security find-generic-password -s "Claude Code-credentials" -w
+  else
+    cat "${CLAUDE_CONFIG_DIR:-$HOME/.claude}/.credentials.json"
+  fi
+}
+TOK=$(creds | python3 -c '
 import sys, json, time
 out = ""
 for k, v in json.load(sys.stdin)["mcpOAuth"].items():

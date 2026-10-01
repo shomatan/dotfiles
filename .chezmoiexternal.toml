@@ -10,8 +10,8 @@
 
 [".claude/skills/yomiyasu"]
     type = "archive"
-    url = "https://github.com/nanaism/yomiyasu/archive/refs/heads/main.tar.gz"
+    # 第三者のスキルなので commit を固定する (main を追うと中身とスクリプトが無審査で更新される)。更新は差分を読んでから SHA を差し替える
+    url = "https://github.com/nanaism/yomiyasu/archive/b14ee43c9b722cf4fd2bb1e893c6c386f1a362aa.tar.gz"
     stripComponents = 3
     include = ["*/skills/yomiyasu/**"]
     exact = true
-    refreshPeriod = "168h"  # 1週間ごとに更新チェック

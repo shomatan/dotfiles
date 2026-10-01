@@ -1,12 +1,12 @@
 [".claude/skills/agent-browser/SKILL.md"]
     type = "file"
-    url = "https://raw.githubusercontent.com/vercel-labs/agent-browser/main/skills/agent-browser/SKILL.md"
-    refreshPeriod = "168h"  # 1週間ごとに更新チェック
+    # 第三者のスキルなので commit を固定する (main を追うと中身が無審査で更新される)。更新は差分を読んでから SHA を差し替える
+    url = "https://raw.githubusercontent.com/vercel-labs/agent-browser/d01253d9db28d75080e36da3c1c31ef89454731e/skills/agent-browser/SKILL.md"
 
 [".claude/skills/grilling/SKILL.md"]
     type = "file"
-    url = "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grilling/SKILL.md"
-    refreshPeriod = "168h"  # 1週間ごとに更新チェック
+    # 第三者のスキルなので commit を固定する (main を追うと中身が無審査で更新される)。更新は差分を読んでから SHA を差し替える
+    url = "https://raw.githubusercontent.com/mattpocock/skills/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/productivity/grilling/SKILL.md"
 
 [".claude/skills/yomiyasu"]
     type = "archive"

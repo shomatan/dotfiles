@@ -7,3 +7,11 @@
     type = "file"
     url = "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grilling/SKILL.md"
     refreshPeriod = "168h"  # 1週間ごとに更新チェック
+
+[".claude/skills/yomiyasu"]
+    type = "archive"
+    url = "https://github.com/nanaism/yomiyasu/archive/refs/heads/main.tar.gz"
+    stripComponents = 3
+    include = ["*/skills/yomiyasu/**"]
+    exact = true
+    refreshPeriod = "168h"  # 1週間ごとに更新チェック

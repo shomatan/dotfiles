@@ -63,7 +63,7 @@
 - **ブラウザ認証 (OAuth) も自分で完結させる**
   - CLI が loopback callback サーバを立てる型なら、バックグラウンド実行して標準出力から認可 URL を取り出す。callback は自分が立てたサーバが受け取る
   - 既存のブラウザプロファイル (`~/.config/chromium` など) に Google 等のログインセッションが残っていることが多い。`sqlite3 <profile>/Default/Cookies "select distinct host_key from cookies where host_key like '%<domain>%'"` で在否を確認できる
-  - Playwright の `launchPersistentContext` にそのプロファイルを渡し、`executablePath` へ `~/.cache/ms-playwright/chromium-*/chrome-linux/chrome` を明示、`args: ['--password-store=basic']` を付けて headless 起動する。アカウント選択と同意画面は自分でクリックする
+  - Playwright の `launchPersistentContext` にそのプロファイルを渡し、`executablePath` へ `~/.cache/ms-playwright/chromium-*/chrome-linux*/chrome` を明示、`args: ['--password-store=basic']` を付けて headless 起動する。アカウント選択と同意画面は自分でクリックする
   - パッケージ版 Playwright とインストール済みブラウザのバージョンがずれて `Executable doesn't exist` が出たら、`npx playwright install` ではなく `executablePath` で既存ビルドを指す
 - ユーザーに依頼してよいのは、**物理操作** (ハードウェアキー、カード読み取り、電話) と、**本人しか知らない秘密情報の入力**だけ。それ以外は自分でやる
 - トークン失効 (`invalid_grant`) は再認証すれば直る。ユーザーに投げ返さず、その場で通す
